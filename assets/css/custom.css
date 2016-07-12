@@ -45,6 +45,23 @@
   padding-top: 10px;
   width: 100%;
 }
+.fc-view.fc-view-agendaWeek.fc-agenda, .fc-view.fc-view-month.fc-grid {
+    height: 100%;
+    overflow-y: scroll;
+}
+.search_serviceprovider, .search_health, .showbillingdata, .showbillingselected{
+    margin: 10px 0;
+}
+.search_serviceprovider table td, .search_serviceprovider table th, .search_health table th, .search_health table td, .showbillingdata table td, .showbillingdata table th, .showbillingselected table th, .showbillingselected table td {
+       border: 1px solid #ddd;
+    padding: 8px 10px !important;
+    text-align: center;
+    vertical-align: middle;
+    
+}
+.search_serviceprovider table tr:nth-child(2n+1), .search_health table tr:nth-child(2n+1), .showbillingdata table tr:nth-child(2n+1), .showbillingselected table tr:nth-child(2n+1){
+    background-color: #f1f7f9;
+}
 input.btn.btn-primary.btn-block {
     border-radius: 6px;
 }
@@ -84,7 +101,8 @@ output#list span span.cross-arow {
     height: 25px;
     text-align: center;
     line-height: 0;
-        opacity: 0.8;
+    opacity: 0.8;
+    cursor: pointer;
 }
 .form-horizontal.form_health input.btn-block[type="button"], input.btn-block[type="reset"], input.btn-block[type="submit"]{
   width: 200px !important;
@@ -450,7 +468,7 @@ div#clinicno , #faxno , #emailAdd , #roomAdd {
     padding: 0;
 }
 .c_wrapper{
-    max-width: 800px;
+    max-width: 900px;
     width: 100%;
     margin: 20px auto;
 }
@@ -1091,18 +1109,31 @@ ul.footer_links.social {
     font-weight: lighter;
       
 }
+.close {
+        color: #ffffff !important;
+        opacity: 1 !important;
+}
+button.close:hover {
+    color: #092D3E !Important;
+}
+table#groupListInfo img {
+    max-width: 25px;
+}
 .patient_detail_head  span{
   font-weight: bold;
 }
 .dashbrd_popup label {
   font-size: 14px;
   color: #7D7D7D;
-  margin-bottom: 15px;
+  margin-bottom: 0px;
 }
 .dashbrd_popup {
   font-size: 14px;
   color: #7D7D7D;
 
+}
+.radio_outer .radio-inline+.radio-inline {
+    margin-left: 0;
 }
 select#appointment_hour, select#appointment_minute, select#appointment_time_format, select#appointment_end_hour, select#appointment_end_minute, select#appointment_end_time_format{
   font-size: 11px;
@@ -1436,7 +1467,6 @@ div.drum-wrapper .dial.up div:before{
 }
 h2.c_modal_header , .modal-title {
     text-align: center;
-        margin: -20px -8px 0px -8px;
     padding: 16px 10px;
     background: #014767;
     color: #fff;
@@ -1829,7 +1859,7 @@ span.consultation-history-icon{
     float: left;
     padding: 0 5px;
 }
-.patient-page-inputs select {
+.patient-page-inputs select, .form-control.required.selectpicker.bs-select-hidden {
      width: 100%;
     height: 36px;
     border-radius: 6px;
@@ -1844,7 +1874,11 @@ span.consultation-history-icon{
       appearance: none;
     padding: 0 10px;
 }
-.patient-page-inputs select::-ms-expand {
+.addnewmedtype2, .addnewmedtype {
+    display: block;
+    margin: 5px 0;
+}
+.patient-page-inputs select::-ms-expand, .form-control.required.selectpicker.bs-select-hidden::-ms-expand {
     display: none;
 }
 .add-helth-btn {

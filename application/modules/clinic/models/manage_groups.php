@@ -275,12 +275,11 @@ class Manage_groups extends CI_Model
 		return true;
 	}
 
-	public function get_consultation_history($patientID)
+	public function get_all_consultation_history($patientID)
 	{
-
 		$this->db->select("appointment_id");
 		$this->db->from($this->mc_appointments .' as appointment');
-		$this->db->where('appointment.patient_id', $pId);
+		$this->db->where('appointment.patient_id', $patientID);
 		$appId = $this->db->get();
 
 		$appIds = $appId->result_array();
@@ -291,9 +290,9 @@ class Manage_groups extends CI_Model
 
 			$this->db->select("const.*,hpin.title,hpin.surname,hpin.name,clinic.clinic_name,spec.speciality");
 			$this->db->from($this->mc_consultation .' as const');
-			$this->db->join($this->mc_speciality .' as spec', 'const.speciality = spec.ID','inner');
-			$this->db->join($this->table_practitioners .' as hpin', 'const.hp_id = hpin.hp_id','inner');
-			$this->db->join($this->table_name .' as clinic', 'const.medical_clinic = clinic.clinic_id','inner');
+			$this->db->join($this->mc_speciality .' as spec', 'const.speciality = spec.ID','left');
+			$this->db->join($this->table_practitioners .' as hpin', 'const.hp_id = hpin.hp_id','left');
+			$this->db->join($this->table_name .' as clinic', 'const.medical_clinic = clinic.clinic_id','left');
 			$this->db->where('const.appt_id', $value['appointment_id']);
 
 			$histroy = $this->db->get();
