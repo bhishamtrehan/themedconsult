@@ -32,10 +32,10 @@ $().ready(function() {
 			
 			},
 			messages: {
-				billing_name: "Please enter your Billing Code Name",
-				billing_code: "Please enter your Billing Code Number",
-				duration: "Please enter your Number ",
-				price: "Please enter your Number ",
+				billing_name: "Please enter your billing Code name",
+				billing_code: "Please enter your billing code number",
+				duration: "Please enter your duration ",
+				price: "Please enter your price ",
 				gst: "Please enter your GST",
 		
 		

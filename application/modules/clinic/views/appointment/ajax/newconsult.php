@@ -342,8 +342,8 @@ echo 'New Consultation';
 
                                             <div class="uploadImage">
                                            
-                                                  <div class="NFI-button NFI14661537616486172">Attach Media
-                                                            <input type="file" value="" data-rel="fileToUpload1" id="fileToUpload1" class="browse  fileToUpload1a NFI-current" name="investigation"></div>
+                                                  Attach Media
+                                                            <input type="file" value="" data-rel="fileToUpload1" id="fileToUpload1" class="browse  fileToUpload1a NFI-current" name="investigation">
                                             
                                             </div>
 
@@ -456,13 +456,14 @@ echo 'New Consultation';
 
 
                                     <input type="hidden" name="billing_detail" class="form-control" id="billing_detail" value="">
+
                                     
+                                    <div class="showbillingdata"></div>
                                     <div class="showbillingselected">
                                         <table width="100%" border="1" cellspacing="0" id="selecteddata" cellpadding="2">
 
                                         </table>
                                     </div>
-                                    <div class="showbillingdata"></div>
                                 </div>
                                 <!--  <div class="col-sm-4 blue-text col-sm-offset-5 healthp"><a class="anothercode" href="javascript:;">+ add billing code</a></div>-->
                                 </p>

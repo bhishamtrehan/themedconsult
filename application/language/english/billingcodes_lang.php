@@ -11,5 +11,6 @@ $lang['add_new_clinic']                            = 'Add New Clinic';
 $lang['enter_billing_name']                            = 'Billing Code Name';
 $lang['billing_name']                            = 'Billing Code Name';
 $lang['billing_code']                            = 'Billing Code Number';
+$lang['add_billing']                            = 'Add New Billing Code';
 
       

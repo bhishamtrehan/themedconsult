@@ -78,3 +78,23 @@ $lang['sur_name']	= 'Surname';
 
 $lang['consult_health_practitioner']	= 'Health Practitioner';
 $lang['consult_health_practitioner_select']	= 'Health Professional :';
+
+
+
+// add text for medication 
+$lang['medication_submit']	= 'Submit';
+$lang['medication_cancel']	= 'Cancel';
+$lang['medication_prescriber_number']	= 'Prescriber Number';
+$lang['medication_prescriber_name']	= 'Prescriber Name';
+$lang['medication_end_date']	= 'End Date';
+$lang['medication_start_date']	= 'Start Date';
+$lang['medication_notes']	= 'Notes';
+$lang['medication_add_new']	= 'Add New';
+$lang['medication_select']	= 'Select';
+$lang['medication_frequency']	= 'Frequency';
+$lang['medication_route']	= 'Route';
+$lang['medication_dose']	= 'Dose';
+$lang['medication_medication']	= 'Medication';
+$lang['add_medication']	= 'Add Medications';
+
+

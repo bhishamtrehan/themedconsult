@@ -71,11 +71,11 @@ $gst= array(
   <div class="custom_title">
 	        <div class="container">
 	         <h3><?php 
-				if(isset($title)){
-					echo $title;
-				}else{
-					echo $this->lang->line('home');
-				}
+				// if(isset($title)){
+				// 	echo $title;
+				// }else{
+					//echo $this->lang->line('add_billing');
+				// }
 				?>
 			</h3>
 	        </div>
@@ -97,7 +97,12 @@ $gst= array(
           <div class="widget">
            
             <div class="widget-content">
-		
+            <div style="display: block;" class="custom_title">
+              <div class="container">
+                <h3><?php   echo $this->lang->line('add_billing');?></h3>
+              </div>
+            </div>
+    		    
                <?php echo form_open($baseurl.'clinic/billingcodes/add_billingcode',array('class' => 'form-horizontal form_health','id' => 'add_billing_form')); ?>
                 <fieldset>
                  <br/>
