@@ -87,7 +87,7 @@ output#list span img {
 }
 output#list span {
     display: inline-block;
-   margin: 0 10px;
+   margin: 10px;
     position: relative;
 }
 output#list span span.cross-arow {
@@ -2118,6 +2118,20 @@ output#list {
 .mobile-scrollareow {
     display: none;
 }
+.addgroupdesign label, .addgroupdesign input {
+    display: inline-block;
+    vertical-align: top;
+    margin: 0;
+}
+.addgroupdesign label {
+    margin: 10px 10px 0 0;
+    color: #014767;
+    font-weight: bold;
+    font-size: 16px;
+}
+h2.c_modal_header.addnewpopheadertitle {
+    margin: -20px -8px 0;
+}
 /*********healthprofessional css here*/
 
 @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {  
@@ -2197,6 +2211,24 @@ div ul.n_action li {
 
 
 @media all and (max-width:767px){ 
+  .recorder-container {
+    width: 100% !Important;
+}
+.search_serviceprovider, .search_health, .showbillingdata, .showbillingselected {
+    overflow-y: scroll;
+    width: 100%;
+}
+  .rightbox-hover-menu {
+       margin-left: 0;
+    height: 72px;
+       left: 0;
+    right: 0;
+    margin: 0 auto !Important;
+        top: -72px;
+}
+.leftbox-hover-menu{
+  position: static;
+}
     .mobile-scrollareow {
     position: absolute;
     right: 0;
