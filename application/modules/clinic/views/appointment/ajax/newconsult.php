@@ -47,8 +47,8 @@ echo 'New Consultation';
                         <ul>
                             <li><span class="lf_icon camera" data-target="#capture_popup" data-toggle="modal"></span></li>
                             <li><span class="lf_icon voice" data-toggle="modal" data-target="#audio_popup"></span></li>
-                            <li><span class="lf_icon hand"></span></li>
-                            <li><span class="lf_icon addText"></span></li>
+                          <!--  <li><span class="lf_icon hand"></span></li>-->
+                            <!-- <li><span class="lf_icon addText"></span></li> -->
                             <li><span class="leftbox-hover-menu"><span class="lf_icon stylus openslidemenu"></span><span class="rightbox-hover-menu" id="rightmenu1">
                                         <span class="leftbox-hovercontent">    <strong><i class="fa fa-pencil"></i> <?= $this->lang->line('pen'); ?></strong>
                                             <a class="black updateColor fa fa-check m-r-xs" href="javascript:void(0);" data-rel ="rgb(0,0,0)" ></a>
@@ -73,24 +73,27 @@ echo 'New Consultation';
                                     </span></span> 
 
                             </li>
-                            <li><span class="leftbox-hover-menu"><span class="lf_icon colorTray slidemenucolor"></span>
+                            <li><span class="leftbox-hover-menu"><span class="lf_icon addText slidemenucolor"></span>
                                     <span class="rightbox-hover-menu" id="rightmenu2">
                                         <span class="leftbox-hovercontent">    
-                                            <a style="cursor:pointer;" href="javascript:void(0);" id="text_to_img" class="text_to_img"><i class="fa fa-pencil"></i>
-                                                <?php echo $this->lang->line('text'); ?></a>
-                                            <a class="black updateTextColor fa fa-check m-r-xs" href="javascript:void(0);" data-rel ="rgb(0,0,0)" ></a>
-                                            <a class="red updateTextColor" href="javascript:void(0);" data-rel ="rgb(255,0,0)" ></a>
-                                            <a class="green updateTextColor" href="javascript:void(0);" data-rel ="rgb(0,255,0)" ></a>
-                                            <a class="blue updateTextColor" href="javascript:void(0);" data-rel ="rgb(0,0,255)"></a>
-                                            <div class="text_range_text">
-                                                <input type="range_text" value="15" min="15" max="60" data-rangeSliderText>
-                                                <output class="outputWrap"></output>
-                                            </div>
-                                            <input type="hidden" id="textSize">
+                                           <div class="column-left links text_col">
+                                     
+                                                        <a style="cursor:pointer;" href="javascript:void(0);" id="text_to_img" class="text_to_img"><i class="fa fa-pencil"></i>
+           
+                                                                            <a class="black updateTextColor fa fa-check m-r-xs" href="javascript:void(0);" data-rel ="rgb(0,0,0)" ></a>
+                                                        <a class="red updateTextColor" href="javascript:void(0);" data-rel ="rgb(255,0,0)" ></a>
+                                                        <a class="green updateTextColor" href="javascript:void(0);" data-rel ="rgb(0,255,0)" ></a>
+                                                        <a class="blue updateTextColor" href="javascript:void(0);" data-rel ="rgb(0,0,255)"></a>
+                                                                            <div class="text_range_text">
+                                                            <input type="range_text" value="15" min="15" max="60" data-rangeSliderText>
+                                                                            <output class="outputWrap"></output>
+                                                                            </div>
+                                                                            <input type="hidden" id="textSize">
+                                                    </div>
                                             <span class="leftbox-hover-close" id="colse2"><i class="fa fa-times-circle" aria-hidden="true"></i></span>
                                         </span>
                                     </span>
-
+ 
 
                                 </span>
                             </li>
@@ -194,20 +197,20 @@ echo 'New Consultation';
                                                                                                                         <option value="20">20</option>
                                                                                                                 </select></div>
                                                                                         </div>-->
-                                                <!--			                <div class="column-left links col-md-3 text_col">
-                                                                                            <strong>Add Text:</strong>
-                                                                                            <a style="cursor:pointer;" href="javascript:void(0);" id="text_to_img" class="text_to_img"><i class="fa fa-pencil"></i>
-                                                <?php //echo $this->lang->line('text');  ?></a>
-                                                                                                                <a class="black updateTextColor fa fa-check m-r-xs" href="javascript:void(0);" data-rel ="rgb(0,0,0)" ></a>
-                                                                                            <a class="red updateTextColor" href="javascript:void(0);" data-rel ="rgb(255,0,0)" ></a>
-                                                                                            <a class="green updateTextColor" href="javascript:void(0);" data-rel ="rgb(0,255,0)" ></a>
-                                                                                            <a class="blue updateTextColor" href="javascript:void(0);" data-rel ="rgb(0,0,255)"></a>
-                                                                                                                <div class="text_range_text">
-                                                                                                <input type="range_text" value="15" min="15" max="60" data-rangeSliderText>
-                                                                                                                <output class="outputWrap"></output>
-                                                                                                                </div>
-                                                                                                                <input type="hidden" id="textSize">
-                                                                                        </div>-->
+            			               <!--  <div class="column-left links col-md-3 text_col">
+                                                        <strong>Add Text:</strong>
+                                                        <a style="cursor:pointer;" href="javascript:void(0);" id="text_to_img" class="text_to_img"><i class="fa fa-pencil"></i>
+           
+                                                                            <a class="black updateTextColor fa fa-check m-r-xs" href="javascript:void(0);" data-rel ="rgb(0,0,0)" ></a>
+                                                        <a class="red updateTextColor" href="javascript:void(0);" data-rel ="rgb(255,0,0)" ></a>
+                                                        <a class="green updateTextColor" href="javascript:void(0);" data-rel ="rgb(0,255,0)" ></a>
+                                                        <a class="blue updateTextColor" href="javascript:void(0);" data-rel ="rgb(0,0,255)"></a>
+                                                                            <div class="text_range_text">
+                                                            <input type="range_text" value="15" min="15" max="60" data-rangeSliderText>
+                                                                            <output class="outputWrap"></output>
+                                                                            </div>
+                                                                            <input type="hidden" id="textSize">
+                                                    </div> -->
 
 
                                                 <div class="column-left links col-md-3 undo_redo_col">
@@ -338,15 +341,10 @@ echo 'New Consultation';
 
 
                                             <div class="uploadImage">
-                                                <div class="searchBar">
-                                                    <div id="fileToUpload" data-rel="fileToUpload" class="browse fileToUpload  fileupbtn"><div class="NFI-button NFI14661537616486172">Attach Media
+                                           
+                                                  <div class="NFI-button NFI14661537616486172">Attach Media
                                                             <input type="file" value="" data-rel="fileToUpload1" id="fileToUpload1" class="browse  fileToUpload1a NFI-current" name="investigation"></div>
-                                                            <!--<input name="investigator_image" type="hidden" value="" id="investigator_image">-->
-                                                        <p class="fileError" id="errorFile"></p>
-
-                                                    </div>
-                                                </div>
-                                                <div class="imgpreview"></div>
+                                            
                                             </div>
 
 

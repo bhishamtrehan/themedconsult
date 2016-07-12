@@ -400,6 +400,7 @@ public function cancel_calendar_appointment() {
 			$data = $this->glbl('clinic_access','clinic_location_access');
 			$inputValues = $this->input->post();
 
+			
 			$appt_ID = $this->encryption->decode($inputValues['appointment_id']);   
 			if(isset($inputValues)) {
 			
@@ -407,6 +408,7 @@ public function cancel_calendar_appointment() {
 			// echo count($data['consult_Details']);
 			// echo "<pre>";
 			// print_r($data['consult_Details']);
+			// die();
 			
 
 			$this->load->view('clinic/appointment/ajax/consultation_history', $data);
@@ -1461,11 +1463,12 @@ public function new_consultation(){
 	$data = $this->glbl('clinic_access','clinic_location_access');
 	$inputValues = $this->input->post();
 
-		$audio_upload = $this->upload_audio_files();
-		print_r($audio_upload);
-		die();
+		// $audio_upload = $this->upload_audio_files();
+		// print_r($audio_upload);
+		// die();
 		
-	
+
+
 
 	   $hpID = $this->encryption->encode($inputValues['hp_id']); 
 	  $hpname = $inputValues['hp_name']; 
@@ -1477,7 +1480,7 @@ public function new_consultation(){
 
 		$data = $inputValues['pdfImgBase64'];
 
-
+	
 		$dataPieces = explode(',',$data);
 		$encodedImg = $dataPieces[1];
 		$decodedImg = base64_decode($encodedImg);

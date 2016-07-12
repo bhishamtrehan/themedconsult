@@ -42,7 +42,7 @@ if(count($appntDetails)>0){
 		<h4 class="medication_label">Current Medication</h4>
 		<table cellspacing="0" cellpadding="0" border="0" class="display table table-sorting table-hover table-bordered datatable dataTable no-footer">
 			<tbody><tr>
-				<th class="first withborder">&nbsp;</th>
+				<!-- <th class="first withborder">&nbsp;</th> -->
 				<th class="withborder second"><a of="c" inorder="asc" orderby="medication" coords="209" class="ordermedication asc" href="javascript:;">Medication</a></th>
 				<th class="withborder">Dosage</th>
 				<th class="withborder">Route</th>
@@ -91,7 +91,7 @@ if(count($appntDetails)>0){
 		<h4 class="medication_label">Previous Medication</h4>
 		<table cellspacing="0" cellpadding="0" border="0" class="display table table-sorting table-hover table-bordered datatable dataTable no-footer">
 			<tbody><tr>
-				<th class="first withborder">&nbsp;</th>
+				<!-- <th class="first withborder">&nbsp;</th> -->
 				<th class="withborder second"><a of="c" inorder="asc" orderby="medication" coords="209" class="ordermedication asc" href="javascript:;">Medication</a></th>
 				<th class="withborder">Dosage</th>
 				<th class="withborder">Route</th>
@@ -99,7 +99,7 @@ if(count($appntDetails)>0){
 				<th class="withborder sixth">Regular Medication</th>
 				<th class="withborder"><a of="c" inorder="asc" orderby="startdate" coords="209" class="ordermedication asc" href="javascript:;">Start Date</a></th>
 				<th class="withborder"><a of="c" inorder="asc" orderby="enddate" coords="209" class="ordermedication asc" href="javascript:;">End Date</a></th>
-				<th class="withoutborder last">&nbsp;</th>
+				<!-- <th class="withoutborder last">&nbsp;</th> -->
 			</tr>
 			<?php
 		//echo "<pre>";
