@@ -74,3 +74,7 @@ $lang['sur_name']	= 'Surname';
 
 /* End of file appointment_lang.php */
 /* Location: ./application/language/english/appointment_lang.php */
+// add text for new consult section 
+
+$lang['consult_health_practitioner']	= 'Health Practitioner';
+$lang['consult_health_practitioner_select']	= 'Health Professional :';
