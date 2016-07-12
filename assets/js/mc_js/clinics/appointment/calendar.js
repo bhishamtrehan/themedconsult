@@ -245,8 +245,8 @@ $(document).ready(function(){
 						        items: {
 						            "edit": {name: "Edit", icon: "",
 						            		callback: function(key, options) {
-									  		//alert(calEvent.id);	
-									         	//return false;
+									  		// alert(dateTimestamp);	
+									    //      	return false;
 										$('body').addClass("show_loader");
 										$.ajax({
 											type: "POST",

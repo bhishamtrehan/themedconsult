@@ -233,19 +233,17 @@ class Appointment extends CI_Controller
 	    $data = $this->glbl('clinic_access','clinic_location_access');	
 	    $app_id = $this->input->post('appointment_id');
 	    $data['appntDetails'] 	 = $this->appointments->get_appointment_details($app_id);
-		echo "<pre>";
-		print_r($data['appntDetails']);
-		die;
+		
 		if($this->input->post('submit_action')=='insert') { 
 	 	$inputValues = $this->input->post();
 
-			echo '<pre>'; print_r( $this->input->post()); die;
+			//echo '<pre>'; print_r( $this->input->post()); die;
 		 	$inputValues['author_id'] = $this->tank_auth->ci->session->userdata['user_id'];
 			$dataSuccess = $this->appointments->update_appointment($inputValues);
 
-			echo '<script type="text/javascript">self.close();window.opener.location.reload();</script>';
+			redirect('/clinic/dashboard');
 		}
-		$startDateTime 		 	 =  $data['appntDetails']->startDate;
+		$startDateTime 		 	 = $this->input->get('startDate');
 		$endDateTime 		 	 = $this->input->get('endDate');
 		$data['startDate']   	 = $startDateTime;
 		$data['startTime']   	 = $this->input->get('startTime');

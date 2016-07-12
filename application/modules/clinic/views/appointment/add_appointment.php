@@ -189,7 +189,7 @@ $patientSearchFor = array(
                 $mnth = date('n', $startDate);    
                 $date = date('j', $startDate);    
                 $year = date('Y', $startDate);    
-
+                
               ?>
               <select class="date" id="date" name="date">
                 <?php for ($i = 1; $i < 31; $i++) { ?>

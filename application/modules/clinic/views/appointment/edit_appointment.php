@@ -62,8 +62,6 @@ $surname = array(
 
 
 
-
-
 $color_code = array(
     'name' => 'color_code',
     'maxlength' => 80,
@@ -102,7 +100,7 @@ $appointment_date = array(
     'name' => 'appointment_date',
     'type' => 'hidden',
     'id' => 'appointment_date',
-    'value' => date('Y-m-d', $startDate),
+    'value' => date('Y-m-d', strtotime($startDate)),
 );
 $hours[''] = $this->lang->line('select');
 $minutes[''] = $this->lang->line('select');
@@ -186,10 +184,11 @@ $patientSearchFor = array(
           <div class="col-xs-12 col-sm-8  row_field field_auto">
             <div class="appt_tme_estimate"> 
               <?php 
-                $mnth = date('n', $startDate);    
-                $date = date('j', $startDate);    
-                $year = date('Y', $startDate);    
 
+                $mnth = date('n', strtotime($startDate));    
+                $date = date('j', strtotime($startDate));    
+                $year = date('Y', strtotime($startDate));    
+                
               ?>
               <select class="date" id="date" name="date">
                 <?php for ($i = 1; $i < 31; $i++) { ?>
@@ -310,6 +309,7 @@ $patientSearchFor = array(
             </div>
           </div>
         </div>
+
           <div class="col-xs-12 row_full">
             <div class="col-xs-12 col-sm-4 row_field"><label><i class="fa fa-question-circle"></i><?php echo $this->lang->line('notes'); ?>:</label></div>
             <div class="col-xs-12">
@@ -319,7 +319,7 @@ $patientSearchFor = array(
           <?php
           echo form_hidden('clinic_location', $this->session->userdata['clinic_location']);
           echo form_hidden('appointment_duration', $appntDuration);
-          echo form_hidden('room_id', $hp_avail_time->clinic_room_id);
+          echo form_hidden('room_id', $appntDetails->room_id);
           echo form_input(array('name' => 'form_save', 'type' => 'hidden', 'id' => 'form_save'));
           echo form_input($appointment_type);
           echo form_input($location_prac);
@@ -368,7 +368,7 @@ $patientSearchFor = array(
               }
               ?>
               <?php //echo form_submit('button', 'Close', "id='appoint_close' class='btn btn-primary btn-block' onclick='self.close();'"); ?>
-               <input type="submit" name="hiddenbutton" value="submit" id="appt_validat" class="btn btn-primary btn-block">
+               <input type="submit" name="hiddenbutton" value="update" id="appt_validat" class="btn btn-primary btn-block">
               <input type="button" name="button" value="Close" id="appoint_close" class="btn btn-primary btn-block" onclick="self.close();">
 
 
