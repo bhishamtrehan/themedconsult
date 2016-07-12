@@ -98,4 +98,3 @@ $lang['medication_medication']	= 'Medication';
 $lang['add_medication']	= 'Add Medications';
 
 
-//

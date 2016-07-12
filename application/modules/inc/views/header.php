@@ -54,7 +54,7 @@
     ?>
     <input type="hidden" value="<?php echo base_url(); ?>" class="base_url">
     <div class="overlay"></div>
-    <main class="page-content <?php echo ($this->uri->segment(2)=='dashboard' || $this->uri->segment(3)=='dashboard')?'calendar_fixed_height':''; ?> content-wrap">
+    <main class="page-content <?php echo ($this->uri->segment(2)=='dashboard' || $this->uri->segment(3)=='dashboard'|| $this->uri->segment(2)=='rosterView' || $this->uri->segment(3)=='rosterView')?'calendar_fixed_height':''; ?> content-wrap">
       <div class="navbar">
         <div class="navbar-inner container">
           <div class="sidebar-pusher">
