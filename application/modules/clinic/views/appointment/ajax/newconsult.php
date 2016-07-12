@@ -347,7 +347,7 @@ echo 'New Consultation';
                                             
                                             </div>
 
-
+                                                <div class="investigation_preview"></div>
 
 
                                             </p>
@@ -1230,4 +1230,60 @@ $(this).remove();
         }
 
         document.getElementById('files').addEventListener('change', handleFileSelect, false);
+
+            // add investigation preview
+
+            window.onload = function(){
+        
+    //Check File API support
+    if(window.File && window.FileList && window.FileReader)
+    {
+        var filesInput = document.getElementById("fileToUpload");
+        
+        filesInput.addEventListener("change", function(event){
+            
+            var files = event.target.fileToUpload1; //FileList object
+            var output = document.getElementById("investigation_preview");
+            
+            for(var i = 0; i< files.length; i++)
+            {
+                var file = files[i];
+                
+                //Only pics
+                if(!file.type.match('image'))
+                  continue;
+                
+                var picReader = new FileReader();
+                
+                picReader.addEventListener("load",function(event){
+                    
+                    var picFile = event.target;
+                    
+                    var div = document.createElement("div");
+                    
+                    div.innerHTML = "<img class='thumbnail' src='" + picFile.investigation_preview + "'" +
+                            "title='" + picFile.name + "'/>";
+                    
+                    output.insertBefore(div,null);            
+                
+                });
+                
+                 //Read the image
+                picReader.readAsDataURL(file);
+            }                               
+           
+        });
+    }
+    else
+    {
+        console.log("Your browser does not support File API");
+    }
+}
+    
+
+
+
+
+
+
     </script>						

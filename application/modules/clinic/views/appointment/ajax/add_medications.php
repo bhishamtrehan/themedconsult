@@ -45,12 +45,12 @@
 			<input type="text" id="notes" class="form-control required" name="notes">
 		  </div>
 		  <div class="col-md-3">
-		  	<label for="startdate"><?php echo $this->lang->line('medication_start_date');?></label>
-			<input type="text" id="startdate" class="form-control required dob date-picker" name="startdate">
+		  	<label for="startdate1"><?php echo $this->lang->line('medication_start_date');?></label>
+			<input type="text" id="startdate" class="form-control" name="startdate">
 		  </div>
 		  <div class="col-md-3">
 		  	<label for="enddate"><?php echo $this->lang->line('medication_end_date');?></label>
-			<input type="text" id="enddate" class="form-control required dob date-picker" name="enddate">
+			<input type="text" id="enddate" class="form-control" name="enddate">
 		  </div>
         </div>
 		<div class="col-md-12 form-group">
@@ -61,7 +61,7 @@
 			<input type="text" id="prescriber_name" class="form-control" readonly="" name="prescriber_name" value="xbdfb">
 		  </div>
 		  <div class="col-md-5">
-		  	<label for="startdate"><?php echo $this->lang->line('medication_prescriber_number');?></label>
+		  	<label for="startdate2"><?php echo $this->lang->line('medication_prescriber_number');?></label>
 			<input type="text" id="prescriber_number" class="form-control" readonly="" name="prescriber_number" value="12345">
 		  </div>
         </div>
@@ -75,6 +75,17 @@
       </form>
       </div>
 </div>
+
 <link href="<?php echo base_url();?>assets/css/jquery-confirm.css" rel="stylesheet" type="text/css"/>
-<script src="<?php echo base_url();?>themedconsult/assets/js/plugins/jQuery-confirm/jquery-confirm.js"></script>
+<script src="<?php echo base_url();?>assets/js/plugins/jQuery-confirm/jquery-confirm.js"></script>
 <script src="<?php echo base_url();?>assets/js/mc_js/clinics/appointment/validation_add_medication.js"></script> 
+   <link rel="stylesheet" href="<?php echo base_url();?>assets/css/jquery-ui.css">
+  <script src="<?php echo base_url(); ?>assets/js/bootstrap/bootstrap-datepicker.js"></script>
+  <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/css/datepicker.css">
+ <script type="text/javascript"> 
+ $(document).ready(function(){
+    $( "#startdate" ).datepicker();
+  $( "#startdate" ).datepicker( "option", "dateFormat", "yy-mm-dd" );
+  })
+  //$( "#startdate" ).datepicker( "option", "dateFormat", "yy-mm-dd" );
+    </script>
