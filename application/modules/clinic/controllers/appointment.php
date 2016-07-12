@@ -231,25 +231,30 @@ class Appointment extends CI_Controller
 	//edit existing appointment
 	public function edit_appointment() { 
 	    $data = $this->glbl('clinic_access','clinic_location_access');	
-	    	$inputValues = $this->input->post();
-	    	
-		//if($this->input->post('submit_action')=='insert') { 
+	    $app_id = $this->input->post('appointment_id');
+	    $data['appntDetails'] 	 = $this->appointments->get_appointment_details($app_id);
+		echo "<pre>";
+		print_r($data['appntDetails']);
+		die;
+		if($this->input->post('submit_action')=='insert') { 
 	 	$inputValues = $this->input->post();
 
-
+			echo '<pre>'; print_r( $this->input->post()); die;
 		 	$inputValues['author_id'] = $this->tank_auth->ci->session->userdata['user_id'];
 			$dataSuccess = $this->appointments->update_appointment($inputValues);
 
-			//echo '<script type="text/javascript">self.close();window.opener.location.reload();</script>';
-		//}
-		$startDateTime 		 	 = $this->input->get('startDate');
+			echo '<script type="text/javascript">self.close();window.opener.location.reload();</script>';
+		}
+		$startDateTime 		 	 =  $data['appntDetails']->startDate;
 		$endDateTime 		 	 = $this->input->get('endDate');
 		$data['startDate']   	 = $startDateTime;
 		$data['startTime']   	 = $this->input->get('startTime');
 		$data['endTime']   		 = $this->input->get('endTime');
 		$appntID				 = $this->input->get('appointment_id');
-		$data['appntDetails'] 	 = $this->appointments->get_appointment_details($appntID);
 		
+		// echo "<pre>";
+		// print_r($data['appntDetails'] );
+		// die;
 		if($endDateTime != '') 
 			$data['appntDuration']	= round(abs($startDateTime - $endDateTime) / 60,2);
 		else
@@ -257,13 +262,18 @@ class Appointment extends CI_Controller
 		
 		$user_id				  = $this->tank_auth->ci->session->userdata['user_id'];
 		$clinicData 			  = $this->manage_locations->getClinicId($user_id);
+
 		$data['appointmentTypes'] = $this->appointments->getActiveAppntTypes($clinicData->clinic_id);
 		
 		$data['locationDetails']  = $this->manage_locations->getLocationDetails($this->encryption->decode($this->session->userdata['clinic_location']));
 		//echo '<pre>'; print_r($this->input->get('resource')); exit;
-                $data['prac_resource']	  = $this->general->get_locaation_prac_details($this->input->get('resource'));
+        $data['prac_resource']	  = $this->general->get_locaation_prac_details($this->input->get('resource'));
+        $hpID = $data['prac_resource']->hp_id;
+
+        $data['hp_avail_time'] = $this->general->get_prac_avail_time($hpID, $data);
+
 		//$this->load->view('inc/header', $data);
-		$this->load->view('clinic/appointment/add_appointment', $data);
+		$this->load->view('clinic/appointment/edit_appointment', $data);
 	}
 	//cancel appointment
 	public function cancel_appointment() {

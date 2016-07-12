@@ -84,7 +84,7 @@ $patient_field_id = array(
     'name' => 'patient_field_id',
     'type' => 'hidden',
     'id' => 'patient_field_id',
-    'value' => $patient_id,
+    'value' => $appntDetails->patient_id,
 );
 $location_prac = array(
     'name' => 'location_prac',
@@ -96,7 +96,7 @@ $appointment_id = array(
     'name' => 'appointment_id',
     'type' => 'hidden',
     'id' => 'appointment_id',
-    'value' => $appnt_id,
+    'value' => $appntDetails->appointment_id,
 );
 $appointment_date = array(
     'name' => 'appointment_date',
@@ -169,7 +169,7 @@ $patientSearchFor = array(
     'class' => 'form-control patient_search_for',
 );
 ?>
-<h2 class="c_modal_header">New Appointment<button class="close" data-dismiss="modal" type="button">×</button></h2>
+<h2 class="c_modal_header"><?php echo $this->lang->line('edit_pre_appoint'); ?><button class="close" data-dismiss="modal" type="button">×</button></h2>
 <title><?php echo $this->lang->line($title) . $this->lang->line('title_universal'); ?></title>
 <div class="innr_dashbrd_form test">
   <div class="modal-body add_app_pg dashbrd_popup">
@@ -225,6 +225,7 @@ $patientSearchFor = array(
           <div class="col-xs-12">
             <div class="custom_field">       
               <?php
+
               if (!isset($appntDetails) || empty($appntDetails)) {
                  if (isset($hp_avail_time->room)) {
                 echo $hp_avail_time->room;
@@ -285,7 +286,7 @@ $patientSearchFor = array(
             <div class="col-xs-12 col-sm-8  row_field field_auto">
               <div class="appt_tme_estimate"> <span id="appnt_duration_label">
                 
-                <?php  if (isset($appntDetails->appointment_duration)) {
+              <?php  if (isset($appntDetails->appointment_duration)) {
                 echo $appntDetails->appointment_duration;
               } else {
                echo $appntDuration;
@@ -298,7 +299,17 @@ $patientSearchFor = array(
 
               </span> <?php echo $this->lang->line('minutes'); ?></div>
             </div>
+
+
           </div>
+          <div class="col-xs-12 row_full">
+          <div class="col-xs-12"><label><i class="fa fa-user"></i><?php echo $this->lang->line('patient_name'); ?>:</label></div>
+          <div class="col-xs-12">
+            <div class="custom_field">
+              <?php echo $appntDetails->first_name. " " . $appntDetails->last_name; ?>
+            </div>
+          </div>
+        </div>
           <div class="col-xs-12 row_full">
             <div class="col-xs-12 col-sm-4 row_field"><label><i class="fa fa-question-circle"></i><?php echo $this->lang->line('notes'); ?>:</label></div>
             <div class="col-xs-12">
@@ -341,144 +352,23 @@ $patientSearchFor = array(
 
 <div class="modal-body add_app_pg dashbrd_popup">
 
-    <div class="col-xs-12 patient_detail_head"><i class="fa fa-calendar-check-o"></i><?php echo $this->lang->line('patient_details'); ?></div>
     <!-- Nav tabs -->
     <div class="search_pat_innner">
-      <ul class="nav nav-tabs" role="tablist">
-        <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab"><?php echo $this->lang->line('search_existing_search'); ?></a></li>
-        <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab"><?php echo $this->lang->line('add_new_patient'); ?></a></li>
-
-      </ul>
-
       <!-- Tab panes -->
       <div class="tab-content row">
         <div role="tabpanel" class="tab-pane active" id="home">
-          <p>Please search the patient</p>
-          <div class="col-xs-12 col-sm-4 ">
-            <label><?php echo $this->lang->line('sur_name'); ?>:</label>
-            <?php echo form_input($surname); ?>
-          </div>
-          <div class="col-xs-12 col-sm-4 ">
-            <label><?php echo $this->lang->line('first_name'); ?>:</label>
-
-            <?php echo form_input($firstname); ?>
-          </div>
-          <div class="col-xs-12 col-sm-4 ">
-
-            <label>Date</label>
-            <input type="text" name="search_date" placeholder="<?php echo $this->lang->line('exist_date_of_birth'); ?>" value="" maxlength="255" size="30" class="form-control" autocomplete="off" placeholder="" id="search_date">
-          </div>
-            <div class="clearfix"></div>
-            <div class="borderline"></div>
   <!-- search_pat_inner ends -->
   
-    <div class="col-xs-12 patient_detail_head leftspcheadng"><i class="fa fa-search"></i><?php echo $this->lang->line('search_results'); ?></div>
-  <div id="patient_results"></div>
-        
-        <?php
-              if (isset($hp_avail_time->room)) {
-                echo form_submit('submit', $btnText, "id='appoint_submit' style='display:none;' class='btn btn-primary btn-block' onclick='return validateAppnt();'");
-              }
-              ?>
-              <?php //echo form_submit('button', 'Close', "id='appoint_close' class='btn btn-primary btn-block' onclick='self.close();'"); ?>
-               <input type="button" name="hiddenbutton" style="display:none;" value="submit" id="appt_valid" class="btn btn-primary btn-block">
-              <input type="button" name="button" value="Close" id="appoint_close" class="btn btn-primary btn-block" onclick="self.close();">
+       
         </div>
-        <div role="tabpanel" class="tab-pane" id="profile">
-          <!--  <form enctype="multipart/form-data" method="post" action="" name="register_spcialist" id="register_spcialist" class="form-horizontal m_4_input m_lable-style" novalidate="novalidate"> -->
-          <input type="hidden" value="yes" name="viewtousers">
-          <div class="example1">
-            <div class="panel panel-primary">
-             <!--  <div class="success_msg" style="display:none;color:green;">User Registered Successfully!</div>
-              <div class="error_msg" style="display:none; color:red;">Username Is already Exist!</div> -->
-
-              <div data-acc-content="demo1" class="panel-body acc-open" style="">
-                <!--tab-one-start-->
-                <div class="col-md-12">
-              
-                  <div class="form-group">
-                     <div class="col-sm-4">
-                    <label class="control-label" for="inputEmail3"><?php echo $this->lang->line('patient_surname'); ?></label>
-                   
-                      <input type="text" value="" placeholder="" class="required form-control" name="add_surname2" id="add_surname">
-                    </div>
-                      <div class="col-sm-4">
-                    <label class="control-label" for="inputEmail3"><?php echo $this->lang->line('patient_first_name'); ?></label>
-                   
-                      <input type="text" value="" class="required form-control" name="fname" id="fname" placeholder="">
-                    </div>
-                       <div class="col-sm-4">
-                    <label class="control-label" for="inputEmail3"><?php echo $this->lang->line('search_Username'); ?></label>
-                  
-                      <input type="text" class="form-control required" value="" id="username" name="username" placeholder="">
-                      <div style="display:none;" class="checked_username">User is already exist!</div>
-                    </div>
-                  </div>
-              
-                  <div class="form-group">
-                     <div class="col-sm-4">
-                    <label class=" control-label" for="inputEmail3"><?php echo $this->lang->line('search_email_id'); ?></label>
-                  
-                      <input type="text" class="form-control required email" value="" id="email" name="email" placeholder="">
-                    </div>
-                     <div class="col-sm-4">
-                    <label class="control-label" for="inputEmail3"><?php echo $this->lang->line('search_password'); ?></label>
-                    
-                      <input type="password" class="form-control required" id="pwd" name="pwd" placeholder="">
-                    </div>
-                    <div class="col-sm-4">
-                    <label class="control-label" for="inputPassword3"><?php echo $this->lang->line('search_date_of_birth'); ?></label>
-                 <input type="text" id="search_date_of_birth" placeholder="" autocomplete="off" class="form-control" size="30" maxlength="255" value="" name="search_date_of_birth">
-                    </div>
-                  </div>
-                 
-                  <div class="form-group">
-                     <div class="col-sm-4 radio_outer">
-                    <label for="inputEmail3" class="control-label question-lable"><?php echo $this->lang->line('search_sex'); ?></label>
-                   
-                      <label class="radio-inline">
-                        <input type="radio" checked="checked" class="gender" value="1" name="gender">&nbsp;<?php echo $this->lang->line('search_male'); ?> </label>
-                      <label class="radio-inline">
-                        <input type="radio" value="2" class="gender" name="gender">&nbsp;<?php echo $this->lang->line('search_female'); ?> </label>
-                    </div>
-                     <div class="col-sm-4">
-                    <label class=" control-label" for="inputEmail3"><?php echo $this->lang->line('search_country'); ?></label>
-             
-
-                      <select id="country" name="country" title="Country" data-live-search="true" class="form-control selectpicker required bs-select-hidden">
-                        <option class="bs-title-option" value=""><?php echo $this->lang->line('search_select'); ?></option>
-                        <?php foreach ($countries as $country) { ?>
-
-                          <option value="<?php echo $country->id; ?>"> <?php echo $country->name; ?></option>
-                        <?php } ?>
-
-
-
-                      </select>
-                      <input type="hidden"  id="clinic_location_id" value="<?php echo $this->session->userdata['clinic_location']; ?>" name="clinic_location_id">
-
-                    </div>
-                  </div>
-                 
-                </div>
-               <!-- <div class="col-xs-12">
-                <button type="button" id="add_new_patient"  class="btn btn-default">Submit</button>
-              </div>-->
-              </div>
-              <!--tbs-end-->
-              
-
-            </div><!-- </form> -->
-
-          </div>
-
+       
             <?php
               if (isset($hp_avail_time->room)) {
-                echo form_submit('submit', $btnText, "id='appoint_submit' style='display:none;' class='btn btn-primary btn-block' onclick='return validateAppnt();'");
+                echo form_submit('submit', $btnText, "id='appoint_submit' style='display:block;' class='btn btn-primary btn-block' onclick='return validateAppnt();'");
               }
               ?>
               <?php //echo form_submit('button', 'Close', "id='appoint_close' class='btn btn-primary btn-block' onclick='self.close();'"); ?>
-               <input type="button" name="hiddenbutton" value="submit" id="appt_validat" class="btn btn-primary btn-block">
+               <input type="submit" name="hiddenbutton" value="submit" id="appt_validat" class="btn btn-primary btn-block">
               <input type="button" name="button" value="Close" id="appoint_close" class="btn btn-primary btn-block" onclick="self.close();">
 
 
@@ -487,40 +377,7 @@ $patientSearchFor = array(
       </div>
 
     </div>
-  
- <div class="col-xs-12 row_full">
-            <div class="col-xs-12 col-sm-4 row_field"><label for="ticket-type" control-label></label></div>
-            <div class="col-xs-12 col-sm-8  row_field">
 
-            </div>
-          </div> 
-
-
-
-    <div class="popup">
-      <button type="button" style="display:none;" id="btn-modal" class="btn btn-info " data-toggle="modal" data-target="#myModal"></button>
-      <!-- Modal -->
-      <div class="modal fade" id="myModal" role="dialog">
-        <div class="modal-dialog">
-          <!-- Modal content -->
-          <div class="modal-content">
-            <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal">&times;</button>
-              <h4 class="modal-title"><?php echo $this->lang->line('patient_finder'); ?></h4>
-            </div>
-            <div class="modal-body">
-              <div class="form-group" style="border-top: none;">
-                <div class="patient_search_label"><label><?php echo $this->lang->line('enter_patient_keyword'); ?></label></div>
-                <div class="patient_search_field">
-                  <?php echo form_input($patientSearchFor); ?>
-                </div>
-              </div>  
-              <div id="patient_search_results"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
     <?php echo form_close(); ?> 
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/jquery-ui/jquery-ui.css">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/css/datepicker.css">

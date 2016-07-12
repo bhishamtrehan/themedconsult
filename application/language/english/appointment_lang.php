@@ -33,6 +33,7 @@ $lang['appnt_end_msg']			= 'Appointment can be fixed between start and end time 
 $lang['enter_appointment_notes']= 'Reason for Appointment';
 $lang['enter_notes']= 'Notes';
 $lang['appointment_notes']      = 'Appointment notes';
+$lang['edit_pre_appoint']      = 'Edit Appointment';
 
 $lang['add_new_appointment']	= 'Appointment <span>Details<span>';
 $lang['patient_details']		= 'Patient <span>Details<span>';
