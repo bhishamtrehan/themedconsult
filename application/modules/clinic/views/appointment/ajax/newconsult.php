@@ -343,11 +343,14 @@ echo 'New Consultation';
                                             <div class="uploadImage">
                                            
                                                   Attach Media
-                                                            <input type="file" value="" data-rel="fileToUpload1" id="fileToUpload1" class="browse  fileToUpload1a NFI-current" name="investigation">
+                                                         <input type="file" value="" data-rel="fileToUpload1" id="fileToUpload1" class="browse  fileToUpload1a NFI-current" multiple="" name="investigation"> 
+
+                                                     
+                                                            <output id="result_invest" /></output>
                                             
                                             </div>
 
-                                                <div class="investigation_preview"></div>
+                               
 
 
                                             </p>
@@ -393,15 +396,14 @@ echo 'New Consultation';
                                                 <textarea class="form-control" name="refferal_notes" id="refferal_notes" rows="3"></textarea>
                                             </fieldset>
                                             <div class="uploadImage">
-                                                <div class="searchBar">
-                                                    <div id="fileToUpload" data-rel="fileToUpload" class="browse fileToUpload fileupbtn"><div class="NFI-button NFI14661537616486172">Attach Media
-                                                            <input type="file" value="" data-rel="fileToUpload2" id="fileToUpload2" class="browse  fileToUpload2a NFI-current" name="refferal"></div>
+                                             Attach Media
+                                                            <input type="file" value="" data-rel="fileToUpload2" id="fileToUpload2" multiple="" class="browse  fileToUpload2a NFI-current" name="refferal">
                                                     <!--	<input name="refferal_image" type="hidden" value="" id="refferal_image">-->
-                                                        <p class="fileError" id="errorFile"></p>
+                                                        <output id="result_reff"></output> 
 
-                                                    </div>
-                                                </div>
-                                                <div class="imgpreview"></div>
+                                                  
+                                              
+                                               
                                             </div>
 
 
@@ -675,6 +677,18 @@ echo 'New Consultation';
   //alert('test');
 $(this).remove();
 });
+
+ $( "#result_invest" ).delegate( "span", "click", function() {
+           // alert('tesdt');
+  //alert('test');
+$(this).remove();
+});
+    $( "#result_reff" ).delegate( "span", "click", function() {
+           // alert('tesdt');
+  //alert('test');
+$(this).remove();
+});
+
 });
     </script>
     <script>
@@ -1233,17 +1247,15 @@ $(this).remove();
 
             // add investigation preview
 
-            window.onload = function(){
-        
-    //Check File API support
+          //Check File API support
     if(window.File && window.FileList && window.FileReader)
     {
-        var filesInput = document.getElementById("fileToUpload");
+        var filesInput = document.getElementById("fileToUpload2");
         
         filesInput.addEventListener("change", function(event){
             
-            var files = event.target.fileToUpload1; //FileList object
-            var output = document.getElementById("investigation_preview");
+            var files = event.target.files; //FileList object
+            var output = document.getElementById("result_reff");
             
             for(var i = 0; i< files.length; i++)
             {
@@ -1259,9 +1271,9 @@ $(this).remove();
                     
                     var picFile = event.target;
                     
-                    var div = document.createElement("div");
+                    var div = document.createElement("span");
                     
-                    div.innerHTML = "<img class='thumbnail' src='" + picFile.investigation_preview + "'" +
+                    div.innerHTML = "<span class='cross-arow'><i class='fa fa-times-circle' aria-hidden='true'></i></span><img class='thumbnail' src='" + picFile.result + "'" +
                             "title='" + picFile.name + "'/>";
                     
                     output.insertBefore(div,null);            
@@ -1278,12 +1290,52 @@ $(this).remove();
     {
         console.log("Your browser does not support File API");
     }
-}
-    
 
+     // add investigation preview
 
-
-
+          //Check File API support
+    if(window.File && window.FileList && window.FileReader)
+    {
+        var filesInput = document.getElementById("fileToUpload1");
+        
+        filesInput.addEventListener("change", function(event){
+            
+            var files = event.target.files; //FileList object
+            var output = document.getElementById("result_invest");
+            
+            for(var i = 0; i< files.length; i++)
+            {
+                var file = files[i];
+                
+                //Only pics
+                if(!file.type.match('image'))
+                  continue;
+                
+                var picReader = new FileReader();
+                
+                picReader.addEventListener("load",function(event){
+                    
+                    var picFile = event.target;
+                    
+                    var div = document.createElement("span");
+                    
+                    div.innerHTML = "<span class='cross-arow'><i class='fa fa-times-circle' aria-hidden='true'></i></span><img class='thumbnail' src='" + picFile.result + "'" +
+                            "title='" + picFile.name + "'/>";
+                    
+                    output.insertBefore(div,null);            
+                
+                });
+                
+                 //Read the image
+                picReader.readAsDataURL(file);
+            }                               
+           
+        });
+    }
+    else
+    {
+        console.log("Your browser does not support File API");
+    }
 
 
     </script>						
