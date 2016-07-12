@@ -47,7 +47,7 @@ $upload_file = array(
 	</div>   
 	
 	<div class="form-group" id="upload_section">
-		<label for="ticket-type" class="col-sm-3 control-label"><?php echo $this->lang->line('price');?>:</label>
+		<label for="ticket-type" class="col-sm-3 control-label"><?php echo $this->lang->line('instruction_upload');?>:</label>
 		<div class="col-sm-9">
 	
 		<?php //echo form_input($upload_file); ?>
