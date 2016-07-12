@@ -125,6 +125,27 @@ public function patient_detail() {
 }
 
 
+public function delete_billingcode() {
+	
+		$data = $this->glbl('clinic_access','clinic_location_access');
+		$inputValues['appnt_id']  = $this->input->get('billing_id');
+	
+			
+		
+		if(isset($inputValues)) {
+			
+				 
+	
+			$data['patient_Details'] = $this->manage_patientsearchs->delete_previous_billingcode($inputValues);
+			
+
+		
+			
+			
+			$this->load->view('clinic/patientsearch/view', $data);
+		}
+			
+}
 	
 
 

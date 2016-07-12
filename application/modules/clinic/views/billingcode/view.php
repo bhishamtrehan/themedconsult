@@ -85,8 +85,8 @@ echo sprintf($this->lang->line('title_clinic_page'),$fronttitile).$this->lang->l
                 <td><?php echo $all_billing_Detail->duration; ?></td>
                 <td><?php echo $all_billing_Detail->price; ?></td>
                 <td><?php echo $all_billing_Detail->gst; ?></td>
-               <td><a href="#"><i class="fa fa-pencil"></i></a>
-               <a href="#"><i class="fa fa-trash"></i></a></td>
+               <td><a href="cinic/billingcodes/edit?billing_id=<?php echo $all_billing_Detail->id; ?>" class="edit" id="<?php echo $all_billing_Detail->id; ?>"><i class="fa fa-pencil"></i></a>
+               <a href="#" class="trash" id="<?php echo $all_billing_Detail->id; ?>"><i class="fa fa-trash"></i></a></td>
               
               </tr>
             <?php    } 

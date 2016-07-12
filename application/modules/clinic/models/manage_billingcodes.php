@@ -96,8 +96,7 @@ class Manage_billingcodes extends CI_Model
 			$query = $this->db->get();
 			$result = $query->result();
 		
-				
-
+			
 			if(count($result) > 0){
 				return $result;		
 				
@@ -106,11 +105,21 @@ class Manage_billingcodes extends CI_Model
 			}
 			
       
-		return $return;
+		
 	}
 
 
+public function delete_previous_billingcode($inputValues){
 
+	
+		// echo "<pre>";
+		// print_r($inputValues['billing_id']);
+		// die();
+		
+		  $this->db->where('id', $inputValues['billing_id']);
+   			$this->db->delete($this->mc_billing_codes); 
+
+	}
 
 	
 }

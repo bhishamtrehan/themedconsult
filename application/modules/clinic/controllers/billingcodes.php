@@ -93,7 +93,9 @@ class Billingcodes extends CI_Controller
 		$data['breadcrumb_url'] = '';
 		
 		$this->load->view('inc/header' , $data);
+
 		$this->load->view('inc/master_menu/clinic_menu');
+
 		$data['all_billing_Details'] = $this->manage_billingcodes->all_billing_Details();
 		$this->load->view('clinic/billingcode/view', $data);
 		
@@ -112,6 +114,20 @@ class Billingcodes extends CI_Controller
 		$this->load->view('inc/master_menu/clinic_menu');
 		$data['all_billing_Details'] = $this->manage_billingcodes->all_billing_Details();
 		$this->load->view('clinic/billingcode/add', $data);
+		
+	}
+
+	public function edit(){
+		
+
+		$data = $this->glbl_login();
+		
+			die('fghjk');
+		
+		$this->load->view('inc/header' , $data);
+		$this->load->view('inc/master_menu/clinic_menu');
+		$data['all_billing_Details'] = $this->manage_billingcodes->all_billing_Details();
+		$this->load->view('clinic/billingcode/edit', $data);
 		
 	}
 
@@ -140,6 +156,30 @@ class Billingcodes extends CI_Controller
 		}
 		
 	}
+
+
+
+public function delete_billingcode() {
+	
+		$data = $this->glbl('clinic_access','clinic_location_access');
+		$inputValues['billing_id']  = $this->input->get('billing_id');
+	
+			
+		
+		if(isset($inputValues)) {
+			
+				 
+	
+			$data['patient_Details'] = $this->manage_billingcodes->delete_previous_billingcode($inputValues);
+			
+
+			$this->load->view('inc/header' , $data);
+		$this->load->view('inc/master_menu/clinic_menu');
+		$data['all_billing_Details'] = $this->manage_billingcodes->all_billing_Details();
+			$this->load->view('clinic/billingcode/view', $data);
+		}
+			
+}
 
 
 public function patient_detail() {

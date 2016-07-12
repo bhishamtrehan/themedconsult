@@ -109,5 +109,7 @@ class Manage_patientsearchs extends CI_Model
 
 
 
+
+
 	
 }

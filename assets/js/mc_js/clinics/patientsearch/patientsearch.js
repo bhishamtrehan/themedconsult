@@ -28,5 +28,37 @@ $("#patient_search").click(function(){
     
     });
 
+
+
+$(".trash").click(function(){
+
+   var id= $(this).attr('id');;
+  
+        //alert(patient_surname+patient_firstname+dob);
+
+        jQuery.confirm({
+                    title: 'Delete Billing Code',
+                    content: 'Do you want to Delete the appointment?',
+                    confirmButton: 'Yes',
+                    cancelButton: 'No',
+                    confirmButtonClass: 'btn-danger',
+                    cancelButtonClass: 'btn-info',
+                    opacity:1,
+                    confirm: function(){
+                        $('body').addClass("show_loader");
+                        $(window).attr('location', baseUrl+'clinic/billingcodes/delete_billingcode?billing_id='+id);
+                    },
+                    cancel: function(){
+                        
+                    }
+                });
+   
+    
+    
+    });
+
+
+
+
  });
 
