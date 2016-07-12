@@ -229,7 +229,7 @@ class Groups extends CI_Controller
 
 		$patientID = $this->input->post('patientid');
 
-		$data['history'] = $this->manage_groups->get_consultation_history($patientID);
+		$data['history'] = $this->manage_groups->get_all_consultation_history($patientID);
 		// echo "<pre>";
 		// print_r($data['history']);
 		// die;

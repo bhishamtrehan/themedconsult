@@ -184,20 +184,26 @@ $patientSearchFor = array(
         <div class="col-xs-12 row_full ">
           <div class="col-xs-12 col-sm-4 row_field"><label><i class="fa fa-calendar"></i><?php echo $this->lang->line('appointment_date'); ?>:</label></div>
           <div class="col-xs-12 col-sm-8  row_field field_auto">
-            <div class="appt_tme_estimate"> <?php //echo date('F j, Y', $startDate);    ?>
+            <div class="appt_tme_estimate"> 
+              <?php 
+                $mnth = date('n', $startDate);    
+                $date = date('j', $startDate);    
+                $year = date('Y', $startDate);    
+
+              ?>
               <select class="date" id="date" name="date">
                 <?php for ($i = 1; $i < 31; $i++) { ?>
-                  <option value="<?php echo $i; ?>"><?php echo $i; ?></option> 
+                  <option value="<?php echo $i; ?>" <?php if($date == $i){ echo 'selected'; } ?> ><?php echo $i; ?></option> 
                 <?php } ?>
               </select>
               <select class="date" id="month" name="month">
                 <?php for ($i = 1; $i < 12; $i++) { ?>
-                  <option value="<?php echo $i; ?>"><?php echo $i; ?></option> 
+                  <option  value="<?php echo $i; ?>" <?php if($mnth == $i){ echo 'selected'; } ?>><?php echo $i; ?></option> 
                 <?php } ?>
               </select>
               <select class="date" id="fullYear" name="fullYear">
                 <?php for ($i = 2000; $i <= 2018; $i++) { ?>
-                  <option value="<?php echo $i; ?>"><?php echo $i; ?></option> 
+                  <option value="<?php echo $i; ?>"  <?php if($year == $i){ echo 'selected'; } ?>><?php echo $i; ?></option> 
                 <?php } ?>
 
               </select>
