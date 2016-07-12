@@ -1,0 +1,33 @@
+<?php
+/*************Patient Groups **********************/
+$lang['patient_groups'] = 'Patient Groups';
+$lang['new_groups'] = 'Create New Group';
+$lang['recycle'] = 'Recycle Bin';
+$lang['groups'] = 'Groups';
+$lang['sur_name'] = 'Patient Surname';
+$lang['first_Name'] = 'Patient First Name';
+$lang['dob'] = 'Date of birth';
+$lang['search'] = 'Search';
+$lang['grp_name'] = 'Group Name';
+$lang['submit'] = 'Submit';
+$lang['not_found'] = 'No Result found. Please try again.';
+$lang['patient_picture'] = 'Patient Picture';
+$lang['surname'] = 'Surname';
+$lang['first_name'] = 'First Name';
+$lang['dob'] = 'DOB';
+$lang['action'] = 'Actions';
+$lang['select'] = 'Select Users';
+$lang['save_group'] = 'Save Group';
+$lang['add_group'] = 'Group saved successfully';
+$lang['no_grp'] = 'No group exists';
+$lang['group_name'] = 'Group Name';
+$lang['created_on'] = 'Created On';
+$lang['modified_on'] = 'Modified On';
+$lang['delete_group'] = 'Delete Group';
+$lang['delete_success'] = 'Group Deleted Successfully';
+$lang['restore_success'] = 'Group restored Successfully';
+$lang['delete_fails'] = 'There is some error while deleteing group. Please try again later';
+$lang['restore_fails'] = 'There is some error while restoring group. Please try again later';
+$lang['viewDetails'] = 'View Details';
+$lang['group_picture'] = 'Group Icon';
+$lang['restore'] = 'Restore Group';
