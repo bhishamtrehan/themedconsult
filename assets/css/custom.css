@@ -87,7 +87,7 @@ output#list span img {
 }
 output#list span {
     display: inline-block;
-   margin: 0 10px;
+   margin: 10px;
     position: relative;
 }
 output#list span span.cross-arow {
@@ -1112,6 +1112,7 @@ ul.footer_links.social {
 .close {
         color: #ffffff !important;
         opacity: 1 !important;
+        margin-right: 10px;
 }
 button.close:hover {
     color: #092D3E !Important;
@@ -2118,6 +2119,20 @@ output#list {
 .mobile-scrollareow {
     display: none;
 }
+.addgroupdesign label, .addgroupdesign input {
+    display: inline-block;
+    vertical-align: top;
+    margin: 0;
+}
+.addgroupdesign label {
+    margin: 10px 10px 0 0;
+    color: #014767;
+    font-weight: bold;
+    font-size: 16px;
+}
+h2.c_modal_header.addnewpopheadertitle {
+    margin: -20px -8px 0;
+}
 /*********healthprofessional css here*/
 
 @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {  
@@ -2197,6 +2212,49 @@ div ul.n_action li {
 
 
 @media all and (max-width:767px){ 
+  #patient_results {
+    overflow: auto;
+    max-height: 270px;
+}
+  .modal {
+        padding: 0 !important;
+  }
+
+  .form-horizontal.form_health input.btn-block[type="button"]{
+    width: 200px !important;
+    float: none !important;
+    display: table;
+    margin: 0 auto;
+}
+input#appoint_close{
+   display: table;
+    margin: 10px auto !important;
+}
+  .search_pat_innner, #patient_results {
+     padding: 0 5px;
+
+}
+  input#appoint_close {
+    margin: 10px 0;
+}
+  .recorder-container {
+    width: 100% !Important;
+}
+.search_serviceprovider, .search_health, .showbillingdata, .showbillingselected {
+    overflow-y: scroll;
+    width: 100%;
+}
+  .rightbox-hover-menu {
+       margin-left: 0;
+    height: 72px;
+       left: 0;
+    right: 0;
+    margin: 0 auto !Important;
+        top: -72px;
+}
+.leftbox-hover-menu{
+  position: static;
+}
     .mobile-scrollareow {
     position: absolute;
     right: 0;
@@ -2272,8 +2330,11 @@ span.lf_icon {
     margin: 10px auto;
     display: table;
 }
-.modal-body {
+/*.modal-body {
     overflow-x: scroll;
+}*/
+.add_c_appointment .patient_detail_head.leftspcheadng {
+    margin-left: 0;
 }
 .c_medication li {
     width: 100%;
@@ -2387,6 +2448,10 @@ div#clinicListingaccess_length {
   }
 }
 @media screen and (max-width:580px){
+    .search_pat_innner .nav-tabs>li a {
+    height: 50px;
+    line-height: 1.5;
+}
     div#clinicListingaccess_length, div#clinicListing_length {
     float: none;
     }

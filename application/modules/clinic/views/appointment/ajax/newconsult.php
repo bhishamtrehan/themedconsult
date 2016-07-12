@@ -342,12 +342,12 @@ echo 'New Consultation';
 
                                             <div class="uploadImage">
                                            
-                                                  <div class="NFI-button NFI14661537616486172">Attach Media
-                                                            <input type="file" value="" data-rel="fileToUpload1" id="fileToUpload1" class="browse  fileToUpload1a NFI-current" name="investigation"></div>
+                                                  Attach Media
+                                                            <input type="file" value="" data-rel="fileToUpload1" id="fileToUpload1" class="browse  fileToUpload1a NFI-current" name="investigation">
                                             
                                             </div>
 
-
+                                                <div class="investigation_preview"></div>
 
 
                                             </p>
@@ -456,13 +456,14 @@ echo 'New Consultation';
 
 
                                     <input type="hidden" name="billing_detail" class="form-control" id="billing_detail" value="">
+
                                     
+                                    <div class="showbillingdata"></div>
                                     <div class="showbillingselected">
                                         <table width="100%" border="1" cellspacing="0" id="selecteddata" cellpadding="2">
 
                                         </table>
                                     </div>
-                                    <div class="showbillingdata"></div>
                                 </div>
                                 <!--  <div class="col-sm-4 blue-text col-sm-offset-5 healthp"><a class="anothercode" href="javascript:;">+ add billing code</a></div>-->
                                 </p>
@@ -1229,4 +1230,60 @@ $(this).remove();
         }
 
         document.getElementById('files').addEventListener('change', handleFileSelect, false);
+
+            // add investigation preview
+
+            window.onload = function(){
+        
+    //Check File API support
+    if(window.File && window.FileList && window.FileReader)
+    {
+        var filesInput = document.getElementById("fileToUpload");
+        
+        filesInput.addEventListener("change", function(event){
+            
+            var files = event.target.fileToUpload1; //FileList object
+            var output = document.getElementById("investigation_preview");
+            
+            for(var i = 0; i< files.length; i++)
+            {
+                var file = files[i];
+                
+                //Only pics
+                if(!file.type.match('image'))
+                  continue;
+                
+                var picReader = new FileReader();
+                
+                picReader.addEventListener("load",function(event){
+                    
+                    var picFile = event.target;
+                    
+                    var div = document.createElement("div");
+                    
+                    div.innerHTML = "<img class='thumbnail' src='" + picFile.investigation_preview + "'" +
+                            "title='" + picFile.name + "'/>";
+                    
+                    output.insertBefore(div,null);            
+                
+                });
+                
+                 //Read the image
+                picReader.readAsDataURL(file);
+            }                               
+           
+        });
+    }
+    else
+    {
+        console.log("Your browser does not support File API");
+    }
+}
+    
+
+
+
+
+
+
     </script>						

@@ -1,12 +1,14 @@
         <div class="panel panel-white">
           <div class="panel-body">
             <?php echo form_open(base_url().'clinic/groups',array('class' => 'form-horizontal form_health','id' => 'addGroupForm')); ?>
-            <div role="tabpanel" class="tab-pane active" id="home" style="margin-top:20px;">
+            <div role="tabpanel" class="tab-pane active" id="home">
               <input type="hidden" name="grp_admin_id" value="<?php echo $user_id; ?>" id="current_user">
               <div class="row">
               <div class="col-xs-12 col-sm-12">
+              <div class="addgroupdesign">
                 <label><?php echo $this->lang->line('grp_name'); ?></label>
                 <input type="text" name="grpName" class="form-control" placeholder="Group Name" id ="grpName">
+              </div>
               </div>
                   </div>
             <!-- /container --> 

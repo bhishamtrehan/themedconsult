@@ -64,7 +64,7 @@ echo sprintf($this->lang->line('title_clinic_page'),$fronttitile).$this->lang->l
                 <th><?php echo $this->lang->line('duration'); ?></th>
                 <th><?php echo $this->lang->line('price'); ?></th>
                 <th><?php echo $this->lang->line('gst'); ?></th>
-      <!--           <th><?php echo $this->lang->line('action'); ?></th> -->
+               <th><?php echo $this->lang->line('action'); ?></th> 
                
               </tr>
             </thead>
@@ -85,7 +85,8 @@ echo sprintf($this->lang->line('title_clinic_page'),$fronttitile).$this->lang->l
                 <td><?php echo $all_billing_Detail->duration; ?></td>
                 <td><?php echo $all_billing_Detail->price; ?></td>
                 <td><?php echo $all_billing_Detail->gst; ?></td>
-               <!--  <td>view<?php //echo $all_billing_Detail->gst; ?><!--</td>-->
+               <td><a href="#"><i class="fa fa-pencil"></i></a>
+               <a href="#"><i class="fa fa-trash"></i></a></td>
               
               </tr>
             <?php    } 

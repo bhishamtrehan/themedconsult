@@ -169,7 +169,7 @@ $patientSearchFor = array(
     'class' => 'form-control patient_search_for',
 );
 ?>
-<h2 class="c_modal_header">New Appointment<button class="close" data-dismiss="modal" type="button">×</button></h2>
+<h2 class="c_modal_header addnewpopheadertitle">New Appointment<button class="close" data-dismiss="modal" type="button">×</button></h2>
 <title><?php echo $this->lang->line($title) . $this->lang->line('title_universal'); ?></title>
 <div class="innr_dashbrd_form test">
   <div class="modal-body add_app_pg dashbrd_popup">
