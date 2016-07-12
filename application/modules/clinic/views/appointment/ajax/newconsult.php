@@ -106,13 +106,13 @@ echo 'New Consultation';
                     <div class="panel panel-default">
                         <div  data-toggle="collapse" data-parent="#accordion" href="#collapseOne" class="panel-heading">
                             <h4 class="panel-title">
-                                Health Practitioner
+                            <?php echo $this->lang->line('consult_health_practitioner');?>
                             </h4>  
                         </div>
                        <div id="collapseOne" class="panel-collapse collapse in">
                   <div class="panel-body">
                      <div class="col-xs-12 col-sm-3">
-                                  <label class=" control-label" for="doctor">Health Professional :</label>	
+                                  <label class=" control-label" for="doctor">  <?php echo $this->lang->line('consult_health_practitioner_select');?></label>	
                                     <select name="hp_id" id="hp_id" class="form-control m-b-sm">
                                         <option value="" selected="selected">Select</option>
                                         <?php foreach ($practitioner_details as $practitioner_detail) { ?>
@@ -365,7 +365,7 @@ echo 'New Consultation';
 
 
                                     <div class="border-arround">
-                                        <div class="border-title">Investigation 1</div>
+                                        <div class="border-title">Refferal 1</div>
                                         <div class="padding-arround">
                                             <div class="row">
                                                 <div class="col-md-6"> <fieldset class="form-group">
@@ -434,11 +434,6 @@ echo 'New Consultation';
                                 <p>
                                 <div class="col-sm-12">
 
-                                    <div class="showbillingselected">
-                                        <table width="100%" border="1" cellspacing="0" id="selecteddata" cellpadding="2">
-
-                                        </table>
-                                    </div>
                                     <div class="row">
 
                                         <div class="col-md-3">
@@ -461,6 +456,12 @@ echo 'New Consultation';
 
 
                                     <input type="hidden" name="billing_detail" class="form-control" id="billing_detail" value="">
+                                    
+                                    <div class="showbillingselected">
+                                        <table width="100%" border="1" cellspacing="0" id="selecteddata" cellpadding="2">
+
+                                        </table>
+                                    </div>
                                     <div class="showbillingdata"></div>
                                 </div>
                                 <!--  <div class="col-sm-4 blue-text col-sm-offset-5 healthp"><a class="anothercode" href="javascript:;">+ add billing code</a></div>-->

@@ -116,7 +116,7 @@ class Appointment extends CI_Controller
                             }  
 
                             //echo '<pre>'; print_r($patient_counts); exit;
-                    redirect('/clinic/dashboard');        
+                    redirect('/clinic/rosterView');        
 			    //echo '<script type="text/javascript">self.close();window.opener.location.reload();</script>';
 			}
 		}
@@ -190,8 +190,8 @@ class Appointment extends CI_Controller
                                 }
                             }                            
                             //echo '<pre>'; print_r($patient_counts); exit;
-                            
-			    echo '<script type="text/javascript">self.close();window.opener.location.reload();</script>';
+                            redirect('/clinic/rosterView');
+			  //  echo '<script type="text/javascript">self.close();window.opener.location.reload();</script>';
 			}
 		}
 		$startDateTime 		 	 = $this->input->get('startDate');

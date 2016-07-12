@@ -379,6 +379,7 @@ $lang['medical_hospital'] = 'Medical Practice/Hospital';
 $lang['date_consult'] = 'Date';
 $lang['add_instruction_to_patient'] = 'Add Instruction To Patient';
 $lang['instruction_url'] = 'Url';
+$lang['instruction_upload'] = 'Upload';
 $lang['appointment_calender'] = 'Appointment Calender';
 $lang['health_professionals'] = 'Health Professionals';
 $lang['notifications'] = 'Notifications';
