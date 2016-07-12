@@ -180,6 +180,9 @@ class General extends CI_Model
 	    //$this->db->where("roster.status", "1");
 		$query = $this->db->get();
 		$result = $query->row();
+		// echo "<pre>";
+		// print_r($result);
+		// die;
 		return $result;
 	}
 	

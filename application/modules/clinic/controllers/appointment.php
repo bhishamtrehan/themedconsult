@@ -76,6 +76,7 @@ class Appointment extends CI_Controller
 	}
 	//add appointment into system
 	public function add_appointment() { 
+		
 	    $data = $this->glbl('clinic_access','clinic_location_access');	
 		if($this->input->post('submit_action')=='insert') { 
 			$inputValues = $this->input->post();

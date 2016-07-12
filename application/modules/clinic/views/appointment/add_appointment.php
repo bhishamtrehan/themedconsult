@@ -225,8 +225,11 @@ $patientSearchFor = array(
           <div class="col-xs-12">
             <div class="custom_field">       
               <?php
-              if (isset($appntDetails->room)) {
-                echo $appntDetails->room;
+              // echo "<pre>";
+              // print_r($hp_avail_time);
+              // die;
+              if (isset($hp_avail_time->room)) {
+                echo $hp_avail_time->room;
               } else {
                 echo '<p class="text_red">' . $this->lang->line('no_avail_room') . '</p>';
               }
