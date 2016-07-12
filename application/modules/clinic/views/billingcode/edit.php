@@ -3,9 +3,13 @@
 Template for adding new clinic 
 */
 //Variables for clinic form fields starts here
+  //echo "<pre>"; print_r($all_edit_Details); 
+                    foreach ($all_edit_Details as $all_edit_Detail) {
+     
 
 $billing_name = array(
     'name'  => 'billing_name',
+    'value'  => $all_edit_Detail->description,
     'maxlength' => 255,
     'size'  => 30,
     'class' => 'form-control',
@@ -16,6 +20,7 @@ $billing_name = array(
 
 $billing_code = array(
     'name'  => 'billing_code',
+    'value'  =>  $all_edit_Detail->item_code_no,
     'maxlength' => 80,
     'class' => 'form-control',
     'id' => 'billing_code',
@@ -26,6 +31,7 @@ $billing_code = array(
 );
 $duration = array(
     'name'  => 'duration',
+    'value'  => $all_edit_Detail->duration,
     'maxlength' => 80,
     'class' => 'form-control',
     'id' => 'duration',
@@ -36,6 +42,7 @@ $duration = array(
 );
 $price = array(
     'name'  => 'price',
+    'value'  => $all_edit_Detail->price,
     'maxlength' => 255,
     'size'  => 30,
     'class' => 'form-control',
@@ -45,6 +52,7 @@ $price = array(
 );
 $gst= array(
     'name'  => 'gst',
+    'value'  => $all_edit_Detail->gst,
     'maxlength' => 255,
     'size'  => 30,
     'autocomplete' => 'off',
@@ -53,6 +61,7 @@ $gst= array(
     'placeholder' => $this->lang->line('gst'),
 );
 
+}
 
 //Variables for clinic form fields ends here
 ?>
@@ -102,8 +111,8 @@ $gst= array(
                 <h3><?php   echo $this->lang->line('add_billing');?></h3>
               </div>
             </div>
-                
-               <?php echo form_open($baseurl.'clinic/billingcodes/add_billingcode',array('class' => 'form-horizontal form_health','id' => 'add_billing_form')); ?>
+               
+               <?php echo form_open($baseurl.'clinic/billingcodes/update_billingcode',array('class' => 'form-horizontal form_health','id' => 'add_billing_form')); ?>
                 <fieldset>
                  <br/>
                  <div class="freesheduleform">
@@ -141,8 +150,10 @@ $gst= array(
                       <?php echo form_input($gst); ?>
                     </div>
                   </div>
+                  <input type="hidden" name="id" value="<?php echo $all_edit_Detail->id; ?>">
                         <?php echo form_submit('', $this->lang->line('submit'),"class='btn btn-primary btn-block'"); ?>
                   <?php echo form_close();?>
+
                               </div>
                      </div>
                   

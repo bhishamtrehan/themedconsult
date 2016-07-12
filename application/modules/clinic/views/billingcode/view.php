@@ -44,6 +44,12 @@ echo sprintf($this->lang->line('title_clinic_page'),$fronttitile).$this->lang->l
                          <?php echo $this->session->flashdata('billing_msg'); ?>
                           </div>
                <?php  }  ?>
+                 <?php if ( $this->session->flashdata('billing_update') ) {?>
+                         
+                         <div class="alert alert-success">
+                         <?php echo $this->session->flashdata('billing_update'); ?>
+                          </div>
+               <?php  }  ?>
         <div class="add-billbtn">
              
        <a class="btn btn-primary" href="<?php echo base_url()?>clinic/billingcodes/add">Add new billing code</a>
@@ -85,7 +91,7 @@ echo sprintf($this->lang->line('title_clinic_page'),$fronttitile).$this->lang->l
                 <td><?php echo $all_billing_Detail->duration; ?></td>
                 <td><?php echo $all_billing_Detail->price; ?></td>
                 <td><?php echo $all_billing_Detail->gst; ?></td>
-               <td><a href="cinic/billingcodes/edit?billing_id=<?php echo $all_billing_Detail->id; ?>" class="edit" id="<?php echo $all_billing_Detail->id; ?>"><i class="fa fa-pencil"></i></a>
+               <td><a href="billingcodes/edit?billing_id=<?php echo $all_billing_Detail->id; ?>" class="edit" id="<?php echo $all_billing_Detail->id; ?>"><i class="fa fa-pencil"></i></a>
                <a href="#" class="trash" id="<?php echo $all_billing_Detail->id; ?>"><i class="fa fa-trash"></i></a></td>
               
               </tr>

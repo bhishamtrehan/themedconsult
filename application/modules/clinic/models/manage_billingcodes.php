@@ -79,6 +79,39 @@ class Manage_billingcodes extends CI_Model
 
 	}
 
+
+public function update_new_billingcode($inputValues){
+	// 	echo $ipAddress                         = $this->mc_constants->remote_ip();
+		// print_r($inputValues);
+		
+			$ipAddress  			= $this->mc_constants->remote_ip();
+			
+			//$billingcode['id']		   = $inputValues['id'];
+			$billingcode['description']		   = $inputValues['billing_name'];
+			$billingcode['item_code_no']		   = $inputValues['billing_code'];
+			$billingcode['duration']		   = $inputValues['duration'];
+			$billingcode['price']		   = $inputValues['price'];
+			$billingcode['gst']		   = $inputValues['gst'];
+			
+		 	$billingcode['created_ip']          = $ipAddress;
+            $billingcode['created_date']        = @date('Y-m-d H:i:s');
+
+		
+
+		 try {
+                        $this->db->trans_begin(); 
+                         $this->db->where('id', $inputValues['id']);
+                   $this->db->update($this->mc_billing_codes, $billingcode);
+                        $this->db->trans_commit();
+                $return = true;				
+                }
+                catch (Exception $e) {
+                        $this->db->trans_rollback();
+                        $return = log_message('error', sprintf('%s : %s : DB transaction failed. Error no: %s, Error msg:%s, Last query: %s', __CLASS__, __FUNCTION__, $e->getCode(), $e->getMessage(), print_r($this->main_db->last_query(), TRUE)));
+                }
+
+
+	}
   
 		public function all_billing_Details(){
 
@@ -96,6 +129,35 @@ class Manage_billingcodes extends CI_Model
 			$query = $this->db->get();
 			$result = $query->result();
 		
+			
+			if(count($result) > 0){
+				return $result;		
+				
+			}else{
+				return false;
+			}
+			
+      
+		
+	}
+
+
+		public function all_billing_edit_Details($inputValues){
+
+		
+
+		$return= array();
+		
+		$this->db->select("*");
+		$this->db->from($this->mc_billing_codes);
+		$this->db->where('id', $inputValues['billing_id']);
+
+			// $this->db->group_by('suburb_name');
+			// $this->db->order_by("suburb_name", "asc");
+			//$this->db->limit(70);
+			$query = $this->db->get();
+			$result = $query->result();
+			
 			
 			if(count($result) > 0){
 				return $result;		

@@ -119,14 +119,14 @@ class Billingcodes extends CI_Controller
 
 	public function edit(){
 		
+	$data = $this->glbl('clinic_access','clinic_location_access');
+		$inputValues['billing_id']  = $this->input->get('billing_id');
+		
+		
+		$data['all_edit_Details'] = $this->manage_billingcodes->all_billing_edit_Details($inputValues);
 
-		$data = $this->glbl_login();
-		
-			die('fghjk');
-		
 		$this->load->view('inc/header' , $data);
 		$this->load->view('inc/master_menu/clinic_menu');
-		$data['all_billing_Details'] = $this->manage_billingcodes->all_billing_Details();
 		$this->load->view('clinic/billingcode/edit', $data);
 		
 	}
@@ -147,6 +147,34 @@ class Billingcodes extends CI_Controller
 			$data['patient_Details'] = $this->manage_billingcodes->add_new_billingcode($inputValues);
 			
 			$this->session->set_flashdata('billing_msg', 'Billing Code is successfully added.');
+			redirect('/clinic/billingcodes');
+			
+		
+			
+			
+			//$this->load->view('clinic/patientsearch/ajax/patient_details', $data);
+		}
+		
+	}
+
+
+
+
+		public function update_billingcode(){
+		
+		$data = $this->glbl_login();
+		$data = $this->glbl('clinic_access','clinic_location_access');	
+		$inputValues = $this->input->post();
+
+		// print_r($inputValues);
+			
+		if(isset($inputValues)) {
+			
+				 
+	
+			$data['patient_Details'] = $this->manage_billingcodes->update_new_billingcode($inputValues);
+			
+			$this->session->set_flashdata('billing_update', 'Billing Code is successfully updated.');
 			redirect('/clinic/billingcodes');
 			
 		
