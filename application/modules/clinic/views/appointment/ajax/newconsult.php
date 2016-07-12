@@ -47,7 +47,7 @@ echo 'New Consultation';
                         <ul>
                             <li><span class="lf_icon camera" data-target="#capture_popup" data-toggle="modal"></span></li>
                             <li><span class="lf_icon voice" data-toggle="modal" data-target="#audio_popup"></span></li>
-                            <li><span class="lf_icon hand"></span></li>
+                          <!--  <li><span class="lf_icon hand"></span></li>-->
                             <li><span class="lf_icon addText"></span></li>
                             <li><span class="leftbox-hover-menu"><span class="lf_icon stylus openslidemenu"></span><span class="rightbox-hover-menu" id="rightmenu1">
                                         <span class="leftbox-hovercontent">    <strong><i class="fa fa-pencil"></i> <?= $this->lang->line('pen'); ?></strong>

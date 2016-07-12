@@ -1063,6 +1063,9 @@ class Appointments extends CI_Model
 
 
 	public function get_consultation_history($inputValues) {
+		// echo "<pre>";
+		// print_r($inputValues);
+		// die();
 		$appt_ID = $this->encryption->decode($inputValues['appointment_id']); 
 		//die();
 		$this->db->select("const.*,hpin.title,hpin.surname,hpin.name,clinic.clinic_name,spec.speciality");
@@ -1072,12 +1075,13 @@ class Appointments extends CI_Model
 		$this->db->join($this->mc_clinic .' as clinic', 'clinic.clinic_id =const.medical_clinic','inner');
 		$this->db->join($this->mc_speciality .' as spec', 'spec.ID =const.speciality','inner');
 		$query = $this->db->get();
+		//print_r($this->db->last_query());
 
 		$consultation_history_details=$query->result_array();
 
-		// echo "<pre>";
-		// print_r($consultation_history_details);
-		// die();
+		echo "<pre>";
+		print_r($consultation_history_details);
+		die();
 		
 
 		if($query->num_rows()>0) {
@@ -1702,16 +1706,16 @@ public function get_billing_summery($inputValues) {
 	   $hpID = $this->encryption->encode($inputValues['hp_id']); 
 	 $hpname = $inputValues['hp_name']; 
 
-		$files['userfile']['name'][0];
-		echo "<pre>";
-		print_r($inputValues);
+		// $files['userfile']['name'][0];
+		// echo "<pre>";
+		// print_r($inputValues);
 
 
 
 		$return = false;
 		if(is_array($inputValues)) {
 		
-		echo $consultType['hp_id']   	 	 	 = $inputValues['hp_id'];
+		 $consultType['hp_id']   	 	 	 = $inputValues['hp_id'];
 	
 			$consultType['appt_id']   	 	 = $inputValues['appointment_id'];
 			$consultType['speciality']   	 	 = $inputValues['speciality'];

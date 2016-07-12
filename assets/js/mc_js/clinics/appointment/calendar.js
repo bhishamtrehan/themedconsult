@@ -324,9 +324,9 @@ $(document).ready(function(){
 						        		},
 						            "conshistory": {name: "Consultation History", icon: "",
 					            				callback: function(key, options) {
-										           //alert(key);
+										          // alert(appointment_id);
 
-										        //   $('body').addClass("show_loader");
+										         $('body').addClass("show_loader");
 						            			$.ajax({
 													type: "POST",
 													url: baseUrl+"clinic/appointment/consultation_history", 
@@ -356,7 +356,7 @@ $(document).ready(function(){
 														//alert(response);
 														$( ".modal-content" ).html(response);
 														$('body').removeClass("show_loader");
-														//	$( "#btn-modal" ).trigger( "click" );
+														$( ".btn-lg" ).trigger( "click" );
 													}
 												});
 									        },
