@@ -291,6 +291,7 @@ $(document).ready(function(){
 						            "medications": {name: "Medications", icon: "",
 						            		callback: function(key, options) {
 						            			$('body').addClass("show_loader");
+
 						            			$.ajax({
 													type: "POST",
 													url: baseUrl+"clinic/appointment/show_medications", 
@@ -831,6 +832,7 @@ jQuery(document).ajaxComplete(function(){
 
 $('.newmedication').on('click',function(){
 	var appId = $(this).attr('data-attr');
+	
 		$.ajax({
 				type: "POST",
 				url: baseUrl+"clinic/appointment/add_medication", 

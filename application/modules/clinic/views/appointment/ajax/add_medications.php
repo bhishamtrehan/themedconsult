@@ -1,3 +1,10 @@
+<style type="text/css">
+	
+	.bootstrap-timepicker-widget.dropdown-menu.open {
+  display: inline-block;
+  z-index:1151;
+}
+</style>
 <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal">&times;</button>
 	   <h4 class="modal-title">
@@ -67,7 +74,8 @@
         </div>
 		<div class="col-md-12 form-group">
           <div class="col-md-6">
-		  	 <button class="btn btn-default cancelmedic" type="submit"><?php echo $this->lang->line('medication_cancel');?></button>
+		  	 <!-- <button class="btn btn-default cancelmedic" type="submit"><?php echo $this->lang->line('medication_cancel');?></button> -->
+		  	 <button type="button" class="btn btn-default" data-dismiss="modal"><?php echo $this->lang->line('medication_cancel');?></button>
 			 <button class="btn btn-default okmedic" type="submit"><?php echo $this->lang->line('medication_submit');?></button>
 		  </div>
         </div>
@@ -83,9 +91,23 @@
   <script src="<?php echo base_url(); ?>assets/js/bootstrap/bootstrap-datepicker.js"></script>
   <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/css/datepicker.css">
  <script type="text/javascript"> 
- $(document).ready(function(){
-    $( "#startdate" ).datepicker();
-  $( "#startdate" ).datepicker( "option", "dateFormat", "yy-mm-dd" );
-  })
+ jQuery(document).ready(function(){
+    //$( "#startdate" ).datepicker();
+    jQuery.noConflict()('#startdate').datepicker({
+        changeMonth: true,
+        changeYear: true,
+        
+    });
+
+    jQuery.noConflict()('#enddate').datepicker({
+        changeMonth: true,
+        changeYear: true,
+        
+    });
+
+});
+
+  // $( "#startdate" ).datepicker( "option", "dateFormat", "yy-mm-dd" );
+  // })
   //$( "#startdate" ).datepicker( "option", "dateFormat", "yy-mm-dd" );
     </script>
