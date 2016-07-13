@@ -54,9 +54,8 @@ $db['default']['username'] = 'root';
 if($_SERVER['HTTP_HOST'] == 'localhost')
 {
 
-	$db['default']['password'] = '';
+	$db['default']['password'] = 'root@123';
 
-	$db['default']['password'] = '';
 
 }
 else

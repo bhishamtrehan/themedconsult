@@ -1156,6 +1156,68 @@ public function get_billing_summery($inputValues) {
 				}
 	}
 
+public function get_billing_summerybyId($pid) {
+/*
+			  
+					// die();
+			$this->db->select("ID");
+			$this->db->from($this->mc_consultation);
+			$this->db->where('appt_id',$appt_ID);
+			$query = $this->db->get();
+
+			$consult_ids = $query->result_array();
+			//print_r($consult_ids);
+				$billingcodes=array();
+				foreach ($consult_ids as  $consult_id) {
+					//echo $consult_id['ID'];
+
+						$this->db->select("billing_codes_id");
+						$this->db->from($this->mc_billing_relation);
+						$this->db->where('consultation_id',$consult_id['ID']);
+						$query = $this->db->get();
+
+						$billingcodes[] = $query->result_array();
+					//	array_push($billingcodes, $billingcode);
+
+				}
+				
+
+				//print_r($billingcodes);
+				
+
+
+				$billings = array();
+					foreach($billingcodes as $array) {
+					 foreach($array as $k=>$v) {
+					  $billings[]= $v['billing_codes_id'];
+					 }
+					}
+
+						$bill_codes= array_unique($billings);
+						//print_r($bill_codes);
+
+						$billingdetails = array();
+						foreach ($bill_codes as $bill_code) {
+							//echo $bill_code;
+							$this->db->select("*");
+						$this->db->from($this->mc_billing_codes);
+						$this->db->where('id',$bill_code);
+						$query = $this->db->get();
+
+						$billingdetails[] = $query->result_array();
+						}
+
+						$bil_count=count($billingdetails);
+
+				if($bil_count!=0) {
+				
+		                        return $billingdetails;
+				}
+				else {
+					return array();
+				}*/
+	}
+
 
 
 	//Show Roster details
@@ -2072,6 +2134,33 @@ public function get_billing_summery($inputValues) {
 			$this->db->from($this->table_patients .' as patient');
 			$this->db->join($this->table_appointments .' as appointment', 'patient.patient_id = appointment.patient_id','inner');
 			$this->db->where('appointment.appointment_id',$appointmentId);
+			$query = $this->db->get();
+			
+
+			$result = $query->result();
+			// print_r($result);
+			// die();
+
+			if(count($result) > 0){
+				return $result;		
+			}else{
+				return false;
+			}
+		}
+		
+	}
+	//**** for patient details popup *****/
+	public function getPatientDetailsbyId($pid)
+
+	{
+		
+		
+		if($pid != 0 && $pid != '')
+		{
+			$allRosters = array();
+			$this->db->select("patient.*");
+			$this->db->from($this->table_patients .' as patient');
+			$this->db->where('patient.patient_id',$pid);
 			$query = $this->db->get();
 			
 
