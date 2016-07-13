@@ -220,7 +220,7 @@ $patientSearchFor = array(
 		<div class="col-xs-8">
 			 <?php echo form_submit('submit', $btnText, "id='appoint_submit' class='btn btn-primary btn-block' onclick='return validateAppnt();'"); ?>
                          <?php //echo form_submit('button', 'Close', "id='appoint_close' class='btn btn-primary btn-block' onclick='self.close();'"); ?>
-                         <input type="button" name="button" value="Close" id="appoint_close" class="btn btn-primary btn-block" onclick="self.close();">
+                         <input type="button" name="button" value="Close"  data-dismiss="modal" class="btn btn-primary btn-block">
 		</div>
 	</div> 				
 </div></div>

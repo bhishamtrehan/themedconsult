@@ -15,13 +15,21 @@ $(document).ready(function() {
         $( "#upload_file" ).val('');
         $( "#inst_submit" ).click(function() {
         	var value= $( "#instruction_url" ).val();
-          if($.trim(value)=='')
+
+
+url_validate = /(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/;
+
+
+          if($.trim(value)=='' || !url_validate.test(value))
           {
           	$("#instruction_url.form-control").css( "border-color", "red" );
  		$("#filePhoto.form-control").css( "border-color", "#ccc" );
           }else{
 
-          	after_submit();
+          		$("#loading_image").css( "display", "block" );
+          	 setTimeout(function() {
+				after_submit();
+				  }, 4000);
           }
 
         });
@@ -43,8 +51,12 @@ $(document).ready(function() {
           	$("#filePhoto.form-control").css( "border-color", "red" );
 
           }else{
-
-          	after_submit();
+          	
+          	$("#loading_image").css( "display", "block" );
+          	 setTimeout(function() {
+				after_submit();
+				  }, 4000);
+          	
           }
 
         });
@@ -77,7 +89,7 @@ $(document).ready(function() {
 				var appt_id= $( "#appt_id" ).val();
 				var upload_file= $( "#filePhoto" ).val();
 				var src=  $("#previewHolder").attr('src');
-				$('body').addClass("show_loader");
+				//$('body').addClass("show_loader");
 				$.ajax({
 				type: "POST",
 				url: baseUrl+"clinic/appointment/add_instruction_patient", 
@@ -87,7 +99,7 @@ $(document).ready(function() {
 				success: function (response) {
 					//alert(response);
 					$( ".modal-content" ).html(response);
-					$('body').removeClass("show_loader");
+					//$('body').removeClass("show_loader");
 					// setTimeout(function(){
 					//     location.reload();
 					// },4000);

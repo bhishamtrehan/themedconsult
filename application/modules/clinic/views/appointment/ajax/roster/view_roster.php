@@ -1,5 +1,5 @@
 <div class="modal-header">
-    <button type="button" class="close" data-dismiss="modal">&times;</button>
+    <button type="button" class="close" id="close_button" data-dismiss="modal">&times;</button>
     <h4 class="modal-title">
 		<?php 
 
@@ -79,9 +79,14 @@ $baseurl = base_url();
 </div>
 <script>
 function popitup(url) {
-	///alert('hello');
-	newwindow=window.open(url,"name","height=420,width=510,top=20,left=20,scrollbars=0,resizable=0,fullscreen=0");
-	if (window.focus) {newwindow.focus()}
-	return false;
+	//alert('hello');
+	$( "#close_button" ).trigger( "click" );
+	 BootstrapDialog.show({
+     	cssClass: 'add_c_appointment',
+            message: $('<div></div>').load(url)
+        });
+	// newwindow=window.open(url,"name","height=420,width=510,top=20,left=20,scrollbars=0,resizable=0,fullscreen=0");
+	// if (window.focus) {newwindow.focus()}
+	// return false;
 }
 </script>
