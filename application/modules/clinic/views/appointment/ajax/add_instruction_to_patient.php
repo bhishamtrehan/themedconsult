@@ -39,28 +39,25 @@ $upload_file = array(
 <div class="formcentercontent">
 <div class="modal-body">
 	<div class="form-group" id="url_section">
-		<label for="ticket-type" class="col-sm-3 control-label"><?php echo $this->lang->line('instruction_url');?>:</label>
-		<div class="col-sm-9">
-
-			 <?php echo form_input($instruction_url); ?>
-		</div>
+		<label for="ticket-type"><?php echo $this->lang->line('instruction_url');?>:</label>
+		<?php echo form_input($instruction_url); ?>
+		
 	</div>   
 	
 	<div class="form-group" id="upload_section">
-		<label for="ticket-type" class="col-sm-3 control-label"><?php echo $this->lang->line('instruction_upload');?>:</label>
-		<div class="col-sm-9">
-	
+	<div class="fileupsectionpop">
+		<label for="ticket-type"><?php echo $this->lang->line('instruction_upload');?>:</label>
 		<?php //echo form_input($upload_file); ?>
 		<div class="fileupclass">
  		 	<input type="file" name="filePhoto" value="" id="filePhoto" class="form-control required borrowerImageFile" data-errormsg="PhotoUploadErrorMsg">
 			<img id="previewHolder" alt="Uploaded Image Preview Holder" style="display:none;" width="250px" height="250px"/>
    			</div>
-		</div>
+   			</div>
+		
 	</div> 
 	<?php //echo form_hidden('submit_action', 'insert');?>
 	<div class="form-group" id="submit_section">
-		<label for="ticket-type" class="col-sm-3 control-label"></label>
-		<div class="col-sm-9">
+		<div class="btncentertopage">
 		<input type="hidden" name="appt_id" id="appt_id" value="<?php echo $apptId; ?>">
 		<button id="inst_submit" class="btn btn-primary"><?php echo $this->lang->line('submit');?></button>
 			 <?php //echo form_submit('submit', $this->lang->line('button'),"class='btn btn-primary btn-block' id='inst_submit'"); ?>
