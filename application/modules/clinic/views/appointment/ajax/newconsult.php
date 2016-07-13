@@ -214,6 +214,22 @@ echo 'New Consultation';
 
 
                                                 <div class="column-left links col-md-3 undo_redo_col">
+                                                 <div class="clickimgdoc">
+                                         <img src="<?php echo base_url();?>/assets/images/document-icon.png">
+                                         <span>Document</span>
+                                         </div>
+                                            <div class="clickimgpdf">
+                                      <img src="<?php echo base_url();?>/assets/images/pdf-icon.png">
+                                       <span>PDF</span>
+                                           </div>
+
+                                               
+
+
+
+
+
+
                                                     <button style="cursor:pointer;" onclick="javascript:cUndo();
                                                             return false;"><i class="fa fa-undo"></i>
                                                     </button>

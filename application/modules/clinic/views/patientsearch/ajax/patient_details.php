@@ -18,7 +18,7 @@
               
             ?>
               <tr>
-                  <td><div class="action-btn-sec"><a href="#"><span class="profile-details-icon"></span><span class="linktext">Patient</span> </a></div></td>
+                  <td><div class="action-btn-sec"><a href="#"><img src="<?php echo base_url();?>assets/images/notification_image.bmp">  </a></div></td>
                 <td><?php echo $patient_Detail->last_name; ?></td>
                 <td><?php echo $patient_Detail->first_name; ?></td>
                 <td><?php echo $patient_Detail->date_of_birth; ?></td>
