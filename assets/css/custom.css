@@ -12,6 +12,23 @@
   font-weight: 400;
   margin: 5px 0 0;
 }
+.popup_section {
+    text-align: center;
+}
+.popup_section input {
+    background: #014767;
+    padding: 8px;
+    border-radius: 6px;
+    border: 0;
+    font-weight: bold;
+}
+.popup_section input:hover {
+    background: #4AC0EE;
+    text-shadow:0 0 0;
+     border: 0;
+     box-shadow:0 0 0;
+    
+}
 .custom_title a {
   float: right;
 }
