@@ -368,9 +368,10 @@ $patientSearchFor = array(
               }
               ?>
               <?php //echo form_submit('button', 'Close', "id='appoint_close' class='btn btn-primary btn-block' onclick='self.close();'"); ?>
+                 <div class="popcalenderbtn editap">
                <input type="submit" name="hiddenbutton" value="update" id="appt_validat" class="btn btn-primary btn-block">
               <input type="button" name="button" value="Close"  data-dismiss="modal" class="btn btn-primary btn-block" >
-
+</div>
 
 
         </div>

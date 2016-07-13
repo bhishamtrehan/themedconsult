@@ -79,18 +79,21 @@ input.btn.btn-primary.btn-block {
 /*  text-align: right;*/
  /* margin: 0 0 10px 0;*/
 }
-output#list span img {
+.popcalenderbtn input.btn.btn-block {
+    margin: 0 5px !important;
+}
+output#list span img, output#result_invest span img, output#result_reff span img {
     width: auto;
     height: 120px;
     display: inline-block;
     overflow: hidden;
 }
-output#list span {
+output#list span, output#result_invest span, output#result_reff span {
     display: inline-block;
    margin: 10px;
     position: relative;
 }
-output#list span span.cross-arow {
+output#list span span.cross-arow, output#result_invest span span.cross-arow, output#result_reff span span.cross-arow {
     position: absolute;
     right: -17px;
     top: -13px;
@@ -2093,12 +2096,9 @@ form#add_clinic_form .public-patient-sec label {
 form#add_clinic_form .uplodeimgsec input {
         display: inline-block;
     vertical-align: middle;
-    position: relative;
-       color: transparent;
-    width: 90px;
-    margin-bottom: 20px;
+  
 }
-form#add_clinic_form .uplodeimgsec input:after {
+/*form#add_clinic_form .uplodeimgsec input:after {
     width: 89px;
     background: #014767;
     content: "BROWSE";
@@ -2108,7 +2108,7 @@ form#add_clinic_form .uplodeimgsec input:after {
     left: 1px;
     border-radius: 6px;
     top: -7px;
-}
+}*/
 .fields.dobFieldsNext2.uplodeimgsec {
     margin: 30px 0;
 }
@@ -2255,6 +2255,18 @@ div ul.n_action li {
 
 
 @media all and (max-width:767px){ 
+  .popcalenderbtn.editap {
+    width: 200px;
+    margin: 0 auto;
+}
+  .popcalenderbtn {
+    display: table;
+    margin: 0 auto;
+    text-align: center;
+}
+.popcalenderbtn input.btn.btn-block {
+    margin: 10px !important;
+}
   .form-control.clinicadress {
     margin-bottom: 10px;
 }
