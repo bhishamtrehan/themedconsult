@@ -26,7 +26,7 @@ $clinic_street_address = array(
     'name' => 'clinic_street_address',
     'maxlength' => 255,
     'size' => 30,
-    'class' => 'form-control',
+    'class' => 'form-control clinicadress',
     'autocomplete' => 'off',
     'placeholder' => $this->lang->line('enter_street_add1'),
 );
@@ -35,7 +35,7 @@ $clinic_street_address_line2 = array(
     'maxlength' => 255,
     'size' => 30,
     'autocomplete' => 'off',
-    'class' => 'form-control',
+    'class' => 'form-control clinicadress2',
     'placeholder' => $this->lang->line('enter_street_add2'),
 );
 $clinic_suburb = array(

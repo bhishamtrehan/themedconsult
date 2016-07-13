@@ -5477,9 +5477,9 @@ span.lf_icon:before {
   .horizontal-bar,
   .small-sidebar .sidebar,
   body:not(.small-sidebar) .sidebar.visible {
-    -webkit-transition: opacity .3s ease-in-out;
-    -moz-transition: opacity .3s ease-in-out;
-    -o-transition: opacity .3s ease-in-out
+    -webkit-transition:none;
+    -moz-transition: none;
+    -o-transition: none;
   }
   .horizontal-bar,
   .small-sidebar .sidebar {
@@ -5578,6 +5578,7 @@ span.lf_icon:before {
     display: block !important;
     text-align: left;
 }
+
 .horizontal-bar:after {
     content: "";
     background-color: rgba(0, 0, 0, 0.58);
