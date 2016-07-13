@@ -160,6 +160,8 @@ class Appointment extends CI_Controller
 		if($this->input->post('submit_action')=='insert') { 
 
 			$inputValues = $this->input->post();
+
+
 			$inputValues['author_id'] = $this->tank_auth->ci->session->userdata['user_id'];
 			//echo '<pre>'; print_r($inputValues); exit;
                         if($inputValues['form_save'] == 1)
@@ -1008,6 +1010,10 @@ public function cancel_calendar_appointment() {
 	    $data = $this->glbl('clinic_access','clinic_location_access');	
 		if($this->input->post('submit_action')=='insert') { 
 			$inputValues = $this->input->post();
+			// echo "<pre>";
+			// print_r($inputValues);
+			// die();
+
 			$inputValues['author_id'] = $this->tank_auth->ci->session->userdata['user_id'];
 			$dataSuccess = $this->appointments->update_roster($inputValues);
 			//echo '<script type="text/javascript">self.close();window.opener.location.reload();</script>';

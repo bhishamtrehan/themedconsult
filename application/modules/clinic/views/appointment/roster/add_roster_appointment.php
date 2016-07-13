@@ -3,6 +3,7 @@
 	</h4>
 	</div>
 <?php echo form_open('',array('class' => 'form-horizontal form_health form-popup-main','id' => 'add_appointment'));
+//echo "<pre>"; print_r($rosterDetails); die();
 
 if(!isset($rosterDetails) || empty($rosterDetails)) {
 	$rosterDetails = "";
@@ -196,6 +197,7 @@ $patientSearchFor = array(
 		<div class="col-xs-4"><label><?php echo $this->lang->line('duration');?>:</label></div>
 		<div class="col-xs-8">
 			<div class="appt_tme_estimate"> <span id="appnt_duration_label"><?php echo $rostDuration;?></span> <?php echo $this->lang->line('minutes'); ?></div>
+			<input type="hidden" value="" name="updated_duration" id="updated_duration">
 		</div>
 	</div>
 	<!-- <div class="col-xs-12">
@@ -218,9 +220,11 @@ $patientSearchFor = array(
 	<div class="col-xs-12">
 		<div class="col-xs-4"><label for="ticket-type" control-label></label></div>
 		<div class="col-xs-8">
+		<div class="popcalenderbtn editap">
 			 <?php echo form_submit('submit', $btnText, "id='appoint_submit' class='btn btn-primary btn-block' onclick='return validateAppnt();'"); ?>
                          <?php //echo form_submit('button', 'Close', "id='appoint_close' class='btn btn-primary btn-block' onclick='self.close();'"); ?>
                          <input type="button" name="button" value="Close"  data-dismiss="modal" class="btn btn-primary btn-block">
+                         </div>
 		</div>
 	</div> 				
 </div></div>

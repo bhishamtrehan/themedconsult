@@ -172,6 +172,8 @@ function update_duration() {
 		alert("Appointment end time should be greater than start time!");
 	} else {
 		$('#appnt_duration_label').html((timeDiffer.hours*60)+timeDiffer.minutes);
+		
+		 $('#updated_duration').val((timeDiffer.hours*60)+timeDiffer.minutes);
 	}
 }
 function toSeconds(time_str) {

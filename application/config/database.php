@@ -56,7 +56,7 @@ if($_SERVER['HTTP_HOST'] == 'localhost')
 
 	$db['default']['password'] = '';
 
-
+ 
 }
 else
 {

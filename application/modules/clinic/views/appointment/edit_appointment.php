@@ -293,7 +293,7 @@ $patientSearchFor = array(
               ?>
 
     
-                
+                 
 
 
               </span> <?php echo $this->lang->line('minutes'); ?></div>

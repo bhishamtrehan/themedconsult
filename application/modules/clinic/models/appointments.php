@@ -764,6 +764,10 @@ class Appointments extends CI_Model
 
 		public function create_new_roster($inputValues) {
 
+// echo "<pre>";
+// 			print_r($inputValues);
+// 			die('frghjk');
+
 		if($inputValues != '') { 
 			$time_24_hour_format  = date("H:i", strtotime($inputValues['appointment_hour'].':'.$inputValues['appointment_minute'].' '.$inputValues['appointment_time_format']));
 			$time_24_hour_end_format  = date("H:i", strtotime($inputValues['appointment_end_hour'].':'.$inputValues['appointment_end_minute'].' '.$inputValues['appointment_end_time_format']));
@@ -774,7 +778,7 @@ class Appointments extends CI_Model
 			$appnt['roster_date']  	= $inputValues['appointment_date'];
 			$appnt['roster_from']  	= $time_24_hour_format;
 			$appnt['roster_to'] 	= $time_24_hour_end_format;
-            $appnt['roster_duration']  = $inputValues['appointment_duration'];
+            $appnt['roster_duration']  = $inputValues['roster_duration'];
 			$appnt['status']  		= '1';
 			$appnt['created_ip']  		= $ipAddress;
 			$appnt['created_date'] 		= @date('Y-m-d H:i:s');
@@ -1687,7 +1691,7 @@ public function get_billing_summery($inputValues) {
 			$roster['roster_date']  	= $inputValues['appointment_date'];
 			$roster['roster_from']  	= $time_24_hour_format;
 			$roster['roster_to'] 	= $time_24_hour_end_format;
-            $roster['roster_duration']  = $inputValues['roster_duration'];
+            $roster['roster_duration']  = $inputValues['updated_duration'];
             $roster['clinic_room_id']  = $inputValues['clinicRoom'];
             $roster['clinic_location_id']  = $inputValues['clinicID'];
 			$roster['status']  		= '1';
