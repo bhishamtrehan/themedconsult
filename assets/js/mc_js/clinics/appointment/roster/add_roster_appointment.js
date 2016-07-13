@@ -158,7 +158,7 @@ function ConvertTimeformat(format, str) {
 }
 function update_duration() {
 	var startHour 	= $('#appointment_hour').val();
-	var startMin 	= $('#appointment_minute').val();
+	var startMin 	= $('#appointment_minute').val(); 
 	var startFormat = $('#appointment_time_format').val();
 	var endHour 	= $('#appointment_end_hour').val();
 	var endMin 		= $('#appointment_end_minute').val();
@@ -172,6 +172,8 @@ function update_duration() {
 		alert("Appointment end time should be greater than start time!");
 	} else {
 		$('#appnt_duration_label').html((timeDiffer.hours*60)+timeDiffer.minutes);
+		
+		 $('#updated_duration').val((timeDiffer.hours*60)+timeDiffer.minutes);
 	}
 }
 function toSeconds(time_str) {

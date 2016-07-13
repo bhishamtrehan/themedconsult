@@ -764,6 +764,10 @@ class Appointments extends CI_Model
 
 		public function create_new_roster($inputValues) {
 
+// echo "<pre>";
+// 			print_r($inputValues);
+// 			die('frghjk');
+
 		if($inputValues != '') { 
 			$time_24_hour_format  = date("H:i", strtotime($inputValues['appointment_hour'].':'.$inputValues['appointment_minute'].' '.$inputValues['appointment_time_format']));
 			$time_24_hour_end_format  = date("H:i", strtotime($inputValues['appointment_end_hour'].':'.$inputValues['appointment_end_minute'].' '.$inputValues['appointment_end_time_format']));
@@ -774,7 +778,7 @@ class Appointments extends CI_Model
 			$appnt['roster_date']  	= $inputValues['appointment_date'];
 			$appnt['roster_from']  	= $time_24_hour_format;
 			$appnt['roster_to'] 	= $time_24_hour_end_format;
-            $appnt['roster_duration']  = $inputValues['appointment_duration'];
+            $appnt['roster_duration']  = $inputValues['roster_duration'];
 			$appnt['status']  		= '1';
 			$appnt['created_ip']  		= $ipAddress;
 			$appnt['created_date'] 		= @date('Y-m-d H:i:s');
@@ -1179,6 +1183,68 @@ public function get_billing_summery($inputValues) {
 				else {
 					return array();
 				}
+	}
+
+public function get_billing_summerybyId($pid) {
+/*
+			  
+					// die();
+			$this->db->select("ID");
+			$this->db->from($this->mc_consultation);
+			$this->db->where('appt_id',$appt_ID);
+			$query = $this->db->get();
+
+			$consult_ids = $query->result_array();
+			//print_r($consult_ids);
+				$billingcodes=array();
+				foreach ($consult_ids as  $consult_id) {
+					//echo $consult_id['ID'];
+
+						$this->db->select("billing_codes_id");
+						$this->db->from($this->mc_billing_relation);
+						$this->db->where('consultation_id',$consult_id['ID']);
+						$query = $this->db->get();
+
+						$billingcodes[] = $query->result_array();
+					//	array_push($billingcodes, $billingcode);
+
+				}
+				
+
+				//print_r($billingcodes);
+				
+
+
+				$billings = array();
+					foreach($billingcodes as $array) {
+					 foreach($array as $k=>$v) {
+					  $billings[]= $v['billing_codes_id'];
+					 }
+					}
+
+						$bill_codes= array_unique($billings);
+						//print_r($bill_codes);
+
+						$billingdetails = array();
+						foreach ($bill_codes as $bill_code) {
+							//echo $bill_code;
+							$this->db->select("*");
+						$this->db->from($this->mc_billing_codes);
+						$this->db->where('id',$bill_code);
+						$query = $this->db->get();
+
+						$billingdetails[] = $query->result_array();
+						}
+
+						$bil_count=count($billingdetails);
+
+				if($bil_count!=0) {
+				
+		                        return $billingdetails;
+				}
+				else {
+					return array();
+				}*/
 	}
 
 
@@ -1687,7 +1753,7 @@ public function get_billing_summery($inputValues) {
 			$roster['roster_date']  	= $inputValues['appointment_date'];
 			$roster['roster_from']  	= $time_24_hour_format;
 			$roster['roster_to'] 	= $time_24_hour_end_format;
-            $roster['roster_duration']  = $inputValues['roster_duration'];
+            $roster['roster_duration']  = $inputValues['updated_duration'];
             $roster['clinic_room_id']  = $inputValues['clinicRoom'];
             $roster['clinic_location_id']  = $inputValues['clinicID'];
 			$roster['status']  		= '1';
@@ -2109,6 +2175,33 @@ public function get_billing_summery($inputValues) {
 			$this->db->from($this->table_patients .' as patient');
 			$this->db->join($this->table_appointments .' as appointment', 'patient.patient_id = appointment.patient_id','inner');
 			$this->db->where('appointment.appointment_id',$appointmentId);
+			$query = $this->db->get();
+			
+
+			$result = $query->result();
+			// print_r($result);
+			// die();
+
+			if(count($result) > 0){
+				return $result;		
+			}else{
+				return false;
+			}
+		}
+		
+	}
+	//**** for patient details popup *****/
+	public function getPatientDetailsbyId($pid)
+
+	{
+		
+		
+		if($pid != 0 && $pid != '')
+		{
+			$allRosters = array();
+			$this->db->select("patient.*");
+			$this->db->from($this->table_patients .' as patient');
+			$this->db->where('patient.patient_id',$pid);
 			$query = $this->db->get();
 			
 

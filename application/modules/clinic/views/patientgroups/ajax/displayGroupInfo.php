@@ -25,7 +25,7 @@
             foreach($GroupDetails->members as $info){  
            
             ?>
-            <tr>
+            <tr id="patient_<?php echo $info->patient_id; ?>">
             <td><span class="glyphicon glyphicon-user"></span> <?php echo $this->lang->line('title_patientss'); ?> </td>
             <td><?php echo $info->last_name; ?></td>
             <td><?php echo $info->first_name; ?></td>
@@ -38,7 +38,7 @@
                    
                     </div>
                     <div class="row action-btn-sec centeraction">
-                        <div class="col-md-6"> <a href="javascript:void(0)"><span class="removefromgroup"></span> <span class="linktext"><?php echo $this->lang->line('remove_from_group'); ?></span> </a></div>
+                        <div class="col-md-6"> <a href="javascript:void(0)" class="removefromgrp" data-grp ="<?php echo $GroupDetails->id; ?>"  data-pid="<?php echo $info->patient_id; ?>"><span class="removefromgroup"></span> <span class="linktext"><?php echo $this->lang->line('remove_from_group'); ?></span> </a></div>
                         <div class="col-md-6">  <a href="javascript:void(0)"><span class="message"></span> <span class="linktext"><?php echo $this->lang->line('message'); ?></span></a></div>
                     </div>
                 
@@ -54,4 +54,5 @@
 
   <script src="<?php echo base_url(); ?>assets/js/mc_js/clinics/patientgroups/singleGroup.js"></script>
   <script src="<?php echo base_url(); ?>assets/js/mc_js/clinics/patientgroups/groupPatientSummary.js"></script>
+  <script src="<?php echo base_url();?>assets/js/mc_js/clinics/getPatientInfo.js"></script>
  

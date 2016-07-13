@@ -160,6 +160,8 @@ class Appointment extends CI_Controller
 		if($this->input->post('submit_action')=='insert') { 
 
 			$inputValues = $this->input->post();
+
+
 			$inputValues['author_id'] = $this->tank_auth->ci->session->userdata['user_id'];
 			//echo '<pre>'; print_r($inputValues); exit;
                         if($inputValues['form_save'] == 1)
@@ -396,6 +398,22 @@ public function cancel_calendar_appointment() {
 			if(isset($inputValues)) {
 			
 			$data['billDetails'] = $this->appointments->get_billing_summery($inputValues);
+			//print_r($data['appntDetails']);
+			// die();
+
+			$this->load->view('clinic/appointment/ajax/billing_summery', $data);
+			}
+        
+	}
+
+	public function billing_summerybyId() {
+			$data = $this->glbl('clinic_access','clinic_location_access');
+			$inputValues = $this->input->post();
+
+			$pid = $inputValues['pId'];   
+			if(isset($inputValues)) {
+			
+			$data['billDetails'] = $this->appointments->get_billing_summerybyId($pid);
 			//print_r($data['appntDetails']);
 			// die();
 
@@ -1008,6 +1026,10 @@ public function cancel_calendar_appointment() {
 	    $data = $this->glbl('clinic_access','clinic_location_access');	
 		if($this->input->post('submit_action')=='insert') { 
 			$inputValues = $this->input->post();
+			// echo "<pre>";
+			// print_r($inputValues);
+			// die();
+
 			$inputValues['author_id'] = $this->tank_auth->ci->session->userdata['user_id'];
 			$dataSuccess = $this->appointments->update_roster($inputValues);
 			//echo '<script type="text/javascript">self.close();window.opener.location.reload();</script>';
@@ -1694,6 +1716,24 @@ public function add_medication(){
 					 
 			$data['appntID'] = $appntID;
 			$data['patientDetails'] = $this->appointments->getPatientDetails($appntID);
+			
+			$this->load->view('clinic/appointment/ajax/show_patients_details', $data);
+		}
+
+	}	
+
+	/**** Patient details popup start ******/
+	public function showPatientsDetailsbyId(){
+	$data = $this->glbl('clinic_access','clinic_location_access');
+		$inputValues = $this->input->post();
+
+		
+		
+		if(isset($inputValues)) {
+			 $pid = $inputValues['pId']; 
+					 
+			
+			$data['patientDetails'] = $this->appointments->getPatientDetailsbyId($pid);
 			
 			$this->load->view('clinic/appointment/ajax/show_patients_details', $data);
 		}

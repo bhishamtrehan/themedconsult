@@ -74,8 +74,7 @@ echo sprintf($this->lang->line('title_clinic_page'),$fronttitile).$this->lang->l
             </thead>
             <tbody>
             <?php 
-         // echo "<pre>";
-         //          print_r($all_patient_Details);
+          
                 foreach($all_patient_Details as $all_patient_Detail){   
                  
               
@@ -87,9 +86,9 @@ echo sprintf($this->lang->line('title_clinic_page'),$fronttitile).$this->lang->l
                 <td><?php echo $all_patient_Detail->date_of_birth; ?></td>
                 <td>
                     <div class="row action-btn-sec">
-                        <div class="col-md-4"> <a href="#"><span class="profile-details-icon"></span><span class="linktext"><?php echo $this->lang->line('profile_details'); ?></span></a> </div>
-                         <div class="col-md-4">   <a href="#"><span class="billing-summary-icon"></span><span class="linktext"><?php echo $this->lang->line('billing_summary'); ?></span></a></div>
-                          <div class="col-md-4"> <a href="#"><span class="consultation-history-icon"></span><span class="linktext"><?php echo $this->lang->line('consultation_history'); ?></span></a> </div>
+                        <div class="col-md-4"> <a href="javascript:void(0);" class="patientInfo" data-pid="<?php echo $all_patient_Detail->patient_id; ?>" ><span class="profile-details-icon"></span><span class="linktext"><?php echo $this->lang->line('profile_details'); ?></span></a> </div>
+                         <div class="col-md-4">   <a href="javascript:void(0);" class="patientBilling" data-pid="<?php echo $all_patient_Detail->patient_id; ?>"><span class="billing-summary-icon"></span><span class="linktext"><?php echo $this->lang->line('billing_summary'); ?></span></a></div>
+                          <div class="col-md-4"> <a href="javascript:void(0);" class="patientCons" data-pid="<?php echo $all_patient_Detail->patient_id; ?>"><span class="consultation-history-icon"></span><span class="linktext"><?php echo $this->lang->line('consultation_history'); ?></span></a> </div>
                     </div>
                                 
                     
@@ -119,6 +118,16 @@ echo sprintf($this->lang->line('title_clinic_page'),$fronttitile).$this->lang->l
 </div>
 </div>
 </div>
+ <div class="popup">
+        <button type="button" style="display:none;" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal"></button>
+        <!-- Modal -->
+        <div class="modal fade" id="myModal" role="dialog">
+            <div class="modal-dialog">
+                <!-- Modal content-->
+                <div class="modal-content"></div> 
+            </div>
+        </div>
+    </div>
 
 <!-- /wrapper --> 
 <!-- FOOTER -->
@@ -126,6 +135,7 @@ echo sprintf($this->lang->line('title_clinic_page'),$fronttitile).$this->lang->l
 <script>var baseUrl ="<?php echo base_url(); ?>";</script>
   <?php $this->load->view('inc/footer'); ?>
    <script src="<?php echo base_url();?>assets/js/mc_js/clinics/patientsearch/patientsearch.js"></script>
+   <script src="<?php echo base_url();?>assets/js/mc_js/clinics/getPatientInfo.js"></script>
      <link rel="stylesheet" href="<?php echo base_url();?>assets/css/jquery-ui.css">
    <script type="text/javascript"> 
     $( "#dob" ).datepicker();
