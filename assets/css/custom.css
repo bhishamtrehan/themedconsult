@@ -371,6 +371,11 @@ table.dataTable tfoot th, table.dataTable tfoot td{
   color: #4ac0ee;
   padding: 5px 10px;
   border: solid 1px #4ac0ee;
+  margin: 25px 5px;
+   display: inline-block;
+}
+div#cons_filter {
+    margin: 0;
 }
 #can_wrap {
   margin: 20px 0 0 0;
@@ -520,7 +525,7 @@ form#add_clinic_form label {
   color: #4ac0ee;
   border: solid 1px #4ac0ee;
   background: #ffffff;
-  margin: 0 3px;
+  margin: 30px 3px;
 }
 .undo_redo_col button:hover{ background:#4ac0ee; color:#ffffff;}
 
@@ -1911,7 +1916,7 @@ span.consultation-history-icon{
     float: left;
     padding: 0 5px;
 }
-.patient-page-inputs select, .form-control.required.selectpicker.bs-select-hidden {
+.patient-page-inputs select, .form-control.required.selectpicker.bs-select-hidden, select#refferal_title {
      width: 100%;
     height: 36px;
     border-radius: 6px;
@@ -1930,7 +1935,7 @@ span.consultation-history-icon{
     display: block;
     margin: 5px 0;
 }
-.patient-page-inputs select::-ms-expand, .form-control.required.selectpicker.bs-select-hidden::-ms-expand {
+.patient-page-inputs select::-ms-expand, .form-control.required.selectpicker.bs-select-hidden::-ms-expand, select#refferal_title::-ms-expand {
     display: none;
 }
 .add-helth-btn {
@@ -2270,6 +2275,35 @@ div ul.n_action li {
 
 
 @media all and (max-width:767px){ 
+  .scrolltablemobile, #patientResult_wrapper, #groupListInfo_wrapper, #clinicListingaccess_wrapper {
+    overflow-y: auto;
+}
+
+  .addgroupdesign {
+    text-align: center;
+}
+#groupListInfo_wrapper div#groupListInfo_filter, #patientResult_wrapper .dataTables_filter {
+    float: none;
+}
+  .leftgroupinfo {
+    float: none;
+    width: 100%;
+}
+.leftgroupinfo h2 {
+     font-size: 18px;
+    text-align: center;
+}
+.rightInfo {
+    float: none;
+    width: 100%;
+    text-align: center;
+}
+.leftgroupcreated {
+    float: none;
+}
+.deletefroupbtn {
+    float: none;
+}
   .popcalenderbtn.editap {
     width: 200px;
     margin: 0 auto;
