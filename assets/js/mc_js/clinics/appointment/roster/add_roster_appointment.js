@@ -214,8 +214,8 @@ function getLocationPrac(locationID){
 }
 
 
-	$('.patient_field').keyup(function(){
-
+	// $('.patient_field').keyup(function(){
+$( "body" ).delegate( ".patient_field", "keyup", function() {
 		//alert('hello');
 		var search_for = $('#patient_field').val();
 		var clinicId = $('#clinic_Id').val();

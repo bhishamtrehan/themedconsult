@@ -48,7 +48,10 @@
                   <tr>
                   <td><img src="<?php echo base_url();?>assets/images/notification_image.bmp"></td>
                   <td><?php echo $list['group_name']; ?></td>
-                  <td><a href="<?php echo base_url() ?>clinic/groups/restore/<?php echo $list['id']; ?>" style="color:#000;" class="grpId"><?php echo $this->lang->line('restore'); ?></a></td>
+                  <td>
+<span class="action-btn-sec centeraction"><a href="<?php echo base_url() ?>clinic/groups/restore/<?php echo $list['id']; ?>" style="color:#000;" class="grpId"><span class="restore-icon"></span><span class="linktext"><?php echo $this->lang->line('restore'); ?></span></a></span>
+
+                 </td>
                   </tr>
                   <?php } ?>  
               </tbody>

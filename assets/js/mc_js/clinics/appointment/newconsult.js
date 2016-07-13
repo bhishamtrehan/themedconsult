@@ -91,7 +91,7 @@ $(document).on('click', '.clickbilling', function(){
     $('#billing_detail').val(value+","+oldVal );
 	
 	
-	$( "#selecteddata" ).append('<tr>'+row+'<td class="remove">X</td></tr>');
+	$( "#selecteddata" ).append('<tr>'+row+'<td class="remove"><i class="fa fa-times-circle" aria-hidden="true"></i></td></tr>');
 		
 	
 }); 

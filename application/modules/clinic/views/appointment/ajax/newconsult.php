@@ -373,8 +373,15 @@ echo 'New Consultation';
                                             <div class="row">
                                                 <div class="col-md-6"> <fieldset class="form-group">
                                                         <label for="serviceprovider">Title: </label>
-                                                        <input type="text" class="form-control" name="refferal_title" id="refferal_title" placeholder="Enter service provider">
 
+                                                         <select class="form-control m-b-sm" name="refferal_title" id="refferal_title">
+                                                            <option value="">Select</option>
+                                                            <option value="Mr">Mr</option>
+                                                            <option value="Mrs">Mrs</option>
+                                                            <option value="Asst. Prof">Asst. Prof</option>
+                                                            <option value="Prof">Prof</option>
+                                                            <option value="Dr">Dr</option>
+                                                            </select>
                                                     </fieldset></div>
                                                 <div class="col-md-6">
 

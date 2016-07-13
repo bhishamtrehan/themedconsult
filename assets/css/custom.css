@@ -845,7 +845,7 @@ div#patient_search_results {
   padding: 0 30px 0px 10px;
   background-size: 25px;
 }
-#left_clinic_minicalendar .ui-datepicker select.ui-datepicker-month, #left_clinic_minicalendar .ui-datepicker select.ui-datepicker-year, div#clinicListing_length select, div#clinicListingaccess_length select {
+#left_clinic_minicalendar .ui-datepicker select.ui-datepicker-month, #left_clinic_minicalendar .ui-datepicker select.ui-datepicker-year, div#clinicListing_length select, div#clinicListingaccess_length select, div#patientResult_length select, div#groupListInfo_length select {
   font-size: 11px;
   height: 25px;
   border-radius: 0;
@@ -888,13 +888,17 @@ select:focus{
   outline: none;
 }
 .appointment_dash .table-responsive table.fc-header td {
-    background: rgb(255, 255, 255); 
+    background: #014767;
   
 }
 .appointment_dash span.fc-header-title h2 {
-     color: #014767;
+color: #ECECEC;
     margin: 0px 0 0!Important;
     font-size: 14px;
+    font-weight: bold
+}
+.remove {
+    cursor: pointer;
 }
 .calendar .fc-corner-right.fc-state-active {
   border-color: #59c5ef;
@@ -910,6 +914,7 @@ select:focus{
   width: 220px;
   text-align: left !important;
     padding: 6px 6px !important;
+    background-color: #014767;
 }
 .appointment_dash .table-responsive table td.fc-header-right {
   width: 220px;
@@ -925,7 +930,11 @@ select:focus{
   border-radius: 0;
   background: transparent;
 }
-
+div#patientResult_length select, div#groupListInfo_length select {
+    height: 32px;
+    margin: 0 5px;
+    width: 70px;
+}
 .appointment_dash .table-responsive table thead tr th {
   padding: 10px;
   text-align: center;
@@ -1196,6 +1205,26 @@ label.control-label {
   top: 0;
   background-size: 15px;
   background-repeat: no-repeat;
+}
+.formcentercontent label, .formcentercontent input {
+    display: inline-block;
+    max-width: none;
+    width: auto;
+    font-weight: normal;
+    color: #868080;
+}
+.btncentertopage {
+    display: block;
+    margin: 0 auto;
+    max-width: 192px;
+}
+.fileupsectionpop label, .fileupclass {
+    display: inline-block;
+}
+.fileupsectionpop {
+        max-width: 432px;
+    text-align: center;
+    margin: 0 auto;
 }
 .topmenu-outer ul.dropdown-menu.dropdown-list li:last-child a:before{
   display: none;
@@ -1504,6 +1533,7 @@ h2.c_modal_header , .modal-title {
     display: inline-block;
     width: 100%;
     padding-left: 55px;
+    padding-right: 50px;
 }
 .search_pat_innner .nav-tabs>li , #rootwizard .nav-tabs > li {
     width: 50%;
@@ -1536,6 +1566,8 @@ margin: 20px auto;
     font-size: 14px;
     margin-bottom: 0;
     margin-left: 5px;
+        font-weight: bold;
+    color: #014767;
 } 
 .fileupclass input {
   border: 0;
@@ -1732,7 +1764,7 @@ div.fc-agenda .fc-agenda-axis {
 }
 .rightInfo {
     float: right;
-    width: 35%;
+    width: 37%;
 }
 .leftgroupcreated {
     float: left;
@@ -1791,6 +1823,7 @@ div#patientResult_length {
     border-radius: 6px;
     max-width: 300px;
         text-transform: uppercase;
+           font-weight: bold;
 }
 .patient-page-inputs button:hover{
      background-color: #014767;
@@ -1895,6 +1928,7 @@ span.consultation-history-icon{
     color: #ffffff;
     margin-right: 5px;
     border-radius: 6px;
+       font-weight: bold;
 }
 .add-helth-btn a:hover {
     background-color: #29cdff;
@@ -1904,6 +1938,9 @@ span.message{
 }
 span.view-icon {
       background-image: url('../images/view-detail-icon.png'); 
+}
+span.restore-icon {
+      background-image: url('../images/restore-icon.png'); 
 }
 span.removefromgroup{
      background-image: url('../images/removefromgroup-icon.png'); 
@@ -2133,6 +2170,12 @@ output#list {
 h2.c_modal_header.addnewpopheadertitle {
     margin: -20px -8px 0;
 }
+.custom_title.billcodetitle {
+    margin-bottom: 25px;
+}
+.deletefroupbtn a {
+    font-weight: bold;
+}
 /*********healthprofessional css here*/
 
 @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {  
@@ -2212,6 +2255,29 @@ div ul.n_action li {
 
 
 @media all and (max-width:767px){ 
+  .form-control.clinicadress {
+    margin-bottom: 10px;
+}
+  .search_pat_innner .tab-content {
+    margin: 0;
+  }
+  h2.c_modal_header, .modal-title {
+           font-size: 15px;
+   
+}
+  .formcentercontent {
+    margin-left: 0;
+}
+.formcentercontent label, .formcentercontent input {
+       width: 100%;
+}
+.formcentercontent .form-group {
+    overflow: hidden;
+    margin: 15px;
+}
+  .instructionformpopup {
+    text-align: center;
+}
   #patient_results {
     overflow: auto;
     max-height: 270px;
@@ -2286,7 +2352,11 @@ input#appoint_close{
     border-right: 1px solid #d4d9db;
 }
 .lf_inner ul {
-    width: 460px;
+       display: table;
+    margin: 0 auto
+}
+.lf_inner > ul > li:last-child {
+    border: 0;
 }
 .lf_inner {
      padding: 5px;

@@ -97,16 +97,17 @@ $gst= array(
           <div class="widget">
            
             <div class="widget-content">
-            <div style="display: block;" class="custom_title">
-              <div class="container">
-                <h3><?php   echo $this->lang->line('add_billing');?></h3>
-              </div>
-            </div>
+          
     		    
                <?php echo form_open($baseurl.'clinic/billingcodes/add_billingcode',array('class' => 'form-horizontal form_health','id' => 'add_billing_form')); ?>
                 <fieldset>
                  <br/>
                  <div class="freesheduleform">
+                   <div style="display: block;" class="custom_title billcodetitle">
+              <div class="container">
+                <h3><?php   echo $this->lang->line('add_billing');?></h3>
+              </div>
+            </div>
                  <div class="row">
                   <div class="col-lg-12">
                   <div class="form-group">

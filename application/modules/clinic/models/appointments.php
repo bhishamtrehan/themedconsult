@@ -183,6 +183,31 @@ class Appointments extends CI_Model
 		return $results;
 	}	
 
+	public function get_prescriber_info($inputValues) {
+	
+	
+		$this->db->select("appoint.practitioner_id,hpinfo.name,hpinfo.surname,hpinfo.prescriber_number");
+		$this->db->from($this->table_appointments .' as appoint');
+		$this->db->join($this->table_practitioners .' as hpinfo', 'hpinfo.hp_id = appoint.practitioner_id','inner');
+		
+		$this->db->where('appoint.appointment_id', $inputValues['appId'] );
+		
+		$query = $this->db->get();
+		$results = $query->result();
+		
+		// if($query->num_rows()>0){
+
+        	
+
+			$results = $query->result();
+			
+
+			
+			
+
+		// }   	
+		return $results;
+	}	
 
 	public function searchPatient($inputValues) {
 		

@@ -108,7 +108,6 @@ if(count($appntDetails)>0){
 			foreach($appnt_previous_Details as $appDet_previous){ 
 				?>
 				<tr>
-					<td class="first withborder"></td>
 					<td class="withborder second"><?php echo $appDet_previous->medication; ?></td>
 					<td class="withborder"><?php echo $appDet_previous->dose; ?></td>
 					<td class="withborder"><?php echo $appDet_previous->route; ?></td>
