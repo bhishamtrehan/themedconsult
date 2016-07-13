@@ -63,14 +63,24 @@
 		<div class="col-md-12 form-group">
 		<input type="hidden" value="create" name="action">
 		<input type="hidden" value="<?php echo $appId; ?>" name="appointment_id">
+
+		<?php foreach ($prescriberDetails as $prescriberDetail) {
+// echo "test";
+// print_r($prescriberDetail);
+
+			?>
+		
           <div class="col-md-5">
 		  	<label for="notes"><?php echo $this->lang->line('medication_prescriber_name');?></label>
-			<input type="text" id="prescriber_name" class="form-control" readonly="" name="prescriber_name" value="xbdfb">
+		  	<input type="hidden" id="prescriber_id" class="form-control" readonly="" name="prescriber_id" value="<?php echo $prescriberDetail->practitioner_id; ?>">
+			<input type="text" id="prescriber_name" class="form-control" readonly="" name="prescriber_name" value="<?php echo $prescriberDetail->name.' '.$prescriberDetail->surname; ?>">
 		  </div>
 		  <div class="col-md-5">
 		  	<label for="startdate2"><?php echo $this->lang->line('medication_prescriber_number');?></label>
-			<input type="text" id="prescriber_number" class="form-control" readonly="" name="prescriber_number" value="12345">
+			<input type="text" id="prescriber_number" class="form-control" readonly="" name="prescriber_number" value="<?php echo $prescriberDetail->prescriber_number; ?>">
 		  </div>
+
+		  <?php }?>
         </div>
 		<div class="col-md-12 form-group">
           <div class="col-md-6">

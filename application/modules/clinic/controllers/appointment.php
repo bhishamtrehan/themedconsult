@@ -116,7 +116,7 @@ class Appointment extends CI_Controller
                             }  
 
                             //echo '<pre>'; print_r($patient_counts); exit;
-                    redirect('/clinic/rosterView');        
+                    redirect('/clinic/dashboard');        
 			    //echo '<script type="text/javascript">self.close();window.opener.location.reload();</script>';
 			}
 		}
@@ -217,7 +217,7 @@ class Appointment extends CI_Controller
 		$data['locationDetails']  = $this->manage_locations->getLocationDetails($this->encryption->decode($this->session->userdata['clinic_location']));
 		$data['room_id'] = $this->input->get('resource');
 		$data['prac_resource']	  = $this->general->get_locaation_prac_details($this->input->get('resource'));
-		$this->load->view('inc/header', $data);
+		//$this->load->view('inc/header', $data);
 		$this->load->view('clinic/appointment/roster/add_roster_appointment', $data);
 	}
 
@@ -1645,6 +1645,7 @@ public function add_medication(){
 
 	$data = $this->glbl('clinic_access','clinic_location_access');
 		$inputValues = $this->input->post();
+	
 
 
 		if(isset($inputValues['action'])) {
@@ -1652,7 +1653,9 @@ public function add_medication(){
 			$create = $this->appointments->save_medications($inputValues);
 			$data['appntDetails'] = $this->appointments->get_medications($appntID);
 			$this->load->view('clinic/appointment/ajax/show_medications', $data);
-		}else{
+			
+			}else{
+
 			$data['route'] = $output = $this->settings->getSettingData('mc_route');
 			
 			$data['frequency'] = $output = $this->settings->getSettingData('mc_frequency');
@@ -1660,6 +1663,10 @@ public function add_medication(){
 			
 			 $data['appId'] = $inputValues['appId'];
 			
+		 
+		 $data['prescriberDetails'] = $this->appointments->get_prescriber_info($inputValues);
+			
+
 			$this->load->view('clinic/appointment/ajax/add_medications', $data);
 		}
 
