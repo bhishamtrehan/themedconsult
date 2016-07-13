@@ -1026,7 +1026,8 @@ public function cancel_calendar_appointment() {
 			$inputValues = $this->input->post();
 			$inputValues['author_id'] = $this->tank_auth->ci->session->userdata['user_id'];
 			$dataSuccess = $this->appointments->update_roster($inputValues);
-			echo '<script type="text/javascript">self.close();window.opener.location.reload();</script>';
+			//echo '<script type="text/javascript">self.close();window.opener.location.reload();</script>';
+			redirect('/clinic/rosterView');
 		}
 		$startDateTime 		 	 = $this->input->get('startDate');
 		$endDateTime 		 	 = $this->input->get('endDate');
@@ -1046,7 +1047,7 @@ public function cancel_calendar_appointment() {
 		$data['locationDetails']  = $this->manage_locations->getLocationDetails($clinicID);
 		//echo '<pre>'; print_r($this->input->get('resource')); exit;
         $data['room_id']	  = $this->input->get('resource');
-		$this->load->view('inc/header', $data);
+		//$this->load->view('inc/header', $data);
 		$this->load->view('clinic/appointment/roster/add_roster_appointment', $data);		
 	}
 
@@ -1096,9 +1097,7 @@ public function instruction_patient(){
 public function add_instruction_patient(){
 	$data = $this->glbl('clinic_access','clinic_location_access');
 		$inputValues = $this->input->post();
-		echo "<pre>";
-		print_r($inputValues);
-		die();
+		
 	
 		 $data = $inputValues['src'];
 		 $filename = str_replace( " ", "-", basename($inputValues['upload_file']) );
@@ -1114,16 +1113,23 @@ public function add_instruction_patient(){
 		if(isset($inputValues,$filename)) {
 			
 			$data['inst_status'] = $this->appointments->insert_instruction_patient($inputValues,$filename);		
-			//echo $data['inst_status'];
-			if(empty($data['inst_status'])){
+		//print_r($data['inst_status']);
+			
+			if($data['inst_status']=="1"){
 			// die('dfghj');
 				// $this->session->set_flashdata('s_message', 'Data Added Successfully!');
 				echo '<div class="success_message"><span>Data Added Successfully</span></div>';
 
 
-			}
+			} else { 
+
+
+			echo '<div class="success_message"><span>Data Added Successfully</span></div>';
+
+				}
 				
 			$this->load->view('clinic/appointment/ajax/add_instruction_to_patient', $data);
+		
 
 		}
 

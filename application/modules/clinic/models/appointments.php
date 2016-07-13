@@ -194,7 +194,7 @@ class Appointments extends CI_Model
 		
 		$query = $this->db->get();
 		$results = $query->result();
-		
+
 		// if($query->num_rows()>0){
 
         	
@@ -1405,7 +1405,18 @@ public function get_billing_summerybyId($pid) {
 		// die();
 		if($inputValues != '' || $filename !='') {
 	
-		
+				if($filename == ''){
+
+				$ipAddress  = $this->mc_constants->remote_ip();
+			$inst_patient['url']    = $inputValues['url'];
+			$inst_patient['appt_id']    = $inputValues['appt_id'];
+			//$inst_patient['file_name'] 	 	 = $filename;
+			//$inst_patient['file_path']  	 = base_url().'assets/images/appointment/';
+			$inst_patient['created_ip']   = $ipAddress;
+			$inst_patient['created_date'] = @date('Y-m-d H:i:s');
+
+
+				} else{
 
 			$ipAddress  = $this->mc_constants->remote_ip();
 			$inst_patient['url']    = $inputValues['url'];
@@ -1416,12 +1427,13 @@ public function get_billing_summerybyId($pid) {
 			$inst_patient['created_date'] = @date('Y-m-d H:i:s');
 			//$inst_patient['created_by']   = $inputValues['author_id'];	
 
+			}
 
 			try {
 				$this->db->trans_begin(); 
 			   $this->db->insert($this->mc_instruction_to_patient, $inst_patient);
 				$this->db->trans_commit();
-		        $return = 'successfully';				
+		        $return = '1';				
 		    }
 			catch (Exception $e) {
 				$this->db->trans_rollback();

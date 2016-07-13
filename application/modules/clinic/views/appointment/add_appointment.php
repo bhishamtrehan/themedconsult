@@ -382,7 +382,7 @@ $patientSearchFor = array(
               ?>
               <?php //echo form_submit('button', 'Close', "id='appoint_close' class='btn btn-primary btn-block' onclick='self.close();'"); ?>
                <input type="button" name="hiddenbutton" style="display:none;" value="submit" id="appt_valid" class="btn btn-primary btn-block">
-              <input type="button" name="button" value="Close" id="appoint_close" class="btn btn-primary btn-block" onclick="self.close();">
+              <input type="button" name="button" value="Close"  data-dismiss="modal" class="btn btn-primary">
         </div>
         <div role="tabpanel" class="tab-pane" id="profile">
           <!--  <form enctype="multipart/form-data" method="post" action="" name="register_spcialist" id="register_spcialist" class="form-horizontal m_4_input m_lable-style" novalidate="novalidate"> -->
@@ -479,7 +479,7 @@ $patientSearchFor = array(
               ?>
               <?php //echo form_submit('button', 'Close', "id='appoint_close' class='btn btn-primary btn-block' onclick='self.close();'"); ?>
                <input type="button" name="hiddenbutton" value="submit" id="appt_validat" class="btn btn-primary btn-block">
-              <input type="button" name="button" value="Close" id="appoint_close" class="btn btn-primary btn-block" onclick="self.close();">
+              <input type="button" name="button" value="Close"  data-dismiss="modal"  class="btn btn-primary btn-block">
 
 
         </div>

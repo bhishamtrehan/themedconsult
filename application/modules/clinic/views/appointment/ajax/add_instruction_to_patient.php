@@ -60,6 +60,7 @@ $upload_file = array(
 		<div class="btncentertopage">
 		<input type="hidden" name="appt_id" id="appt_id" value="<?php echo $apptId; ?>">
 		<button id="inst_submit" class="btn btn-primary"><?php echo $this->lang->line('submit');?></button>
+		<img style="display:none" id="loading_image" src="<?php echo base_url();?>assets/images/loading_image.gif"/>
 			 <?php //echo form_submit('submit', $this->lang->line('button'),"class='btn btn-primary btn-block' id='inst_submit'"); ?>
 		</div>
 	</div> 				

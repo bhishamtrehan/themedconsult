@@ -352,6 +352,7 @@ $(document).ready(function(){
  }
 
 function appoint_popitup(url) {
+
 	newwindow=window.open(url,"name","height=470,width=850,top=20,left=20,scrollbars=0,resizable=0,fullscreen=0");
 	//if (window.focus) {newwindow.focus()}
         try 
@@ -368,7 +369,7 @@ function appoint_popitup(url) {
 }
 
 function popitup(url) {
-//	alert('fhjhgffgf');
+	//alert('fhjhgffgf');
 
 	  BootstrapDialog.show({
      	cssClass: 'add_c_appointment',
