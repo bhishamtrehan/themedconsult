@@ -202,7 +202,7 @@ $patientSearchFor = array(
 		<div class="col-xs-4"><label><?php //echo $this->lang->line('notes_on_roster');?>:</label></div>
 		<div class="col-xs-8">
 			 <?php //echo form_input($appointment_notes); ?>
-		</div>
+		</div> 
 	</div> -->
 	<?php echo form_hidden('clinic_location', $this->session->userdata['clinic_location']);
 	echo form_hidden('roster_duration', $rostDuration);
