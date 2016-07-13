@@ -406,6 +406,22 @@ public function cancel_calendar_appointment() {
         
 	}
 
+	public function billing_summerybyId() {
+			$data = $this->glbl('clinic_access','clinic_location_access');
+			$inputValues = $this->input->post();
+
+			$pid = $inputValues['pId'];   
+			if(isset($inputValues)) {
+			
+			$data['billDetails'] = $this->appointments->get_billing_summerybyId($pid);
+			//print_r($data['appntDetails']);
+			// die();
+
+			$this->load->view('clinic/appointment/ajax/billing_summery', $data);
+			}
+        
+	}
+
 
 	public function consultation_history() {
 			$data = $this->glbl('clinic_access','clinic_location_access');
@@ -1700,6 +1716,24 @@ public function add_medication(){
 					 
 			$data['appntID'] = $appntID;
 			$data['patientDetails'] = $this->appointments->getPatientDetails($appntID);
+			
+			$this->load->view('clinic/appointment/ajax/show_patients_details', $data);
+		}
+
+	}	
+
+	/**** Patient details popup start ******/
+	public function showPatientsDetailsbyId(){
+	$data = $this->glbl('clinic_access','clinic_location_access');
+		$inputValues = $this->input->post();
+
+		
+		
+		if(isset($inputValues)) {
+			 $pid = $inputValues['pId']; 
+					 
+			
+			$data['patientDetails'] = $this->appointments->getPatientDetailsbyId($pid);
 			
 			$this->load->view('clinic/appointment/ajax/show_patients_details', $data);
 		}

@@ -210,7 +210,7 @@ $patientSearchFor = array(
 	echo form_hidden('roster_duration', $rostDuration);
     echo form_input(array('name' => 'form_save', 'type'=>'hidden', 'id' =>'form_save'));
 	echo form_input($appointment_type);
-	echo form_input($location_prac);
+	echo form_input($location_prac); 
 	echo form_input($appointment_id);
 	echo form_input($patient_field_id);
 	echo form_input($appointment_date); ?>

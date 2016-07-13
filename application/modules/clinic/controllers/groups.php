@@ -235,6 +235,15 @@ class Groups extends CI_Controller
 		// die;
 	}
 
+	public function removeFrmGrp(){
+		$data = $this->glbl_login();
+
+		$inputInfo = $this->input->post();
+		$removeGrp = $this->manage_groups->removePatientFrmGrp($inputInfo);
+
+		echo $removeGrp;
+	}
+
 	
 	
 }

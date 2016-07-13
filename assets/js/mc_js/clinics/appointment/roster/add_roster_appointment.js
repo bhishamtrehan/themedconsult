@@ -158,7 +158,7 @@ function ConvertTimeformat(format, str) {
 }
 function update_duration() {
 	var startHour 	= $('#appointment_hour').val();
-	var startMin 	= $('#appointment_minute').val();
+	var startMin 	= $('#appointment_minute').val(); 
 	var startFormat = $('#appointment_time_format').val();
 	var endHour 	= $('#appointment_end_hour').val();
 	var endMin 		= $('#appointment_end_minute').val();

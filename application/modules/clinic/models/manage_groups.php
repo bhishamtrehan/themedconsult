@@ -317,4 +317,11 @@ class Manage_groups extends CI_Model
 			return array();
 		}
 	}
+
+	public function removePatientFrmGrp($input){
+		 $this->db->where('group_id', $input['gid']);
+		 $this->db->where('member_id', $input['pId']);
+  		 return $this->db->delete($this->mc_groups_members); 
+
+	}
 }
