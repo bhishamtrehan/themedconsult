@@ -1080,7 +1080,9 @@ public function instruction_patient(){
 public function add_instruction_patient(){
 	$data = $this->glbl('clinic_access','clinic_location_access');
 		$inputValues = $this->input->post();
-		// echo "<pre>";
+		echo "<pre>";
+		print_r($inputValues);
+		die();
 	
 		 $data = $inputValues['src'];
 		 $filename = str_replace( " ", "-", basename($inputValues['upload_file']) );
@@ -1136,7 +1138,7 @@ public function new_consult(){
 			$this->load->view('inc/header', $data);
 			$this->load->view('inc/master_menu/clinic_menu');
 			$this->load->view('clinic/appointment/ajax/newconsult', $data);
-			$this->load->view('inc/footer', $data);
+			//$this->load->view('inc/footer', $data);
 			//$this->load->view('inc/header', $data);
 			
 		 }
