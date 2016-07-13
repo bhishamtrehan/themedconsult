@@ -1136,6 +1136,7 @@ public function new_consult(){
 			$this->load->view('inc/header', $data);
 			$this->load->view('inc/master_menu/clinic_menu');
 			$this->load->view('clinic/appointment/ajax/newconsult', $data);
+			$this->load->view('inc/footer', $data);
 			//$this->load->view('inc/header', $data);
 			
 		 }
