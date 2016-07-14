@@ -2303,7 +2303,7 @@ public function insert_consult_upload_pdf($inputValues,$config)
 
 public function get_all_consult_pdf($userid)
 
-	{			echo $userid;
+	{			//echo $userid;
 		
 				
 		if($userid != 0 && $userid != '')

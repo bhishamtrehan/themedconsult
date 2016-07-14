@@ -4,6 +4,7 @@
 		<?php 
 		echo $this->lang->line('pdf'); 
 
+	print_r($pdfResults);
 		
 		?>	
 	</h4>
@@ -25,7 +26,7 @@
 <?php //foreach ($variable as $key => $value) {
 	# code...
 
-	print_r($data);
+	print_r($pdfResults);
 //}
 ?>
 </div>

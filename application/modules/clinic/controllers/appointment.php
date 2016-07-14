@@ -1804,7 +1804,7 @@ public function consult_pdf() {
          $userid = $this->tank_auth->ci->session->userdata['user_id'];
       
             $data['pdfResults']   = $this->appointments->get_all_consult_pdf($userid);
-            $this->load->view('clinic/appointment/ajax/view_pdf', array('userid'=>$userid),$data);
+            $this->load->view('clinic/appointment/ajax/view_pdf', array('userid'=>$userid),$data['pdfResults']);
         
     
          
@@ -1816,7 +1816,7 @@ public function consult_pdf() {
                  
 			$images=$_FILES['new_pdf_file'];
 			//print_r($images);
-
+  
 			//$fielname= $images['name'];
 			
 
