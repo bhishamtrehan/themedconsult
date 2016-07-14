@@ -1796,5 +1796,19 @@ public function add_medication(){
 	}
 	/**** Patient details popup ends ******/
 
+
+public function consult_pdf() {
+         $data = $this->glbl('clinic_access','clinic_location_access');    
+         $inputValues = $this->input->post();
+         //$clinicID = $inputValues['clinicId'];
+
+            //$data['parcResults']   = $this->appointments->searchParcts($inputValues);
+            $this->load->view('clinic/appointment/ajax/view_pdf', $data);
+        
+    
+         
+     } 
+
+
 	
 }
