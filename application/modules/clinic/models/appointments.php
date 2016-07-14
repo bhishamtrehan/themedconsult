@@ -1809,10 +1809,13 @@ public function get_billing_summerybyId($pid) {
 	   $hpID = $this->encryption->encode($inputValues['hp_id']); 
 	 $hpname = $inputValues['hp_name']; 
 
-		// $files['userfile']['name'][0];
 		// echo "<pre>";
 		// print_r($inputValues);
 
+		// echo "<pre>";
+		// print_r($_FILES);
+		// die('eghjk');
+		
 
 
 		$return = false;
@@ -1833,8 +1836,8 @@ public function get_billing_summerybyId($pid) {
 			
 			
 		
-				// echo "<pre>";
-			// print_r($consultType);
+				echo "<pre>";
+			print_r($consultType);
 			// 	die();
 			//$appntType['last_modified_by']   = $inputValues['author_id'];
 		 $billingType['billing_detail']   	 	 	 = $inputValues['billing_detail'];
@@ -1848,7 +1851,7 @@ public function get_billing_summerybyId($pid) {
 			$this->db->trans_begin(); 
 			
 			
-			    $this->db->insert($this->mc_consultation, $consultType);
+			    //$this->db->insert($this->mc_consultation, $consultType);
 			
 				 $insert_id = $this->db->insert_id();
 			
@@ -1857,10 +1860,10 @@ public function get_billing_summerybyId($pid) {
 				
 				 $billing_code['consultation_id']=$insert_id;
 				 $billing_code['billing_codes_id']=$billing_codes[$i];
-				//  echo "<pre>";
-				// print_r($billing_code);
+				 echo "<pre>";
+				print_r($billing_code);
 
-				  $this->db->insert($this->mc_billing_relation, $billing_code);
+				  //$this->db->insert($this->mc_billing_relation, $billing_code);
 				  
 				 }
 				
@@ -1873,10 +1876,10 @@ public function get_billing_summerybyId($pid) {
 		
 			$consultInvest['created_ip'] =  $ipAddress;
 			$consultInvest['created_date'] = @date('Y-m-d H:i:s');
-			//  echo "<pre>";
-			// print_r($consultInvest);
+			 echo "<pre>";
+			print_r($consultInvest);
 			
-			$this->db->insert($this->mc_consult_investigation, $consultInvest);
+			//$this->db->insert($this->mc_consult_investigation, $consultInvest);
 				 
 				   $consultRefferal['consultation_id']=$insert_id;
 				 $consultRefferal['refferal_title'] = $inputValues['refferal_title'];
@@ -1889,10 +1892,10 @@ public function get_billing_summerybyId($pid) {
 			$consultRefferal['created_ip'] =  $ipAddress;
 			$consultRefferal['created_date'] = @date('Y-m-d H:i:s');
 
-			// echo "<pre>";
-			// print_r($consultRefferal);
+			echo "<pre>";
+			print_r($consultRefferal);
 
-				 $this->db->insert($this->mc_consult_refferal, $consultRefferal);
+				// $this->db->insert($this->mc_consult_refferal, $consultRefferal);
 
 				
 			 		 $consult_media_count=count($files['mediafiles']['name']);
@@ -1909,9 +1912,11 @@ public function get_billing_summerybyId($pid) {
 		
 			$consultmedia['created_ip'] =  $ipAddress;
 			$consultmedia['created_date'] = @date('Y-m-d H:i:s');
-				 
-	
-			$this->db->insert( $this->mc_consultation_media, $consultmedia);	
+			
+			echo "<pre>";
+			print_r($consultmedia);	 
+			
+		//	$this->db->insert( $this->mc_consultation_media, $consultmedia);	
 				}
 			}
 
@@ -1930,9 +1935,9 @@ public function get_billing_summerybyId($pid) {
 
 				$capturemedia['created_ip'] =  $ipAddress;
 				$capturemedia['created_date'] = @date('Y-m-d H:i:s');
-				// echo "<pre>";
-				// print_r($capturemedia);
-			 $this->db->insert( $this->mc_consultation_media, $capturemedia);	
+				echo "<pre>";
+				print_r($capturemedia);
+			// $this->db->insert( $this->mc_consultation_media, $capturemedia);	
 			 	}
 			 }
 			 ///capture image uploading
@@ -1948,14 +1953,14 @@ public function get_billing_summerybyId($pid) {
 			$consult_clinical_notes['created_date'] = @date('Y-m-d H:i:s');
 				 
 
-			// echo "<pre>";
-			// print_r($consult_clinical_notes);
+			echo "<pre>";
+			print_r($consult_clinical_notes);
 
 
-			 $this->db->insert( $this->mc_consult_clinical_notes, $consult_clinical_notes);	 
+			 //$this->db->insert( $this->mc_consult_clinical_notes, $consult_clinical_notes);	 
 				
 
-
+				die('done');
 
 				$this->db->trans_commit();
 		        $return = true;				

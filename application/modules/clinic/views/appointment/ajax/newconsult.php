@@ -214,6 +214,22 @@ echo 'New Consultation';
 
 
                                                 <div class="column-left links col-md-3 undo_redo_col">
+                                                 <!--<div class="clickimgdoc">
+                                         <img src="<?php echo base_url();?>/assets/images/document-icon.png">
+                                         <span>Document</span>
+                                         </div>-->
+                                            <div class="clickimgpdf">
+                                      <img src="<?php echo base_url();?>assets/images/pdf-icon.png">
+                                       <span>PDF</span>
+                                           </div>
+
+                                               
+
+
+
+
+
+
                                                     <button style="cursor:pointer;" onclick="javascript:cUndo();
                                                             return false;"><i class="fa fa-undo"></i>
                                                     </button>
@@ -343,7 +359,7 @@ echo 'New Consultation';
                                             <div class="uploadImage">
                                            
                                                   Attach Media
-                                                         <input type="file" value="" data-rel="fileToUpload1" id="fileToUpload1" class="browse  fileToUpload1a NFI-current" multiple="" name="investigation"> 
+                                                         <input type="file" value="" data-rel="fileToUpload1" id="fileToUpload1" class="browse  fileToUpload1a NFI-current" multiple="" name="investigation[]"> 
 
                                                      
                                                             <output id="result_invest" /></output>
@@ -404,7 +420,7 @@ echo 'New Consultation';
                                             </fieldset>
                                             <div class="uploadImage">
                                              Attach Media
-                                                            <input type="file" value="" data-rel="fileToUpload2" id="fileToUpload2" multiple="" class="browse  fileToUpload2a NFI-current" name="refferal">
+                                                            <input type="file" value="" data-rel="fileToUpload2" id="fileToUpload2" multiple="" class="browse  fileToUpload2a NFI-current" name="refferal[]">
                                                     <!--	<input name="refferal_image" type="hidden" value="" id="refferal_image">-->
                                                         <output id="result_reff"></output> 
 
@@ -1346,3 +1362,33 @@ $(this).remove();
 
 
     </script>						
+<script type="text/javascript">
+     $(document).ready(function() {
+
+$(".clickimgpdf").click(function(){
+   $('body').addClass("show_loader");
+
+    $.ajax({
+            type: "POST",
+            url: baseUrl+"clinic/appointment/consult_pdf", 
+         
+            dataType: "html",  
+            cache:false,
+            success: function (response) {
+            
+            $( ".modal-content" ).html(response);
+                $('body').removeClass("show_loader");
+                    $( ".btn-lg" ).trigger( "click" );
+            
+                
+            }
+        });
+
+ });
+});
+
+
+
+
+
+</script>

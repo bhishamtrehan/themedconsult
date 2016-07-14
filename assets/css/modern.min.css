@@ -2831,7 +2831,7 @@ tr.group:hover {
   display: block
 }
 .navbar .logo-box .logo-text img {
-  max-width: 180px;
+  /*max-width: 180px;*/
 }
 
 .navbar .logo-box a:focus,

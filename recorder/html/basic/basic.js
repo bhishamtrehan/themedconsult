@@ -1,3 +1,4 @@
+var baseUrl = document.location.origin+'/themedconsult/';
 $(function () {
 
   var RECORDER_APP_ID = "recorderApp";
@@ -8,7 +9,7 @@ $(function () {
   var flashvars = {'upload_image': '../images/upload.png'};
   var params = {};
   var attributes = {'id': RECORDER_APP_ID, 'name': RECORDER_APP_ID};
-  swfobject.embedSWF("http://192.168.25.202/themedconsult/recorder/html/recorder.swf", "flashcontent", appWidth, appHeight, "11.0.0", "", flashvars, params, attributes);
+  swfobject.embedSWF(baseUrl+"recorder/html/recorder.swf", "flashcontent", appWidth, appHeight, "11.0.0", "", flashvars, params, attributes);
 
   window.fwr_event_handler = function fwr_event_handler() {
     var name, $controls;

@@ -394,5 +394,10 @@ $lang['bill_sum']          = 'Billing Summary';
 $lang['remove_from_group'] = 'Remove from group';
 $lang['message']           = 'Message';
 $lang['title_patientss']     = 'Patient';
+
+
+
+
+
 /* End of file universal_lang.php */
 /* Location: ./application/language/english/universal_lang.php */

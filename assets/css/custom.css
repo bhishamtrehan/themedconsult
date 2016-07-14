@@ -12,6 +12,23 @@
   font-weight: 400;
   margin: 5px 0 0;
 }
+.popup_section {
+    text-align: center;
+}
+.popup_section input {
+    background: #014767;
+    padding: 8px;
+    border-radius: 6px;
+    border: 0;
+    font-weight: bold;
+}
+.popup_section input:hover {
+    background: #4AC0EE;
+    text-shadow:0 0 0;
+     border: 0;
+     box-shadow:0 0 0;
+    
+}
 .custom_title a {
   float: right;
 }
@@ -75,22 +92,38 @@ input.btn.btn-primary.btn-block {
   height: 100%;
       padding-top: 62px;
 }
+.clickimgdoc, .clickimgpdf {
+    display: inline-block;
+    vertical-align: top;
+}
+.clickimgdoc img, .clickimgpdf img {
+    display: block;
+    margin: 3px 10px;
+    max-width: 70px;
+}
+.clickimgdoc span, .clickimgpdf span {
+    color: #b7b7b7;
+    font-weight: bold;
+}
 .custom_new {
 /*  text-align: right;*/
  /* margin: 0 0 10px 0;*/
 }
-output#list span img {
+.popcalenderbtn input.btn.btn-block {
+    margin: 0 5px !important;
+}
+output#list span img, output#result_invest span img, output#result_reff span img {
     width: auto;
     height: 120px;
     display: inline-block;
     overflow: hidden;
 }
-output#list span {
+output#list span, output#result_invest span, output#result_reff span {
     display: inline-block;
    margin: 10px;
     position: relative;
 }
-output#list span span.cross-arow {
+output#list span span.cross-arow, output#result_invest span span.cross-arow, output#result_reff span span.cross-arow {
     position: absolute;
     right: -17px;
     top: -13px;
@@ -355,6 +388,11 @@ table.dataTable tfoot th, table.dataTable tfoot td{
   color: #4ac0ee;
   padding: 5px 10px;
   border: solid 1px #4ac0ee;
+  margin: 25px 5px;
+   display: inline-block;
+}
+div#cons_filter {
+    margin: 0;
 }
 #can_wrap {
   margin: 20px 0 0 0;
@@ -504,7 +542,7 @@ form#add_clinic_form label {
   color: #4ac0ee;
   border: solid 1px #4ac0ee;
   background: #ffffff;
-  margin: 0 3px;
+  margin: 30px 3px;
 }
 .undo_redo_col button:hover{ background:#4ac0ee; color:#ffffff;}
 
@@ -1606,11 +1644,13 @@ select.clinic_state.form-control.m-b-sm::-ms-expand, .clinic_city.form-control.m
     margin-bottom: 15px;
 }
 .patient_lists td, .patient_lists th {
-    padding-bottom: 5px;
-    padding-left: 0;
-    padding-right: 15px;
-    padding-top: 5px;
+    padding: 8px 8px !important;
+    border: 1px solid #ddd;
+    text-align: center;
 }
+.patient_lists tr:nth-child(2n+1){
+    background-color: #f1f7f9;
+  }
 .result_hpinfo {
     margin-bottom: 10px;
     margin-left: 0;
@@ -1893,7 +1933,7 @@ span.consultation-history-icon{
     float: left;
     padding: 0 5px;
 }
-.patient-page-inputs select, .form-control.required.selectpicker.bs-select-hidden {
+.patient-page-inputs select, .form-control.required.selectpicker.bs-select-hidden, select#refferal_title {
      width: 100%;
     height: 36px;
     border-radius: 6px;
@@ -1912,7 +1952,7 @@ span.consultation-history-icon{
     display: block;
     margin: 5px 0;
 }
-.patient-page-inputs select::-ms-expand, .form-control.required.selectpicker.bs-select-hidden::-ms-expand {
+.patient-page-inputs select::-ms-expand, .form-control.required.selectpicker.bs-select-hidden::-ms-expand, select#refferal_title::-ms-expand {
     display: none;
 }
 .add-helth-btn {
@@ -2093,12 +2133,9 @@ form#add_clinic_form .public-patient-sec label {
 form#add_clinic_form .uplodeimgsec input {
         display: inline-block;
     vertical-align: middle;
-    position: relative;
-       color: transparent;
-    width: 90px;
-    margin-bottom: 20px;
+  
 }
-form#add_clinic_form .uplodeimgsec input:after {
+/*form#add_clinic_form .uplodeimgsec input:after {
     width: 89px;
     background: #014767;
     content: "BROWSE";
@@ -2108,7 +2145,7 @@ form#add_clinic_form .uplodeimgsec input:after {
     left: 1px;
     border-radius: 6px;
     top: -7px;
-}
+}*/
 .fields.dobFieldsNext2.uplodeimgsec {
     margin: 30px 0;
 }
@@ -2255,6 +2292,47 @@ div ul.n_action li {
 
 
 @media all and (max-width:767px){ 
+  .scrolltablemobile, #patientResult_wrapper, #groupListInfo_wrapper, #clinicListingaccess_wrapper {
+    overflow-y: auto;
+}
+
+  .addgroupdesign {
+    text-align: center;
+}
+#groupListInfo_wrapper div#groupListInfo_filter, #patientResult_wrapper .dataTables_filter {
+    float: none;
+}
+  .leftgroupinfo {
+    float: none;
+    width: 100%;
+}
+.leftgroupinfo h2 {
+     font-size: 18px;
+    text-align: center;
+}
+.rightInfo {
+    float: none;
+    width: 100%;
+    text-align: center;
+}
+.leftgroupcreated {
+    float: none;
+}
+.deletefroupbtn {
+    float: none;
+}
+  .popcalenderbtn.editap {
+    width: 200px;
+    margin: 0 auto;
+}
+  .popcalenderbtn {
+    display: table;
+    margin: 0 auto;
+    text-align: center;
+}
+.popcalenderbtn input.btn.btn-block {
+    margin: 10px !important;
+}
   .form-control.clinicadress {
     margin-bottom: 10px;
 }

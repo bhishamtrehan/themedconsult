@@ -32,7 +32,7 @@
         <div class="panel panel-white dashboardWrap">
             
           
-
+<div class="scrolltablemobile">
              <table id="groupListInfo" class="tt view_php display table table-sorting table-hover table-bordered datatable dataTable no-footer" cellspacing="0" width="100%">
               <thead>
                 <tr>
@@ -54,7 +54,7 @@
               </tbody>
 
             </table>
-
+</div>
 
             <!-- /container --> 
           <!-- END BOTTOM: LEFT NAV AND RIGHT MAIN CONTENT --> 

@@ -99,3 +99,5 @@ $lang['medication_medication']	= 'Medication';
 $lang['add_medication']	= 'Add Medications';
 
 
+// add consult pdf section 
+$lang['pdf']     = 'Pdf';

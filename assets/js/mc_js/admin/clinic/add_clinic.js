@@ -90,11 +90,11 @@ jQuery.validator.addMethod("nospace",function(spaceset, element){
 			country: {
 				required: true,
 			},
-			clinic_suburb: {
-				required: function(element) {
-				return $("#country").val() == 'AU';
-			  }
-			},
+			// clinic_suburb: {
+			// 	required: function(element) {
+			// 	return $("#country").val() == 'AU';
+			//   }
+			// },
 			clinic_state: {
 				required: true,
 			},
@@ -320,3 +320,18 @@ function addNewRoom(cliLngth){
 function removeRoom(inpId){
 	$('#newroom_'+inpId).remove();
 }
+
+$("#country").change(function(){
+ //	alert($(this).val());
+  if($(this).val()!='AU'){
+
+$('.clinic_suburb').attr("disabled", true); 
+}
+else
+{
+$('.clinic_suburb').attr("disabled", false); 
+
+
+
+}
+});

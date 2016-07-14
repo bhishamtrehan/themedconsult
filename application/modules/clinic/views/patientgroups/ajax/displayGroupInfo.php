@@ -9,7 +9,7 @@
         <a class="btn btn-all" href="<?php echo base_url() ?>clinic/groups/deleteGroup/<?php echo $GroupDetails->id; ?>"><?php echo $this->lang->line('delete_group'); ?></a>
         </div>
       </div>
-
+<div class="scrolltablemobile">
       <table id="patientResult" class="tt view_php display table table-sorting table-hover table-bordered datatable dataTable no-footer" cellspacing="0" width="100%">
         <thead>
           <tr>
@@ -48,7 +48,7 @@
         </tbody>
 
       </table>
-  
+  </div>
   
   </div>
 

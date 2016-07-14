@@ -904,6 +904,21 @@ public function cancel_calendar_appointment() {
 		}	
 	}	
 
+
+
+	public function consult_pdf() {
+		$data = $this->glbl('clinic_access','clinic_location_access');	
+		$inputValues = $this->input->post();
+		//$clinicID = $inputValues['clinicId'];
+
+			//$data['parcResults']   = $this->appointments->searchParcts($inputValues);
+			$this->load->view('clinic/appointment/ajax/view_pdf', $data);
+		
+	
+		
+	}
+
+
 	//Search end
 	public function edit_type(){
 	    $data = $this->glbl('clinic_access');
@@ -1503,10 +1518,7 @@ public function new_consultation(){
 	$data = $this->glbl('clinic_access','clinic_location_access');
 	$inputValues = $this->input->post();
 
-		// $audio_upload = $this->upload_audio_files();
-		// print_r($audio_upload);
-		// die();
-		
+	
 
 
 
