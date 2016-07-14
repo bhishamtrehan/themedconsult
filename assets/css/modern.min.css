@@ -1859,7 +1859,7 @@ box-shadow: 0 0 0;
 }
 
 .modal {
-  z-index: 9999999
+  z-index: 999999;
 }
 
 .modal-content {
@@ -1904,7 +1904,7 @@ box-shadow: 0 0 0;
 }
 
 .modal-backdrop {
-  z-index: 999999
+  z-index: 9999
 }
 
 .pagination>li>a {

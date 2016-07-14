@@ -2318,6 +2318,11 @@ div ul.n_action li {
 
 
 @media all and (max-width:767px){ 
+  .freesheduleform input.btn.btn-primary.btn-block {
+    margin: 0 auto;
+    display: table;
+    float: none !important;
+}
   .scrolltablemobile, #patientResult_wrapper, #groupListInfo_wrapper, #clinicListingaccess_wrapper {
     overflow-y: auto;
 }
@@ -2622,6 +2627,9 @@ div#clinicListingaccess_length {
   }
 }
 @media screen and (max-width:580px){
+  div#rootwizard li a {
+    height: 55px;
+}
     .search_pat_innner .nav-tabs>li a {
     height: 50px;
     line-height: 1.5;
