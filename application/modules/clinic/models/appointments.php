@@ -2008,7 +2008,7 @@ public function get_billing_summerybyId($pid) {
 			 $this->db->insert( $this->mc_consult_clinical_notes, $consult_clinical_notes);	 
 				
 
-				die('done');
+				//die('done');
 
 				$this->db->trans_commit();
 		        $return = true;				
