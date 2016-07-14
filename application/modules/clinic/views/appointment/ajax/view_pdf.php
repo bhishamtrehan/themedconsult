@@ -9,16 +9,13 @@
 </div>
 <div class="modal-body ">
 <div class="panel panel-primary">
-	   Please select a file and then hit Evaluate:
-  
-  <br/>
-  <br/>
-  <input id="file" type="file"/>
-  <br/>
-  <br/>
-  <button id="button">Evaluate
-  
-
+ <p>Select a File to Load:</p>
+    <input id="inputFileToLoad" type="file" onchange="loadImageFileAsURL();" />
+     
+ 
+    <p>File Contents as DataURL:</p>
+    <textarea id="textAreaFileContents" style="width:640;height:240" ></textarea>
+ 
       </div>
 </div>
 <script type="text/javascript">
@@ -55,26 +52,30 @@
 
 
 
-document.getElementById('button').addEventListener('click', function() {
-  var files = document.getElementById('file').files;
-  alert(files);
-  if (files.length > 0) {
-    getBase64(files[0]);
-  }
-});
-
-function getBase64(file) {
-   var reader = new FileReader();
-   reader.readAsDataURL(file);
-   reader.onload = function () {
-     console.log(reader.result);
-
-   };
-   reader.onerror = function (error) {
-     console.log('Error: ', error);
-   };
+function loadImageFileAsURL()
+{
+    var filesSelected = document.getElementById("inputFileToLoad").files;
+    alert(filesSelected);
+    if (filesSelected.length > 0)
+    {
+        var fileToLoad = filesSelected[0];
+ 
+        var fileReader = new FileReader();
+ 
+        fileReader.onload = function(fileLoadedEvent) 
+        {
+            var textAreaFileContents = document.getElementById
+            (
+                "textAreaFileContents"
+            );
+     
+            textAreaFileContents.innerHTML = fileLoadedEvent.target.result;
+        };
+ 
+        fileReader.readAsDataURL(fileToLoad);
+    }
 }
-
+ 
  
 </script>
 
