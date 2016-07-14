@@ -2318,7 +2318,7 @@ public function get_all_consult_pdf($userid)
 			$result = $query->result();
 			// echo "<pre>";
 			// print_r($result);
-			// die();
+		
 
 			if(count($result) > 0){
 				return $result;		

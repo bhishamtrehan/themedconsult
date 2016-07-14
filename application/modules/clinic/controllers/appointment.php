@@ -1803,8 +1803,8 @@ public function consult_pdf() {
          //$clinicID = $inputValues['clinicId'];
          $userid = $this->tank_auth->ci->session->userdata['user_id'];
       
-            $data['pdfResults']   = $this->appointments->get_all_consult_pdf($userid);
-            $this->load->view('clinic/appointment/ajax/view_pdf', array('userid'=>$userid),$data['pdfResults']);
+            $data['all_Results']   = $this->appointments->get_all_consult_pdf($userid);
+            $this->load->view('clinic/appointment/ajax/view_pdf', array('userid'=>$userid,'all_Results'=>$data['all_Results']));
         
     
          

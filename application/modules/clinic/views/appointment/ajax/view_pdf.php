@@ -4,7 +4,7 @@
 		<?php 
 		echo $this->lang->line('pdf'); 
 
-	print_r($pdfResults);
+
 		
 		?>	
 	</h4>
@@ -23,12 +23,15 @@
       </div>
 
 <div class="list">
-<?php //foreach ($variable as $key => $value) {
-	# code...
+<?php foreach ($all_Results as $all_Result) {?>
+<ul>
+<a href="<?php echo $all_Result->pdf_path.$all_Result->pdf_name; ?>"><li id="<?php echo $all_Result->id; ?>"><?php echo $all_Result->pdf_name; ?></li></a>
+</ul>
 
-	print_r($pdfResults);
-//}
-?>
+
+
+
+<?php } ?>
 </div>
 
 </div>
