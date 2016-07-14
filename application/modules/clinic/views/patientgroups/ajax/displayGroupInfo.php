@@ -29,7 +29,7 @@
             <td><span class="glyphicon glyphicon-user"></span> <?php echo $this->lang->line('title_patientss'); ?> </td>
             <td><?php echo $info->last_name; ?></td>
             <td><?php echo $info->first_name; ?></td>
-            <td><?php echo $info->date_of_birth; ?></td>
+            <td><?php echo date('Y-M-d', strtotime($info->date_of_birth)); ?></td>
             <td>
                 
                     <div class="row action-btn-sec centeraction">

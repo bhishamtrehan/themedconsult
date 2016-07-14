@@ -348,8 +348,8 @@ class Manage_groups extends CI_Model
 			$counter++;
 		}
 			
-		echo "<pre>";
-		print_r($consultHistroy);
+		// echo "<pre>";
+		// print_r($consultHistroy);
 		//die("here");
 
 		if(count($consultHistroy) > 0)
