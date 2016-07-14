@@ -173,7 +173,37 @@ class Manage_groups extends CI_Model
 		
 	}
 
-	
+	public function saveGroupDataFromCalendar($inputValues, $adminid)
+	{	
+		$ip = $this->mc_constants->remote_ip();
+		$group = array(
+			'group_name' => $inputValues['grpName'],
+			'group_admin_id' => $adminid,
+			'created_ip' => $ip,
+			'status' =>1,
+			'created_date' => date('Y-m-d H:i:s'),
+			'created_by'  => $adminid
+		);
+
+		$insertGroup = $this->db->insert($this->mc_groups, $group);
+
+		$inserted_id = $this->db->insert_id();
+		
+		
+
+		$group_members = array(
+				'group_id' => $inserted_id,
+				'member_id' => $inputValues['PatientId'],
+				'created_ip' => $ip,
+				'created_date' => date('Y-m-d H:i:s'),
+				'created_by'  => $adminid
+			);
+
+			$insertGroup = $this->db->insert($this->mc_groups_members, $group_members);
+			
+		return "true";
+		
+	}
 
 	public function groupList($id)
 	{	
@@ -349,5 +379,16 @@ class Manage_groups extends CI_Model
 
 		$patient_id = $pat_id->row();
 		return $patient_id;
+	}
+
+	public function getPatientTonewGroup($pId)
+	{
+		$this->db->select("*");
+		$this->db->from($this->mc_patients);
+		$this->db->where('patient_id', $pId);
+		$patientdata = $this->db->get();
+
+		$patient = $patientdata->result_array();
+		return $patient;
 	}
 }

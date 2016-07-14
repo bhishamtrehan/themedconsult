@@ -27,6 +27,7 @@ class Appointment extends CI_Controller
 		$this->load->library('tank_auth');
 		$this->load->library('encryption');
 		$this->lang->load('universal');
+		$this->lang->load('groups');
 		$this->lang->load('appointment');
 		
 		$this->load->library('mc_constants');
@@ -1754,6 +1755,8 @@ public function add_medication(){
 		
 		$pait_ID = $patient_id_by_appt->patient_id;
 		
+		$data['patient_details_group'] = $this->manage_groups->getPatientTonewGroup($pait_ID);
+
 		$data['user_id'] = $this->tank_auth->ci->session->userdata['user_id'];
 		$data['group_list'] = $this->manage_groups->groupList($data['user_id']);
 		$data['paitents_enrolled'] = array();
@@ -1795,6 +1798,20 @@ public function add_medication(){
 
 	}
 	/**** Patient details popup ends ******/
+
+
+public function consult_pdf() {
+         $data = $this->glbl('clinic_access','clinic_location_access');    
+         $inputValues = $this->input->post();
+         //$clinicID = $inputValues['clinicId'];
+
+            //$data['parcResults']   = $this->appointments->searchParcts($inputValues);
+            $this->load->view('clinic/appointment/ajax/view_pdf', $data);
+        
+    
+         
+     } 
+
 
 	
 }
