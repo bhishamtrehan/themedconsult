@@ -411,6 +411,8 @@ public function cancel_calendar_appointment() {
 			$data = $this->glbl('clinic_access','clinic_location_access');
 			$inputValues = $this->input->post();
 
+		
+
 			$pid = $inputValues['pId'];   
 			if(isset($inputValues)) {
 			
@@ -418,7 +420,7 @@ public function cancel_calendar_appointment() {
 			//print_r($data['appntDetails']);
 			// die();
 
-			$this->load->view('clinic/appointment/ajax/billing_summery', $data);
+			$this->load->view('clinic/appointment/ajax/billing_summery_by_id', $data);
 			}
         
 	}

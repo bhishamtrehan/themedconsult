@@ -1193,9 +1193,33 @@ public function get_billing_summery($inputValues) {
 	}
 
 public function get_billing_summerybyId($pid) {
+
+
+$this->db->select("appont.appointment_id, cons.ID, bill.*,billcode.*");
+		$this->db->from($this->table_appointments .' as appont');
+		$this->db->join($this->mc_consultation .' as cons', 'cons.appt_id = appont.appointment_id','left');
+		$this->db->join($this->mc_billing_relation .' as bill', 'bill.consultation_id = cons.ID','left');
+		$this->db->join($this->mc_billing_codes .' as billcode', 'billcode.id = bill.billing_codes_id','inner');
+		$this->db->where('appont.patient_id', $pid);
+		$query = $this->db->get();
+		$results = $query->row();
+		// print_r($results);
+		// die();
+		if($query->num_rows()>0) {
+			$results = $query->row();
+			
+                        return $results;
+		}
+		else {
+			return array();
+		}
+
+
+
+
 /*
 			  
-					// die();
+			// die();
 			$this->db->select("ID");
 			$this->db->from($this->mc_consultation);
 			$this->db->where('appt_id',$appt_ID);
