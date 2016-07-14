@@ -1503,9 +1503,12 @@ public function new_consultation(){
 	$data = $this->glbl('clinic_access','clinic_location_access');
 	$inputValues = $this->input->post();
 
+
 		// $audio_upload = $this->upload_audio_files();
 		// print_r($audio_upload);
 		// die();
+
+
 		
 
 

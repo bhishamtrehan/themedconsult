@@ -906,7 +906,7 @@ $(this).remove();
         $('.download_pdf').on('click ', function ()
         {
 
-
+   
             $('#full').removeClass('nowscroll');
             screenfull.exit();
 
@@ -1366,6 +1366,9 @@ $(this).remove();
      $(document).ready(function() {
 
 $(".clickimgpdf").click(function(){
+
+ // var file=  $(this).val();
+
    $('body').addClass("show_loader");
 
     $.ajax({
@@ -1385,6 +1388,12 @@ $(".clickimgpdf").click(function(){
         });
 
  });
+
+
+
+
+
+
 });
 
 
