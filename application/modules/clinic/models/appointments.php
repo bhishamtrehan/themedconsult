@@ -1114,9 +1114,9 @@ class Appointments extends CI_Model
 
 		$consultation_history_details=$query->result_array();
 
-		echo "<pre>";
-		print_r($consultation_history_details);
-		die();
+		// echo "<pre>";
+		// print_r($consultation_history_details);
+		// die();
 		
 
 		if($query->num_rows()>0) {
