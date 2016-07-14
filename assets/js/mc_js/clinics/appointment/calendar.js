@@ -913,4 +913,6 @@ $('.newmedication').on('click',function(){
 	  $('.event_'+appointment_id).removeClass('yellow_status');
 }
 
-})
+	
+	
+});

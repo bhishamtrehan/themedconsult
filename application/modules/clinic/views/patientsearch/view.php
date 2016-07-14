@@ -83,7 +83,7 @@ echo sprintf($this->lang->line('title_clinic_page'),$fronttitile).$this->lang->l
                 <td><img src="<?php echo base_url();?>assets/images/notification_image.bmp"> </td>
                 <td><?php echo $all_patient_Detail->last_name; ?></td>
                 <td><?php echo $all_patient_Detail->first_name; ?></td>
-                <td><?php echo $all_patient_Detail->date_of_birth; ?></td>
+                <td><?php echo date('Y-M-d', strtotime($all_patient_Detail->date_of_birth)); ?></td>
                 <td>
                     <div class="row action-btn-sec">
                         <div class="col-md-4"> <a href="javascript:void(0);" class="patientInfo" data-pid="<?php echo $all_patient_Detail->patient_id; ?>" ><span class="profile-details-icon"></span><span class="linktext"><?php echo $this->lang->line('profile_details'); ?></span></a> </div>

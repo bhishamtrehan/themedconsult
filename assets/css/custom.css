@@ -2230,10 +2230,36 @@ h2.c_modal_header.addnewpopheadertitle {
 overflow-x: auto;
     }
 }
-
+@media screen and (max-width:1024px){
+  body *{
+ -webkit-overflow-scrolling: touch;
+}
+div#clinicListingaccess_wrapper {
+    overflow-y: auto;
+}
+}
 
 @media screen and (max-width:991px){
- 
+  form#add_clinic_form label{
+        font-size: 11px;
+  }
+  .leftgroupinfo h2{
+        font-size: 16px;
+  }
+ .leftgroupinfo {
+    float: none;
+    width: 100%;
+    text-align: center;
+}
+.rightInfo {
+    float: none;
+    width: 100%;
+    margin: 15px 0 0;
+}
+.leftgroupcreated p {
+    font-size: 14px;
+    margin: 0;
+}
   .date_row .col-md-6 {
     padding: 0;
   }
@@ -2292,6 +2318,11 @@ div ul.n_action li {
 
 
 @media all and (max-width:767px){ 
+  .freesheduleform input.btn.btn-primary.btn-block {
+    margin: 0 auto;
+    display: table;
+    float: none !important;
+}
   .scrolltablemobile, #patientResult_wrapper, #groupListInfo_wrapper, #clinicListingaccess_wrapper {
     overflow-y: auto;
 }
@@ -2551,7 +2582,7 @@ div#clinicListingaccess_length {
     padding: 20px 0px !Important;
 }
 .navbar-nav.navbar-right {
-    width: 160px;
+    width: 110px;
     margin: 0;
 }
 .col-xs-8.row_field {
@@ -2596,6 +2627,9 @@ div#clinicListingaccess_length {
   }
 }
 @media screen and (max-width:580px){
+  div#rootwizard li a {
+    height: 55px;
+}
     .search_pat_innner .nav-tabs>li a {
     height: 50px;
     line-height: 1.5;

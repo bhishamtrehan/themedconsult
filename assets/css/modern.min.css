@@ -1859,7 +1859,7 @@ box-shadow: 0 0 0;
 }
 
 .modal {
-  z-index: 9999999
+  z-index: 999999;
 }
 
 .modal-content {
@@ -1904,7 +1904,7 @@ box-shadow: 0 0 0;
 }
 
 .modal-backdrop {
-  z-index: 999999
+  z-index: 9999
 }
 
 .pagination>li>a {
@@ -5406,8 +5406,9 @@ span.lf_icon:before {
 
 @media (max-width:767px) {
     .siderbarmenu-active main.page-content.content-wrap {
-    overflow-y: hidden;
+    overflow: hidden;
     height: 600px;
+    
 }
    
   #can_wrap{width:100% !important ; height:400px !important; overflow:scroll !important;}

@@ -257,7 +257,7 @@ $lang['generate_pdf']                           = 'Generate pdf';
 
 
 /********* appointment search section **************/
-$lang['patient_surname']                    = 'Patient Surname :';
+$lang['patient_surname']                    = 'Patient Surname';
 $lang['exist_surname']                    = 'Surname :';
 $lang['patient_first_name']                    = 'Patient First Name :'; //'Item description';
 $lang['exist_first_name']                    = 'First Name :'; //'Item description';
@@ -394,6 +394,9 @@ $lang['bill_sum']          = 'Billing Summary';
 $lang['remove_from_group'] = 'Remove from group';
 $lang['message']           = 'Message';
 $lang['title_patientss']     = 'Patient';
+$lang['existing_group']     = 'Add to existing groups';
+$lang['add_to_new']     = 'Create new group';
+$lang['add_group']     = 'Group created successfully';
 
 
 

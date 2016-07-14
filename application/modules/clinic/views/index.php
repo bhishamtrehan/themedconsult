@@ -103,7 +103,10 @@
                         <!-- end top general alert -->   
                         <div class="widget">
 
-                        </div>	
+                        </div>
+                        <?php if($this->session->flashdata('added_message_group')) { ?>
+                       <div class="success_message"> <span><?php echo $this->session->flashdata('added_message_group');?></span></div>
+                      <?php } ?>	
                         <div class="widget-content" style="margin-top:20px; padding-top: 5px;">
 
                             <?php if (sizeof($locationPracs) > 0) { ?>
