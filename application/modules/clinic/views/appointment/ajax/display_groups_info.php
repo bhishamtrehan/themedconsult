@@ -5,7 +5,7 @@
   </h4>
 </div>
 <div class="modal-body">
-<div>
+<div class="patientgrouptabsec">
 
   <!-- Nav tabs -->
   <ul class="nav nav-tabs" role="tablist">
@@ -47,7 +47,7 @@
     <div role="tabpanel" class="tab-pane" id="profile">
     
     <?php echo form_open(base_url().'clinic/groups/addgroupfromcalendar',array('class' => 'form-horizontal form_health','id' => 'newGroupFromCalendar')); ?>
-       <div>
+       <div class="popupgrouptablael">
           <label><?php echo $this->lang->line('grp_name'); ?></label>
           
           <input type="text" name="grpName" class="form-control" placeholder="Group Name" id ="grpName">

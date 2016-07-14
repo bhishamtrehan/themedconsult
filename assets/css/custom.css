@@ -2213,6 +2213,20 @@ h2.c_modal_header.addnewpopheadertitle {
 .deletefroupbtn a {
     font-weight: bold;
 }
+.patientgrouptabsec .nav li {
+    width: 50%;
+}
+.popupgrouptablael label, .popupgrouptablael input {
+    display: inline-block;
+    vertical-align: middle;
+    margin-bottom: 20px;
+}
+.popupgrouptablael label{
+      font-size: 16px;
+          color: #014767;
+          font-weight: bold;
+          margin-right: 5px;
+}
 /*********healthprofessional css here*/
 
 @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {  
