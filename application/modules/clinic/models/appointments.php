@@ -42,6 +42,7 @@ class Appointments extends CI_Model
 	private $mc_consultation_audio_files = 'mc_consultation_audio_files';
 	private $mc_consult_investigation_media = 'mc_consult_investigation_media';
 	private $mc_consult_refferal_media = 'mc_consult_refferal_media';
+	private $mc_consult_pdf = 'mc_consult_pdf';
 
 	function __construct()
 	{
@@ -81,6 +82,7 @@ class Appointments extends CI_Model
         $this->mc_consultation_audio_files = 	$ci->config->item('db_table_prefix', 'tank_auth').$this->mc_consultation_audio_files;
         $this->mc_consult_investigation_media = 	$ci->config->item('db_table_prefix', 'tank_auth').$this->mc_consult_investigation_media;
         $this->mc_consult_refferal_media = 	$ci->config->item('db_table_prefix', 'tank_auth').$this->mc_consult_refferal_media;
+        $this->mc_consult_pdf = 	$ci->config->item('db_table_prefix', 'tank_auth').$this->mc_consult_pdf;
 
 	}
 	
@@ -2268,5 +2270,69 @@ public function get_billing_summerybyId($pid) {
 		}
 		
 	}
+
+
+public function insert_consult_upload_pdf($inputValues,$config)
+
+	{
+			
+		
+				$ipAddress  = $this->mc_constants->remote_ip();
+		 		
+  		 		
+                $consultpdf['user_id']    = $inputValues['user_id'];
+                $consultpdf['pdf_name'] = $config['file_name'];
+            	$consultpdf['pdf_path']  	 = base_url().'assets/images/newconsult/pdf/';
+                $consultpdf['created_ip']          = $ipAddress;
+                $consultpdf['created_date']        = @date('Y-m-d H:i:s');
+            
+                try {
+                        $this->db->trans_begin(); 
+                   $this->db->insert($this->mc_consult_pdf, $consultpdf);
+                        $this->db->trans_commit();
+                $return = true;				
+                }
+                catch (Exception $e) {
+                        $this->db->trans_rollback();
+                        $return = log_message('error', sprintf('%s : %s : DB transaction failed. Error no: %s, Error msg:%s, Last query: %s', __CLASS__, __FUNCTION__, $e->getCode(), $e->getMessage(), print_r($this->main_db->last_query(), TRUE)));
+                }
+		
+
+			return $return;
+	}
+
+public function get_all_consult_pdf($userid)
+
+	{			echo $userid;
+		
+				
+		if($userid != 0 && $userid != '')
+		{
+			$allRosters = array();
+			$this->db->select("*");
+			$this->db->from($this->mc_consult_pdf);
+			$this->db->where('user_id',$userid);
+			$query = $this->db->get();
+			
+
+			$result = $query->result();
+			// echo "<pre>";
+			// print_r($result);
+			// die();
+
+			if(count($result) > 0){
+				return $result;		
+			}else{
+				return false;
+			}
+		}
+
+	}
+
+
+
+
+
+
 	//**** for patient details popup ends*****/
 }

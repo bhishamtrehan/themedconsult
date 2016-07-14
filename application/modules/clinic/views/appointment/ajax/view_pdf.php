@@ -4,78 +4,68 @@
 		<?php 
 		echo $this->lang->line('pdf'); 
 
+		
 		?>	
 	</h4>
 </div>
 <div class="modal-body ">
 <div class="panel panel-primary">
- <p>Select a File to Load:</p>
-    <input id="inputFileToLoad" type="file" onchange="loadImageFileAsURL();" />
-     
+<div class="message"></div>
+<form id="pdf_file123" method="post" enctype="multipart/form-data">
+
+    <input id="inputFileToLoad" type="file" name="new_pdf_file"  />
+     <input type="hidden" name="user_id" value="<?php echo $userid;?>">
  
-    <p>File Contents as DataURL:</p>
-    <textarea id="textAreaFileContents" style="width:640;height:240" ></textarea>
+  <input type="submit" class="pdf_submit" value="submit">
+  </form>
  
       </div>
+
+<div class="list">
+<?php //foreach ($variable as $key => $value) {
+	# code...
+
+	print_r($data);
+//}
+?>
 </div>
-<script type="text/javascript">
 
-// $(".pdf_file").click(function(){
-//        // alert('fghj');
-//        var form=$("#abc");
-// 	var form1 = $("#abc").serialize();
-//         var file=  $('#pdf_file123').val();
-//         alert(form1);
-//     return false;
+</div>
+<script>
 
-//    $('body').addClass("show_loader");
+//$('.pdf_submit').click(function () {
+	$("form#pdf_file123").submit(function() {
+    //alert('abc');
+     var form_data = new FormData($(this)[0]);
+   //var form_data= $('#pdf_file').serialize();
+   //alert(form_data);
+   $.ajax({
+       type: 'post',
+       data: form_data,
+       url: baseUrl+"clinic/appointment/consult_upload_pdf",
+       async: false,
+            cache: false,
+        contentType: false,
+        processData: false,
+       success: function(data){
+       	if(data=="1"){
+       		$('.message').append('<div class="alert alert-success">Pdf file is uploaded successfully</div>');
 
-//     $.ajax({
-//             type: "POST",
-//             url: baseUrl+"clinic/appointment/consult_pdf", 
-         
-//             dataType: "html",  
-//             cache:false,
-//             success: function (response) {
-            
-//             $( ".modal-content" ).html(response);
-//                 $('body').removeClass("show_loader");
-//                     $( ".btn-lg" ).trigger( "click" );
-            
-                
-//             }
+       	}
+       	else
+       	{
 
-//         });
+       	}
 
-//  });
+      }
+
+ });
+   return false;
+
+});
 
 
 
-
-function loadImageFileAsURL()
-{
-    var filesSelected = document.getElementById("inputFileToLoad").files;
-    alert(filesSelected);
-    if (filesSelected.length > 0)
-    {
-        var fileToLoad = filesSelected[0];
- 
-        var fileReader = new FileReader();
- 
-        fileReader.onload = function(fileLoadedEvent) 
-        {
-            var textAreaFileContents = document.getElementById
-            (
-                "textAreaFileContents"
-            );
-     
-            textAreaFileContents.innerHTML = fileLoadedEvent.target.result;
-        };
- 
-        fileReader.readAsDataURL(fileToLoad);
-    }
-}
- 
  
 </script>
 

@@ -1801,9 +1801,49 @@ public function consult_pdf() {
          $data = $this->glbl('clinic_access','clinic_location_access');    
          $inputValues = $this->input->post();
          //$clinicID = $inputValues['clinicId'];
+         $userid = $this->tank_auth->ci->session->userdata['user_id'];
+      
+            $data['pdfResults']   = $this->appointments->get_all_consult_pdf($userid);
+            $this->load->view('clinic/appointment/ajax/view_pdf', array('userid'=>$userid),$data);
+        
+    
+         
+     } 
 
-            //$data['parcResults']   = $this->appointments->searchParcts($inputValues);
-            $this->load->view('clinic/appointment/ajax/view_pdf', $data);
+     public function consult_upload_pdf() {
+         $data = $this->glbl('clinic_access','clinic_location_access');    
+         $inputValues = $this->input->post();
+                 
+			$images=$_FILES['new_pdf_file'];
+			//print_r($images);
+
+			//$fielname= $images['name'];
+			
+
+			    $config['upload_path'] =getcwd().'/assets/images/newconsult/pdf/';
+		         $config['file_name'] = $images['name'];
+		         $config['overwrite'] = false;
+		         $config["allowed_types"] = 'jpg|jpeg|png|gif|pdf|bmp|document';
+				// echo "<pre>";
+				// print_r($config);
+		      // die();
+		      $image_response=  $this->load->library('upload', $config);
+			  
+				$this->upload->do_upload('new_pdf_file');
+			
+		        if(!$this->upload->do_upload()) {
+		 
+		            $this->data['error'] = $this->upload->display_errors();
+					//print_r($data);
+		        } else {
+		            echo "successfull";                                  
+		        } 
+
+        
+
+            $data['pdf_results']   = $this->appointments->insert_consult_upload_pdf($inputValues,$config);
+          //  print_r($data['pdf_results'] );
+           // $this->load->view('clinic/appointment/ajax/view_pdf', $data);
         
     
          
@@ -1812,3 +1852,4 @@ public function consult_pdf() {
 
 	
 }
+
