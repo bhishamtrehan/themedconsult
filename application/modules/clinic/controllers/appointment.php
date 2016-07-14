@@ -427,7 +427,7 @@ public function cancel_calendar_appointment() {
 	public function consultation_history() {
 			$data = $this->glbl('clinic_access','clinic_location_access');
 			$inputValues = $this->input->post();
-
+				
 			
 			$appt_ID = $this->encryption->decode($inputValues['appointment_id']);   
 			if(isset($inputValues)) {
@@ -1831,6 +1831,7 @@ public function consult_pdf() {
 		         $pdf_url  	 = base_url().'assets/images/newconsult/pdf/'.$images['name'];
 
 		         file_get_contents($pdf_url);
+
 				// echo "<pre>";
 				// print_r($config);
 		      // die();

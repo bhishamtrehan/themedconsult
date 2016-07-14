@@ -1105,10 +1105,11 @@ class Appointments extends CI_Model
 		//die();
 		$this->db->select("const.*,hpin.title,hpin.surname,hpin.name,clinic.clinic_name,spec.speciality");
 		$this->db->from($this->mc_consultation .' as const');
-		$this->db->where('const.appt_id', $appt_ID);
-		$this->db->join($this->table_practitioners .' as hpin', 'hpin.hp_id = const.hp_id','inner');
-		$this->db->join($this->mc_clinic .' as clinic', 'clinic.clinic_id =const.medical_clinic','inner');
+		
+		$this->db->join($this->table_practitioners .' as hpin', 'hpin.hp_id = const.hp_id','left');
+		$this->db->join($this->mc_clinic .' as clinic', 'clinic.clinic_id =const.medical_clinic','left');
 		$this->db->join($this->mc_speciality .' as spec', 'spec.ID =const.speciality','inner');
+		$this->db->where('const.appt_id', $appt_ID);
 		$query = $this->db->get();
 		//print_r($this->db->last_query());
 
@@ -1892,10 +1893,10 @@ public function get_billing_summerybyId($pid) {
 			//print_r($files['investigation']['name']);
 
 			for ($i = 0; $i < $cons_invest_media; $i++) {
-
-			$consultInvest_media['image_name'] = $files['investigation']['name'][$i];
-			$consultInvest_media['consultation_id']=$insert_id;
-			$consultInvest_media['image_path'] =base_url().'assets/images/newconsult/'.$hpID.'_'.$hpname.'/';
+		$consultInvest_media['consultation_id']=$insert_id;
+			$consultInvest_media['media_name'] = $files['investigation']['name'][$i];
+		
+			$consultInvest_media['media_path'] =base_url().'assets/images/newconsult/'.$hpID.'_'.$hpname.'/';
 		
 			$consultInvest_media['created_ip'] =  $ipAddress;
 			$consultInvest_media['created_date'] = @date('Y-m-d H:i:s');
@@ -1930,9 +1931,9 @@ public function get_billing_summerybyId($pid) {
 			//print_r($files['investigation']['name']);
 
 			for ($i = 0; $i < $cons_reff_media; $i++) {
-
-			$consult_reff_media['image_name'] = $files['refferal']['name'][$i];
 			$consult_reff_media['consultation_id']=$insert_id;
+			$consult_reff_media['image_name'] = $files['refferal']['name'][$i];
+			
 			$consult_reff_media['image_path'] =base_url().'assets/images/newconsult/'.$hpID.'_'.$hpname.'/';
 		
 			$consult_reff_media['created_ip'] =  $ipAddress;
