@@ -1820,13 +1820,17 @@ public function consult_pdf() {
 			$images=$_FILES['new_pdf_file'];
 			//print_r($images);
   
-			//$fielname= $images['name'];
-			
+		
+
 
 			    $config['upload_path'] =getcwd().'/assets/images/newconsult/pdf/';
 		         $config['file_name'] = $images['name'];
 		         $config['overwrite'] = false;
 		         $config["allowed_types"] = 'jpg|jpeg|png|gif|pdf|bmp|document';
+
+		         $pdf_url  	 = base_url().'assets/images/newconsult/pdf/'.$images['name'];
+
+		         file_get_contents($pdf_url);
 				// echo "<pre>";
 				// print_r($config);
 		      // die();
