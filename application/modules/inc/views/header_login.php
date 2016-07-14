@@ -5,7 +5,7 @@
         <!-- Title -->
       <title><?php echo $title; ?> </title>
         <link rel="icon" href="<?=base_url()?>assets/images/mid_favicon.png" type="image/gif">
-        <meta content="width=device-width, initial-scale=1" name="viewport"/>
+       <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' >
         <meta charset="UTF-8">
         <meta name="description" content="Admin Dashboard Template" />
         <meta name="keywords" content="admin,dashboard" />

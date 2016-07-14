@@ -83,8 +83,12 @@
 		});
                 
                 $(".sidebar-pusher").click(function(){
+                	 $(".content-wrap").animate({scrollTop : 0},800);
                 if ($("body").hasClass("siderbarmenu-active")) {
                         $("body").removeClass("siderbarmenu-active");
+                           vph = $(window).height();
+                      $('.content-wrap').css({'height': vph + 'px'});
+
                          
                         }else{
                          $("body").addClass("siderbarmenu-active");

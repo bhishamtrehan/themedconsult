@@ -5406,8 +5406,9 @@ span.lf_icon:before {
 
 @media (max-width:767px) {
     .siderbarmenu-active main.page-content.content-wrap {
-    overflow-y: hidden;
+    overflow: hidden;
     height: 600px;
+    
 }
    
   #can_wrap{width:100% !important ; height:400px !important; overflow:scroll !important;}
