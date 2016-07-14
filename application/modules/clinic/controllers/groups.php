@@ -168,6 +168,30 @@ class Groups extends CI_Controller
 
 	}
 
+	public function addgroupfromcalendar()
+	{
+		$data = $this->glbl_login();
+		$user_id = $this->tank_auth->ci->session->userdata['user_id'];
+		if($inputValues = $this->input->post())
+		{
+			
+				
+				$data['saveGroupData'] = $this->manage_groups->saveGroupDataFromCalendar($inputValues, $user_id);
+				
+				if($data['saveGroupData'] == "true")
+				{
+					
+					$this->session->set_flashdata('added_message_group',$this->lang->line('add_group'));
+
+					redirect('clinic/dashboard');
+					
+				}
+			
+
+		}
+
+	}
+
 	public function search()
 	{
 		$data = $this->glbl_login();

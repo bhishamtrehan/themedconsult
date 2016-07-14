@@ -1,3 +1,4 @@
+
 $(document).ready(function() {
 	$('.selGrp').click(function(){
 		var grpId = $(this).attr('data-rel');
@@ -36,6 +37,25 @@ $(document).ready(function() {
 			});
 		}
 			
-	})
+	});
+
+     jQuery("#newGroupFromCalendar").validate({
+        rules: {
+         grpName: {
+            required: true
+        }
+
+         },
+         messages: {
+            
+            grpName: {
+               required: "Group Name is Required",
+               
+            }
+             
+
+         }
+     });
+	   
 });
 
