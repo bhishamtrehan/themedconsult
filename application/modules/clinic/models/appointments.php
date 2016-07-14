@@ -1105,14 +1105,15 @@ class Appointments extends CI_Model
 		//die();
 		$this->db->select("const.*,hpin.title,hpin.surname,hpin.name,clinic.clinic_name,spec.speciality");
 		$this->db->from($this->mc_consultation .' as const');
-		$this->db->where('const.appt_id', $appt_ID);
-		$this->db->join($this->table_practitioners .' as hpin', 'hpin.hp_id = const.hp_id','inner');
-		$this->db->join($this->mc_clinic .' as clinic', 'clinic.clinic_id =const.medical_clinic','inner');
+		
+		$this->db->join($this->table_practitioners .' as hpin', 'hpin.hp_id = const.hp_id','left');
+		$this->db->join($this->mc_clinic .' as clinic', 'clinic.clinic_id =const.medical_clinic','left');
 		$this->db->join($this->mc_speciality .' as spec', 'spec.ID =const.speciality','inner');
+		$this->db->where('const.appt_id', $appt_ID);
 		$query = $this->db->get();
 		//print_r($this->db->last_query());
 
-		$consultation_history_details=$query->result_array();
+		$consultation_history_details = $query->result_array();
 
 		// echo "<pre>";
 		// print_r($consultation_history_details);
@@ -1842,8 +1843,8 @@ public function get_billing_summerybyId($pid) {
 			
 			
 		
-				echo "<pre>";
-			print_r($consultType);
+			// 	echo "<pre>";
+			// print_r($consultType);
 			// 	die();
 			//$appntType['last_modified_by']   = $inputValues['author_id'];
 		 $billingType['billing_detail']   	 	 	 = $inputValues['billing_detail'];
@@ -1857,7 +1858,7 @@ public function get_billing_summerybyId($pid) {
 			$this->db->trans_begin(); 
 			
 			
-			    //$this->db->insert($this->mc_consultation, $consultType);
+			    $this->db->insert($this->mc_consultation, $consultType);
 			
 				 $insert_id = $this->db->insert_id();
 			
@@ -1866,10 +1867,10 @@ public function get_billing_summerybyId($pid) {
 				
 				 $billing_code['consultation_id']=$insert_id;
 				 $billing_code['billing_codes_id']=$billing_codes[$i];
-				 echo "<pre>";
-				print_r($billing_code);
+				//  echo "<pre>";
+				// print_r($billing_code);
 
-				  //$this->db->insert($this->mc_billing_relation, $billing_code);
+				  $this->db->insert($this->mc_billing_relation, $billing_code);
 				  
 				 }
 				
@@ -1882,27 +1883,27 @@ public function get_billing_summerybyId($pid) {
 		
 			$consultInvest['created_ip'] =  $ipAddress;
 			$consultInvest['created_date'] = @date('Y-m-d H:i:s');
-			 echo "<pre>";
-			print_r($consultInvest);  
+			//  echo "<pre>";
+			// print_r($consultInvest);  
 			
-			//$this->db->insert($this->mc_consult_investigation, $consultInvest);
+			$this->db->insert($this->mc_consult_investigation, $consultInvest);
 
 				 $cons_invest_media=count($files['investigation']['name']);
 				
 			//print_r($files['investigation']['name']);
 
 			for ($i = 0; $i < $cons_invest_media; $i++) {
-
-			$consultInvest_media['image_name'] = $files['investigation']['name'][$i];
-			$consultInvest_media['consultation_id']=$insert_id;
-			$consultInvest_media['image_path'] =base_url().'assets/images/newconsult/'.$hpID.'_'.$hpname.'/';
+		$consultInvest_media['consultation_id']=$insert_id;
+			$consultInvest_media['media_name'] = $files['investigation']['name'][$i];
+		
+			$consultInvest_media['media_path'] =base_url().'assets/images/newconsult/'.$hpID.'_'.$hpname.'/';
 		
 			$consultInvest_media['created_ip'] =  $ipAddress;
 			$consultInvest_media['created_date'] = @date('Y-m-d H:i:s');
 
-			echo "<pre>";
-			print_r($consultInvest_media);
-			//$this->db->insert($this->mc_consult_investigation_media, $consultInvest_media);
+			// echo "<pre>";
+			// print_r($consultInvest_media);
+			$this->db->insert($this->mc_consult_investigation_media, $consultInvest_media);
 
 			 }
 				 
@@ -1917,30 +1918,30 @@ public function get_billing_summerybyId($pid) {
 			$consultRefferal['created_ip'] =  $ipAddress;
 			$consultRefferal['created_date'] = @date('Y-m-d H:i:s');
 
-			echo "<pre>";
-			print_r($consultRefferal);
+			// echo "<pre>";
+			// print_r($consultRefferal);
 
-				// $this->db->insert($this->mc_consult_refferal, $consultRefferal);
-
-
+				 $this->db->insert($this->mc_consult_refferal, $consultRefferal);
 
 
-				echo $cons_reff_media=count($files['refferal']['name']);
+
+
+				 $cons_reff_media=count($files['refferal']['name']);
 				
 			//print_r($files['investigation']['name']);
 
 			for ($i = 0; $i < $cons_reff_media; $i++) {
-
-			$consult_reff_media['image_name'] = $files['refferal']['name'][$i];
 			$consult_reff_media['consultation_id']=$insert_id;
+			$consult_reff_media['image_name'] = $files['refferal']['name'][$i];
+			
 			$consult_reff_media['image_path'] =base_url().'assets/images/newconsult/'.$hpID.'_'.$hpname.'/';
 		
 			$consult_reff_media['created_ip'] =  $ipAddress;
 			$consult_reff_media['created_date'] = @date('Y-m-d H:i:s');
 
-			echo "<pre>";
-			print_r($consult_reff_media);
-			//$this->db->insert($this->mc_consult_refferal_media, $consultInvest_media);
+			// echo "<pre>";
+			// print_r($consult_reff_media);
+			$this->db->insert($this->mc_consult_refferal_media, $consultInvest_media);
 
 			 }
 
@@ -1961,10 +1962,10 @@ public function get_billing_summerybyId($pid) {
 			$consultmedia['created_ip'] =  $ipAddress;
 			$consultmedia['created_date'] = @date('Y-m-d H:i:s');
 			
-			echo "<pre>";
-			print_r($consultmedia);	 
+			// echo "<pre>";
+			// print_r($consultmedia);	 
 			
-		//	$this->db->insert( $this->mc_consultation_media, $consultmedia);	
+			$this->db->insert( $this->mc_consultation_media, $consultmedia);	
 				}
 			}
 
@@ -1983,9 +1984,9 @@ public function get_billing_summerybyId($pid) {
 
 				$capturemedia['created_ip'] =  $ipAddress;
 				$capturemedia['created_date'] = @date('Y-m-d H:i:s');
-				echo "<pre>";
-				print_r($capturemedia);
-			// $this->db->insert( $this->mc_consultation_media, $capturemedia);	
+				// echo "<pre>";
+				// print_r($capturemedia);
+			$this->db->insert( $this->mc_consultation_media, $capturemedia);	
 			 	}
 			 }
 			 ///capture image uploading
@@ -2001,14 +2002,14 @@ public function get_billing_summerybyId($pid) {
 			$consult_clinical_notes['created_date'] = @date('Y-m-d H:i:s');
 				 
 
-			echo "<pre>";
-			print_r($consult_clinical_notes);
+			// echo "<pre>";
+			// print_r($consult_clinical_notes);
 
 
-			 //$this->db->insert( $this->mc_consult_clinical_notes, $consult_clinical_notes);	 
+			 $this->db->insert( $this->mc_consult_clinical_notes, $consult_clinical_notes);	 
 				
 
-				die('done');
+				//die('done');
 
 				$this->db->trans_commit();
 		        $return = true;				

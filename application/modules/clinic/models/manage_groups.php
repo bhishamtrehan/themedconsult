@@ -320,7 +320,7 @@ class Manage_groups extends CI_Model
 		return true;
 	}
 
-	public function get_all_consultation_history($patientID)
+	public function get_all_consultation_history_groups($patientID)
 	{
 		$this->db->select("appointment_id");
 		$this->db->from($this->mc_appointments .' as appointment');
@@ -332,25 +332,27 @@ class Manage_groups extends CI_Model
 		$consultHistroy = array();
 		$counter = 0;
 		foreach ($appIds as $value) {
-
+			
 			$this->db->select("const.*,hpin.title,hpin.surname,hpin.name,clinic.clinic_name,spec.speciality");
 			$this->db->from($this->mc_consultation .' as const');
-			$this->db->join($this->mc_speciality .' as spec', 'const.speciality = spec.ID','left');
-			$this->db->join($this->table_practitioners .' as hpin', 'const.hp_id = hpin.hp_id','left');
-			$this->db->join($this->table_name .' as clinic', 'const.medical_clinic = clinic.clinic_id','left');
-			$this->db->where('const.appt_id', $value['appointment_id']);
-
-			$histroy = $this->db->get();
-
-			$consultH = $histroy->result_array();
 			
-			array_push($consultHistroy[$counter], $consultH);
+			$this->db->join($this->table_practitioners .' as hpin', 'hpin.hp_id = const.hp_id','left');
+			$this->db->join($this->table_name .' as clinic', 'clinic.clinic_id =const.medical_clinic','left');
+			$this->db->join($this->mc_speciality .' as spec', 'spec.ID =const.speciality','inner');
+			$this->db->where('const.appt_id', $value['appointment_id']);
+			$query = $this->db->get();
+			//print_r($this->db->last_query());
+
+			$consultation = $query->result_array();
+			
+			array_push($consultHistroy, $consultation);
+			
 			$counter++;
 		}
 			
 		// echo "<pre>";
 		// print_r($consultHistroy);
-		//die("here");
+		// die("here");
 
 		if(count($consultHistroy) > 0)
 		{
