@@ -1366,6 +1366,9 @@ $(this).remove();
      $(document).ready(function() {
 
 $(".clickimgpdf").click(function(){
+
+ // var file=  $(this).val();
+
    $('body').addClass("show_loader");
 
     $.ajax({
@@ -1385,6 +1388,12 @@ $(".clickimgpdf").click(function(){
         });
 
  });
+
+
+
+
+
+
 });
 
 

@@ -40,6 +40,8 @@ class Appointments extends CI_Model
 	private $mc_instruction_to_patient = 'mc_instruction_to_patient';
 
 	private $mc_consultation_audio_files = 'mc_consultation_audio_files';
+	private $mc_consult_investigation_media = 'mc_consult_investigation_media';
+	private $mc_consult_refferal_media = 'mc_consult_refferal_media';
 
 	function __construct()
 	{
@@ -77,6 +79,8 @@ class Appointments extends CI_Model
         $this->mc_instruction_to_patient = 	$ci->config->item('db_table_prefix', 'tank_auth').$this->mc_instruction_to_patient;
 
         $this->mc_consultation_audio_files = 	$ci->config->item('db_table_prefix', 'tank_auth').$this->mc_consultation_audio_files;
+        $this->mc_consult_investigation_media = 	$ci->config->item('db_table_prefix', 'tank_auth').$this->mc_consult_investigation_media;
+        $this->mc_consult_refferal_media = 	$ci->config->item('db_table_prefix', 'tank_auth').$this->mc_consult_refferal_media;
 
 	}
 	
@@ -1871,8 +1875,8 @@ public function get_billing_summerybyId($pid) {
 				 $consultInvest['serviceprovider'] = $inputValues['serviceprovider'];
 			$consultInvest['type_of_investigation'] = $inputValues['type_of_investigation'];
 			$consultInvest['clinical_notes'] = $inputValues['clinical_notes'];
-			$consultInvest['image_name'] = $files['investigation']['name'];
-			$consultInvest['image_path'] =base_url().'assets/images/newconsult/'.$hpID.'_'.$hpname.'/';
+			//$consultInvest['image_name'] = $files['investigation']['name'];
+		//	$consultInvest['image_path'] =base_url().'assets/images/newconsult/'.$hpID.'_'.$hpname.'/';
 		
 			$consultInvest['created_ip'] =  $ipAddress;
 			$consultInvest['created_date'] = @date('Y-m-d H:i:s');
@@ -1880,14 +1884,33 @@ public function get_billing_summerybyId($pid) {
 			print_r($consultInvest);
 			
 			//$this->db->insert($this->mc_consult_investigation, $consultInvest);
+
+				 $cons_invest_media=count($files['investigation']['name']);
+				
+			//print_r($files['investigation']['name']);
+
+			for ($i = 0; $i < $cons_invest_media; $i++) {
+
+			$consultInvest_media['image_name'] = $files['investigation']['name'][$i];
+			$consultInvest_media['consultation_id']=$insert_id;
+			$consultInvest_media['image_path'] =base_url().'assets/images/newconsult/'.$hpID.'_'.$hpname.'/';
+		
+			$consultInvest_media['created_ip'] =  $ipAddress;
+			$consultInvest_media['created_date'] = @date('Y-m-d H:i:s');
+
+			echo "<pre>";
+			print_r($consultInvest_media);
+			//$this->db->insert($this->mc_consult_investigation_media, $consultInvest_media);
+
+			 }
 				 
 				   $consultRefferal['consultation_id']=$insert_id;
 				 $consultRefferal['refferal_title'] = $inputValues['refferal_title'];
 			$consultRefferal['health_professional'] = $inputValues['hp_id_by_search'];
 			$consultRefferal['refferal_notes'] = $inputValues['refferal_notes'];
 			
-			$consultRefferal['image_name'] = $files['refferal']['name'];
-			$consultRefferal['image_path'] =base_url().'assets/images/newconsult/'.$hpID.'_'.$hpname.'/';
+			//$consultRefferal['image_name'] = $files['refferal']['name'];
+			//$consultRefferal['image_path'] =base_url().'assets/images/newconsult/'.$hpID.'_'.$hpname.'/';
 		
 			$consultRefferal['created_ip'] =  $ipAddress;
 			$consultRefferal['created_date'] = @date('Y-m-d H:i:s');
@@ -1897,15 +1920,38 @@ public function get_billing_summerybyId($pid) {
 
 				// $this->db->insert($this->mc_consult_refferal, $consultRefferal);
 
+
+
+
+				echo $cons_reff_media=count($files['refferal']['name']);
 				
-			 		 $consult_media_count=count($files['mediafiles']['name']);
-			 		 if (empty($consult_media_count)) {
+			//print_r($files['investigation']['name']);
 
-				for ($i = 0; $i < $consult_media_count; $i++) {
-				 
-				  $consultmedia['consultation_id']=$insert_id;
+			for ($i = 0; $i < $cons_reff_media; $i++) {
 
-				$consultmedia['media_name'] =$files['mediafiles']['name'][$i];
+			$consult_reff_media['image_name'] = $files['refferal']['name'][$i];
+			$consult_reff_media['consultation_id']=$insert_id;
+			$consult_reff_media['image_path'] =base_url().'assets/images/newconsult/'.$hpID.'_'.$hpname.'/';
+		
+			$consult_reff_media['created_ip'] =  $ipAddress;
+			$consult_reff_media['created_date'] = @date('Y-m-d H:i:s');
+
+			echo "<pre>";
+			print_r($consult_reff_media);
+			//$this->db->insert($this->mc_consult_refferal_media, $consultInvest_media);
+
+			 }
+
+
+				
+		 		 $consult_media_count=count($files['mediafiles']['name']);
+		 		 if (empty($consult_media_count)) {
+
+			for ($i = 0; $i < $consult_media_count; $i++) {
+			 
+			  $consultmedia['consultation_id']=$insert_id;
+
+			$consultmedia['media_name'] =$files['mediafiles']['name'][$i];
 			
 			
 			$consultmedia['media_path'] =base_url().'assets/images/newconsult/'.$hpID.'_'.$hpname.'/';
