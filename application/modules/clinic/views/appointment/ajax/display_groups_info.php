@@ -16,15 +16,17 @@
               </thead>
               <tbody>
                   <?php
-                  foreach($group_list as $list){   
+                  $k = 0;
+                  foreach($group_list as $list){
+
                   ?>
                   <tr>
-                  <td><input type="checkbox" name="selectGroup" data-app = "<?php echo $appntID; ?>" data-rel="<?php echo $list['id']; ?>" class="selGrp" /></td>
+                  <td><input type="checkbox" name="selectGroup" data-app = "<?php echo $appntID; ?>" data-rel="<?php echo $list['id']; ?>" class="selGrp" <?php echo (in_array($list['id'], $paitents_enrolled) ? 'checked' : '');?>/></td>
                   <td><img src="<?php echo base_url();?>assets/images/notification_image.bmp"></td>
                   <td><?php echo $list['group_name']; ?></td>
                   
                   </tr>
-                  <?php } ?>  
+                  <?php $k++; } ?>  
               </tbody>
 
             </table>

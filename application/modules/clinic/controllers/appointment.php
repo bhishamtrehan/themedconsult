@@ -904,21 +904,6 @@ public function cancel_calendar_appointment() {
 		}	
 	}	
 
-
-
-	public function consult_pdf() {
-		$data = $this->glbl('clinic_access','clinic_location_access');	
-		$inputValues = $this->input->post();
-		//$clinicID = $inputValues['clinicId'];
-
-			//$data['parcResults']   = $this->appointments->searchParcts($inputValues);
-			$this->load->view('clinic/appointment/ajax/view_pdf', $data);
-		
-	
-		
-	}
-
-
 	//Search end
 	public function edit_type(){
 	    $data = $this->glbl('clinic_access');
@@ -1518,7 +1503,12 @@ public function new_consultation(){
 	$data = $this->glbl('clinic_access','clinic_location_access');
 	$inputValues = $this->input->post();
 
-		  
+
+		// $audio_upload = $this->upload_audio_files();
+		// print_r($audio_upload);
+		// die();
+
+
 		
 
 
@@ -1760,8 +1750,18 @@ public function add_medication(){
 		$appntID = $this->encryption->decode($inputValues['appointment_id']); 
 		
 		$data['appntID'] = $appntID;
+		$patient_id_by_appt = $this->manage_groups->get_patient_by_appointment($appntID);
+		
+		$pait_ID = $patient_id_by_appt->patient_id;
+		
 		$data['user_id'] = $this->tank_auth->ci->session->userdata['user_id'];
 		$data['group_list'] = $this->manage_groups->groupList($data['user_id']);
+		$data['paitents_enrolled'] = array();
+		foreach ($this->manage_groups->enrolled_members($pait_ID) as $value) {
+			$data['paitents_enrolled'][] = $value['group_id'];
+		}
+		//echo '<pre>'; print_r($data['paitents_enrolled']);die;
+		$this->manage_groups->enrolled_members($pait_ID);
 		$this->load->view('clinic/appointment/ajax/display_groups_info', $data);
 	}
 

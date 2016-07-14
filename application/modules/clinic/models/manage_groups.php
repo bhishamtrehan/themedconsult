@@ -184,6 +184,21 @@ class Manage_groups extends CI_Model
 		$results = $this->db->get();
 		return $results->result_array();
 	}
+
+	public function enrolled_members($pId)
+	{
+		$this->db->select('group_id');
+		$this->db->from($this->mc_groups_members);
+		$this->db->where('member_id', $pId);
+		
+		$results = $this->db->get();
+		// echo "<pre>";
+		// print_r($results->result());
+		// echo '</pre>';die;
+		return $results->result_array();
+	}
+
+
 	public function recycleGroupList($id)
 	{	
 		$this->db->select('*');
@@ -323,5 +338,16 @@ class Manage_groups extends CI_Model
 		 $this->db->where('member_id', $input['pId']);
   		 return $this->db->delete($this->mc_groups_members); 
 
+	}
+
+	public function get_patient_by_appointment($appntID)
+	{
+		$this->db->select("patient_id");
+		$this->db->from($this->mc_appointments .' as appointment');
+		$this->db->where('appointment.appointment_id', $appntID);
+		$pat_id = $this->db->get();
+
+		$patient_id = $pat_id->row();
+		return $patient_id;
 	}
 }
