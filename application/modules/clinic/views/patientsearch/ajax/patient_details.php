@@ -18,10 +18,10 @@
               
             ?>
               <tr>
-                  <td><div class="action-btn-sec"><a href="#"><img src="<?php echo base_url();?>assets/images/notification_image.bmp">  </a></div></td>
+                  <td><a href="#"><img src="<?php echo base_url();?>assets/images/notification_image.bmp">  </a></td>
                 <td><?php echo $patient_Detail->last_name; ?></td>
                 <td><?php echo $patient_Detail->first_name; ?></td>
-                <td><?php echo $patient_Detail->date_of_birth; ?></td>
+                <td><?php echo date('Y-M-d', strtotime($patient_Detail->date_of_birth)); ?></td>
                 <td>
                     <div class="row action-btn-sec">
                         <div class="col-md-4"> <a href="#"><span class="profile-details-icon"></span><span class="linktext"><?php echo $this->lang->line('profile_details'); ?></span></a> </div>
@@ -29,7 +29,7 @@
                           <div class="col-md-4"> <a href="#"><span class="consultation-history-icon"></span><span class="linktext"><?php echo $this->lang->line('consultation_history'); ?></span></a> </div>
                     </div>
                     
-                                 </td>
+                </td>
 
               </tr>
             <?php    } 
