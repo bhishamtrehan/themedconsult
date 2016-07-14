@@ -6,7 +6,7 @@ $(document).ready(function() {
 
   $('.consultationHistory').on('click', function(){
       var patientId = $(this).data('patientid');
-
+      
       $.ajax({
         type: "POST",
         url: baseUrl+"clinic/groups/patientConsultation",
@@ -14,8 +14,7 @@ $(document).ready(function() {
         data:{patientid : patientId},
         success: function(response)
         {
-          //console.log(response);
-          $('.modal-body').html(response);
+          console.log(response);
         }
       });
   });

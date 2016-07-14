@@ -255,9 +255,9 @@ class Groups extends CI_Controller
 
 		$data['consult_Details'] = $this->manage_groups->get_all_consultation_history($patientID);
 		
-		// echo "<pre>";
-		// print_r($data['history']);
-		// die;
+		echo "<pre>";
+		print_r($data['consult_Details']);
+		die;
 	}
 
 	public function removeFrmGrp(){
