@@ -1881,7 +1881,7 @@ public function get_billing_summerybyId($pid) {
 			$consultInvest['created_ip'] =  $ipAddress;
 			$consultInvest['created_date'] = @date('Y-m-d H:i:s');
 			 echo "<pre>";
-			print_r($consultInvest);
+			print_r($consultInvest);  
 			
 			//$this->db->insert($this->mc_consult_investigation, $consultInvest);
 

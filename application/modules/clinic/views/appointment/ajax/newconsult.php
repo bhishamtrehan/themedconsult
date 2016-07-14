@@ -906,7 +906,7 @@ $(this).remove();
         $('.download_pdf').on('click ', function ()
         {
 
-
+   
             $('#full').removeClass('nowscroll');
             screenfull.exit();
 

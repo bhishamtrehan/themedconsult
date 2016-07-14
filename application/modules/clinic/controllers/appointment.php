@@ -1518,7 +1518,7 @@ public function new_consultation(){
 	$data = $this->glbl('clinic_access','clinic_location_access');
 	$inputValues = $this->input->post();
 
-		
+		  
 		
 
 
