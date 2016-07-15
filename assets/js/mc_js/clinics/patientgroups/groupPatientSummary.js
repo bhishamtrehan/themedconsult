@@ -14,8 +14,8 @@ $(document).ready(function() {
         data:{patientid : patientId},
         success: function(response)
         {
-          //console.log(response);
-          $('.modal-body').html(response);
+          $(".modal-content").html(response);
+          $( ".btn-lg" ).trigger( "click" );
         }
       });
   });

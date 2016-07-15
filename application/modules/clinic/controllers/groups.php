@@ -253,11 +253,8 @@ class Groups extends CI_Controller
 
 		$patientID = $this->input->post('patientid');
 
-		$data['consult_Details'] = $this->manage_groups->get_all_consultation_history($patientID);
-		
-		// echo "<pre>";
-		// print_r($data['history']);
-		// die;
+		$data['consulthistory'] = $this->manage_groups->get_all_consultation_history_groups($patientID);
+		$this->load->view('clinic/patientgroups/ajax/cosnsultation', $data);
 	}
 
 	public function removeFrmGrp(){

@@ -1113,7 +1113,7 @@ class Appointments extends CI_Model
 		$query = $this->db->get();
 		//print_r($this->db->last_query());
 
-		$consultation_history_details=$query->result_array();
+		$consultation_history_details = $query->result_array();
 
 		// echo "<pre>";
 		// print_r($consultation_history_details);
@@ -1194,88 +1194,51 @@ public function get_billing_summery($inputValues) {
 
 public function get_billing_summerybyId($pid) {
 
+		$this->db->select("appointment_id");
+		$this->db->from($this->table_appointments .' as appointment');
+		$this->db->where('appointment.patient_id', $pid);
+		$appId = $this->db->get();
 
-$this->db->select("appont.appointment_id, cons.ID, bill.*,billcode.*");
-		$this->db->from($this->table_appointments .' as appont');
-		$this->db->join($this->mc_consultation .' as cons', 'cons.appt_id = appont.appointment_id','left');
-		$this->db->join($this->mc_billing_relation .' as bill', 'bill.consultation_id = cons.ID','left');
-		$this->db->join($this->mc_billing_codes .' as billcode', 'billcode.id = bill.billing_codes_id','inner');
-		$this->db->where('appont.patient_id', $pid);
-		$query = $this->db->get();
-		$results = $query->row();
-		// print_r($results);
-		// die();
-		if($query->num_rows()>0) {
-			$results = $query->row();
+		$appIds = $appId->result_array();
+		
+		
+		$consultHistroy = array();
+		$counter = 0;
+		foreach ($appIds as $value) {
 			
-                        return $results;
+			$this->db->select("const.*,bill.billing_codes_id,billcode.*");
+			$this->db->from($this->mc_consultation .' as const');
+			
+			//$this->db->join($this->table_practitioners .' as hpin', 'hpin.hp_id = const.hp_id','left');
+			$this->db->join($this->mc_billing_relation .' as bill', 'bill.consultation_id = const.ID','left');
+			$this->db->join($this->mc_billing_codes .' as billcode', 'billcode.id = bill.billing_codes_id','left');
+			$this->db->where('const.ID', $value['appointment_id']);
+			$query = $this->db->get();
+			//print_r($this->db->last_query());
+
+			$consultation = $query->result_array();
+			
+			if(count($consultation)!='0'){
+
+			array_push($consultHistroy, $consultation);
+			}
+			$counter++;
 		}
-		else {
+			
+		echo "<pre>";
+		print_r($consultHistroy);
+		die("here");
+
+		if(count($consultHistroy) > 0)
+		{
+		
+            return $consultHistroy;
+		}
+		else 
+		{
 			return array();
 		}
-
-
-
-
-/*
-			  
-			// die();
-			$this->db->select("ID");
-			$this->db->from($this->mc_consultation);
-			$this->db->where('appt_id',$appt_ID);
-			$query = $this->db->get();
-
-			$consult_ids = $query->result_array();
-			//print_r($consult_ids);
-				$billingcodes=array();
-				foreach ($consult_ids as  $consult_id) {
-					//echo $consult_id['ID'];
-
-						$this->db->select("billing_codes_id");
-						$this->db->from($this->mc_billing_relation);
-						$this->db->where('consultation_id',$consult_id['ID']);
-						$query = $this->db->get();
-
-						$billingcodes[] = $query->result_array();
-					//	array_push($billingcodes, $billingcode);
-
-				}
-				
-
-				//print_r($billingcodes);
-				
-
-
-				$billings = array();
-					foreach($billingcodes as $array) {
-					 foreach($array as $k=>$v) {
-					  $billings[]= $v['billing_codes_id'];
-					 }
-					}
-
-						$bill_codes= array_unique($billings);
-						//print_r($bill_codes);
-
-						$billingdetails = array();
-						foreach ($bill_codes as $bill_code) {
-							//echo $bill_code;
-							$this->db->select("*");
-						$this->db->from($this->mc_billing_codes);
-						$this->db->where('id',$bill_code);
-						$query = $this->db->get();
-
-						$billingdetails[] = $query->result_array();
-						}
-
-						$bil_count=count($billingdetails);
-
-				if($bil_count!=0) {
-				
-		                        return $billingdetails;
-				}
-				else {
-					return array();
-				}*/
+		
 	}
 
 
