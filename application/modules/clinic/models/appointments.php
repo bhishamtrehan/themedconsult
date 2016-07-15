@@ -2128,12 +2128,12 @@ public function get_billing_summerybyId($pid) {
 	{       
 			
 		
-		
+
 			$this->db->select("prac.*, spec.speciality, hp_clinic.location_id,clinic.clinic_name");
 			$this->db->from($this->table_practitioners .' as prac');
-			$this->db->join($this->mc_speciality .' as spec', 'spec.ID = prac.speciality','inner');
-			$this->db->join($this->table_mc_hp_clinic_relation .' as hp_clinic', 'hp_clinic.hp_id = prac.hp_id','inner');
-			$this->db->join($this->mc_clinic .' as clinic', 'clinic.clinic_id = hp_clinic.location_id','inner');
+			$this->db->join($this->mc_speciality .' as spec', 'spec.ID = prac.speciality','left');
+			$this->db->join($this->table_mc_hp_clinic_relation .' as hp_clinic', 'hp_clinic.hp_id = prac.hp_id','left');
+			$this->db->join($this->mc_clinic .' as clinic', 'clinic.clinic_id = hp_clinic.location_id','left');
 			$this->db->where('prac.hp_id',$practitioner_id);
 		//	$this->db->where('med.status','1');
 			$query = $this->db->get();

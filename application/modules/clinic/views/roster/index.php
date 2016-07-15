@@ -12,7 +12,7 @@
   <!-- BOTTOM: LEFT NAV AND RIGHT MAIN CONTENT -->
   <div class="bottom c_fullcalendar">
     <div class="container c_fullcalendar">
-      <div class="row c_fullcalendar dash_both"> 
+      <div class="row c_fullcalendar  rosterdas"> 
         <!-- left sidebar -->
        <style>
 #left_clinic_minicalendar .ui-datepicker-inline.ui-datepicker.ui-widget.ui-widget-content.ui-helper-clearfix.ui-corner-all {
@@ -22,7 +22,7 @@
     font-size: 11px;
 }
 </style>
-  <div class="col-md-3  c_fullcalendar left_dash">
+  <div class="col-md-3  c_fullcalendar left_dashroster">
     <div  class="com_l_cal c_fullcalendar" >
       	<div class="widget-header widget_pract display-loc">
 				    <h3><i class="fa fa-list"></i><?php echo $this->lang->line('roster_left');?></h3>
