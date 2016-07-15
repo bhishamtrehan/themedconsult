@@ -23,10 +23,12 @@
                 <td><?php echo $patient_Detail->first_name; ?></td>
                 <td><?php echo date('Y-M-d', strtotime($patient_Detail->date_of_birth)); ?></td>
                 <td>
+                    
+
                     <div class="row action-btn-sec">
-                        <div class="col-md-4"> <a href="#"><span class="profile-details-icon"></span><span class="linktext"><?php echo $this->lang->line('profile_details'); ?></span></a> </div>
-                         <div class="col-md-4">   <a href="#"><span class="billing-summary-icon"></span><span class="linktext"><?php echo $this->lang->line('billing_summary'); ?></span></a></div>
-                          <div class="col-md-4"> <a href="#"><span class="consultation-history-icon"></span><span class="linktext"><?php echo $this->lang->line('consultation_history'); ?></span></a> </div>
+                        <div class="col-md-4"> <a href="javascript:void(0);" class="patientInfo" data-pid="<?php echo $patient_Detail->patient_id; ?>" ><span class="profile-details-icon"></span><span class="linktext"><?php echo $this->lang->line('profile_details'); ?></span></a> </div>
+                         <div class="col-md-4">   <a href="javascript:void(0);" class="patientBilling" data-pid="<?php echo $patient_Detail->patient_id; ?>"><span class="billing-summary-icon"></span><span class="linktext"><?php echo $this->lang->line('billing_summary'); ?></span></a></div>
+                          <div class="col-md-4"> <a href="javascript:void(0);" class="patientCons" data-pid="<?php echo $patient_Detail->patient_id; ?>"><span class="consultation-history-icon"></span><span class="linktext"><?php echo $this->lang->line('consultation_history'); ?></span></a> </div>
                     </div>
                     
                 </td>
@@ -38,3 +40,12 @@
             </tbody>
 
             </table>
+            <script>var baseUrl ="<?php echo base_url(); ?>";</script>
+  <?php $this->load->view('inc/footer'); ?>
+   <script src="<?php echo base_url();?>assets/js/mc_js/clinics/patientsearch/patientsearch.js"></script>
+   <script src="<?php echo base_url();?>assets/js/mc_js/clinics/getPatientInfo.js"></script>
+     <link rel="stylesheet" href="<?php echo base_url();?>assets/css/jquery-ui.css">
+   <script type="text/javascript"> 
+    $( "#dob" ).datepicker();
+  $( "#dob" ).datepicker( "option", "dateFormat", "yy-mm-dd" );
+    </script>

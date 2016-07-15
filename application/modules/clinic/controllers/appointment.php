@@ -411,13 +411,13 @@ public function cancel_calendar_appointment() {
 			$data = $this->glbl('clinic_access','clinic_location_access');
 			$inputValues = $this->input->post();
 
-		
+
 
 			$pid = $inputValues['pId'];   
 			if(isset($inputValues)) {
 			
 			$data['billDetails'] = $this->appointments->get_billing_summerybyId($pid);
-			//print_r($data['appntDetails']);
+			// print_r($data['billDetails']);
 			// die();
 
 			$this->load->view('clinic/appointment/ajax/billing_summery_by_id', $data);
@@ -445,6 +445,23 @@ public function cancel_calendar_appointment() {
 			}
         
 	}
+
+	public function consultation_historybyId() {
+			$data = $this->glbl('clinic_access','clinic_location_access');
+			$inputValues = $this->input->post();
+			$pid = $inputValues['pId'];   
+			if(isset($inputValues)) {
+			
+			$data['conshistoryDetails'] = $this->appointments->get_consultation_historybyId($pid);
+			// print_r($data['conshistoryDetails']);
+			// die();
+
+			$this->load->view('clinic/appointment/ajax/consultation_historybyID', $data);
+			}
+        
+	}
+
+
 
 
 
@@ -1830,13 +1847,23 @@ public function consult_pdf() {
 		         $config['overwrite'] = false;
 		         $config["allowed_types"] = 'jpg|jpeg|png|gif|pdf|bmp|document';
 
-		         //$pdf_url  	 = base_url().'assets/images/newconsult/pdf/'.$images['name'];
-		         //$pdf_url  	 = base_url().'assets/images/newconsult/pdf/'.$images['name'];
+		        echo  $pdf_url  	 = base_url().'assets/images/newconsult/pdf/'.$images['name'];
+		         $file_name=$images['name'];
+		         $withoutExt = preg_replace('/\\.[^.\\s]{3,4}$/', '', $file_name);
+		         $pdf_image  	 = getcwd().'/assets/images/newconsult/pdf/'.$withoutExt;
+		        file_put_contents('assets/images/newconsult/pdf/image.jpg',file_get_contents('http://localhost/themedconsult/assets/images/newconsult/pdf/file(3).pdf'));
 		        // file_get_contents($pdf_url);
 
 				// echo "<pre>";
 				// print_r($config);
 		      // die();
+
+		         $file = file_get_contents($pdf_url, true);
+					// depuis PHP 5
+					$file = file_get_contents($pdf_image, $file);
+
+					// $print_r($file);
+					// die();
 		      $image_response=  $this->load->library('upload', $config);
 			  
 				$this->upload->do_upload('new_pdf_file');

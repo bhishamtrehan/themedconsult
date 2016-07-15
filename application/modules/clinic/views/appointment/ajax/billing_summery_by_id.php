@@ -14,7 +14,7 @@ if(count($billDetails)>0){
 </div>
 <div class="modal-body ">
 <div class="panel-primary">
-<?php echo "<pre>"; print_r($billDetails); ?>
+
 	  	<table cellspacing="0" cellpadding="0" border="0" class="table table-bordered">
 			<tbody>
 			<tr>
@@ -25,19 +25,20 @@ if(count($billDetails)>0){
 				<th><?php echo $this->lang->line('gst'); ?></th>
 				</tr>
 			<?php 
+			if(!empty($billDetails)){
 			foreach($billDetails as $billDetail){ 
 			$lang === 'french' ? 'oui' : 'yes'
 				?>
 				<tr>
 					
-					<td class="withborder second"><?php echo $billDetail->description; ?></td>
+					<td class="withborder second"><?php echo $billDetail['description']; ?></td>
 					<td class="withborder"><?php echo $billDetail['billing_codes_id']; ?></td>
 					<td class="withborder"><?php echo $billDetail['duration']; ?></td>
 					<td class="withborder"><?php echo $billDetail['price']; ?></td>
 					<td class="withborder"><?php echo $billDetail['gst']; ?></td>
 					
 				</tr>
-			<?php } ?>
+			<?php } }?>
 	</div>
 	</div>
     </div>

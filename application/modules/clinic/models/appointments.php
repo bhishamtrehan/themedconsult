@@ -1200,34 +1200,82 @@ public function get_billing_summerybyId($pid) {
 		$appId = $this->db->get();
 
 		$appIds = $appId->result_array();
-		
-		
-		$consultHistroy = array();
-		$counter = 0;
+
+		$billingHistroy = array();
+
 		foreach ($appIds as $value) {
 			
 			$this->db->select("const.*,bill.billing_codes_id,billcode.*");
 			$this->db->from($this->mc_consultation .' as const');
 			
-			//$this->db->join($this->table_practitioners .' as hpin', 'hpin.hp_id = const.hp_id','left');
 			$this->db->join($this->mc_billing_relation .' as bill', 'bill.consultation_id = const.ID','left');
 			$this->db->join($this->mc_billing_codes .' as billcode', 'billcode.id = bill.billing_codes_id','left');
 			$this->db->where('const.ID', $value['appointment_id']);
 			$query = $this->db->get();
+			
+
+			$billing = $query->result_array();
+			
+			if(!empty($billing))
+			{
+				
+				foreach ($billing as $bill) {
+					array_push($billingHistroy, $bill);
+				}
+			}
+		}
+
+		if(count($billingHistroy) > 0)
+		{
+		
+            return $billingHistroy;
+		}
+		else 
+		{
+			return array();
+		}
+		
+	}
+
+
+
+	public function get_consultation_historybyId($pid) {
+
+		$this->db->select("appointment_id");
+		$this->db->from($this->table_appointments .' as appointment');
+		$this->db->where('appointment.patient_id', $pid);
+		$appId = $this->db->get();
+
+		$appIds = $appId->result_array();
+		
+		$consultHistroy = array();
+		$newComArry = array();
+		
+		foreach ($appIds as $value) {
+			
+			$this->db->select("const.*,hpin.title,hpin.surname,hpin.name,clinic.clinic_name,spec.speciality");
+			$this->db->from($this->mc_consultation .' as const');
+			
+			$this->db->join($this->table_practitioners .' as hpin', 'hpin.hp_id = const.hp_id','left');
+			$this->db->join($this->mc_clinic .' as clinic', 'clinic.clinic_id =const.medical_clinic','left');
+			$this->db->join($this->mc_speciality .' as spec', 'spec.ID =const.speciality','inner');
+			$this->db->where('const.appt_id', $value['appointment_id']);
+			$query = $this->db->get();
 			//print_r($this->db->last_query());
 
 			$consultation = $query->result_array();
-			
-			if(count($consultation)!='0'){
-
-			array_push($consultHistroy, $consultation);
+			if(!empty($consultation))
+			{
+				
+				foreach ($consultation as $con) {
+					array_push($consultHistroy, $con);
+				}
 			}
-			$counter++;
-		}
 			
-		echo "<pre>";
-		print_r($consultHistroy);
-		die("here");
+			
+			
+		}
+		
 
 		if(count($consultHistroy) > 0)
 		{
@@ -1240,7 +1288,6 @@ public function get_billing_summerybyId($pid) {
 		}
 		
 	}
-
 
 
 	//Show Roster details
