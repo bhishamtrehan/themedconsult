@@ -3,7 +3,7 @@
     <h4 class="modal-title">
 		<?php 
 
-if(count($consult_Details)>0){  
+				if(count($consulthistory)>0){  
 					
 					echo $this->lang->line('consultation_history');
 				}else{ 
@@ -25,9 +25,9 @@ if(count($consult_Details)>0){
 				<th><?php echo $this->lang->line('date_consult'); ?></th>
 				</tr>
 			<?php 
-			foreach($consult_Details as $consult_Detail){ 
-				//print_r($consult_Detail);
-			//$lang === 'french' ? 'oui' : 'yes'
+			if(!empty($consulthistory)){
+			foreach($consulthistory as $consult_Detail){ 
+			
 				?>
 				<tr>
 					
@@ -39,7 +39,7 @@ if(count($consult_Details)>0){
 					<!--<td class="withborder"><?php //echo $billDetail[0]['gst']; ?></td>-->
 					
 				</tr>
-			<?php } ?>
+			<?php } }?>
 	</div>
 	</div>
     </div>

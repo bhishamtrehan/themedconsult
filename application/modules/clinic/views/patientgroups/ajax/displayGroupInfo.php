@@ -51,7 +51,16 @@
   </div>
   
   </div>
-
+<div class="popup">
+ <button type="button" style="display:none;" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal"></button>
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+      <!-- Modal content-->
+      <div class="modal-content"></div> 
+    </div>
+  </div>
+</div>
   <script src="<?php echo base_url(); ?>assets/js/mc_js/clinics/patientgroups/singleGroup.js"></script>
   <script src="<?php echo base_url(); ?>assets/js/mc_js/clinics/patientgroups/groupPatientSummary.js"></script>
   <script src="<?php echo base_url();?>assets/js/mc_js/clinics/getPatientInfo.js"></script>

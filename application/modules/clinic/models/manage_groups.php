@@ -330,7 +330,8 @@ class Manage_groups extends CI_Model
 		$appIds = $appId->result_array();
 		
 		$consultHistroy = array();
-		$counter = 0;
+		$newComArry = array();
+		
 		foreach ($appIds as $value) {
 			
 			$this->db->select("const.*,hpin.title,hpin.surname,hpin.name,clinic.clinic_name,spec.speciality");
@@ -344,15 +345,18 @@ class Manage_groups extends CI_Model
 			//print_r($this->db->last_query());
 
 			$consultation = $query->result_array();
+			if(!empty($consultation))
+			{
+				
+				foreach ($consultation as $con) {
+					array_push($consultHistroy, $con);
+				}
+			}
 			
-			array_push($consultHistroy, $consultation);
 			
-			$counter++;
+			
 		}
-			
-		// echo "<pre>";
-		// print_r($consultHistroy);
-		// die("here");
+		
 
 		if(count($consultHistroy) > 0)
 		{

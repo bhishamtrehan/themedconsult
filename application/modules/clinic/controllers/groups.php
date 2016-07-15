@@ -254,6 +254,9 @@ class Groups extends CI_Controller
 		$patientID = $this->input->post('patientid');
 
 		$data['consulthistory'] = $this->manage_groups->get_all_consultation_history_groups($patientID);
+		// echo "<pre>";
+		// print_r($data['consulthistory']);
+		// die;
 		$this->load->view('clinic/patientgroups/ajax/cosnsultation', $data);
 	}
 
