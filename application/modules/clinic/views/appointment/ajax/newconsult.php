@@ -102,7 +102,6 @@ echo 'New Consultation';
                     </div>
                 </div>
                 <div class="panel-group" id="accordion">
-
                     <div class="panel panel-default">
                         <div  data-toggle="collapse" data-parent="#accordion" href="#collapseOne" class="panel-heading">
                             <h4 class="panel-title">
