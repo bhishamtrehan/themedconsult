@@ -27,6 +27,8 @@ class Manage_groups extends CI_Model
 	private $mc_appointments				= 'mc_appointments';
 	private $table_practitioners			= 'mc_hp_info';	
 	private $mc_speciality					= 'mc_speciality';	
+	private $mc_billing_relation			= 'mc_billing_relation';	
+	private $mc_billing_codes				= 'mc_billing_codes';	
 	
 	function __construct()
 	{
@@ -48,6 +50,8 @@ class Manage_groups extends CI_Model
 		$this->mc_appointments   	                = 	$ci->config->item('db_table_prefix', 'tank_auth').$this->mc_appointments;
 		$this->table_practitioners   	            = 	$ci->config->item('db_table_prefix', 'tank_auth').$this->table_practitioners;
 		$this->mc_speciality   	            		= 	$ci->config->item('db_table_prefix', 'tank_auth').$this->mc_speciality;
+		$this->mc_billing_relation   	            = 	$ci->config->item('db_table_prefix', 'tank_auth').$this->mc_billing_relation;
+		$this->mc_billing_codes   	            	= 	$ci->config->item('db_table_prefix', 'tank_auth').$this->mc_billing_codes;
 	}
 	
 	
@@ -368,6 +372,58 @@ class Manage_groups extends CI_Model
 			return array();
 		}
 	}
+
+
+
+	public function get_all_billing_history_groups($patientID)
+	{
+		$this->db->select("appointment_id");
+		$this->db->from($this->mc_appointments .' as appointment');
+		$this->db->where('appointment.patient_id', $patientID);
+		$appId = $this->db->get();
+
+		$appIds = $appId->result_array();
+
+		$billingHistroy = array();
+
+		foreach ($appIds as $value) {
+			
+			$this->db->select("const.*,bill.billing_codes_id,billcode.*");
+			$this->db->from($this->mc_consultation .' as const');
+			
+			$this->db->join($this->mc_billing_relation .' as bill', 'bill.consultation_id = const.ID','left');
+			$this->db->join($this->mc_billing_codes .' as billcode', 'billcode.id = bill.billing_codes_id','left');
+			$this->db->where('const.ID', $value['appointment_id']);
+			$query = $this->db->get();
+			
+
+			$billing = $query->result_array();
+			
+			if(!empty($billing))
+			{
+				
+				foreach ($billing as $bill) {
+					array_push($billingHistroy, $bill);
+				}
+			}
+		}
+
+		if(count($billingHistroy) > 0)
+		{
+		
+            return $billingHistroy;
+		}
+		else 
+		{
+			return array();
+		}
+	}
+
+
+
+
+
+
 
 	public function removePatientFrmGrp($input){
 		 $this->db->where('group_id', $input['gid']);

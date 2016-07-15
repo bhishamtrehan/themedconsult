@@ -21,6 +21,23 @@ $(document).ready(function() {
   });
 
 
+  $('.billSummary').on('click', function(){
+      var patientId = $(this).data('patientid');
+
+      $.ajax({
+        type: "POST",
+        url: baseUrl+"clinic/groups/patientBilling",
+        dataType: "html",
+        data:{patientid : patientId},
+        success: function(response)
+        {
+          $(".modal-content").html(response);
+          $( ".btn-lg" ).trigger( "click" );
+        }
+      });
+  });
+
+
     
 });
 
