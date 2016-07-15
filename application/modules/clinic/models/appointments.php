@@ -2307,10 +2307,14 @@ public function get_billing_summerybyId($pid) {
 	}
 
 
-public function insert_consult_upload_pdf($inputValues,$config)
-
-	{
-			
+public function insert_consult_upload_pdf($inputValues,$config,$new_name_db, $pdfname)
+{
+			// echo "<pre>";
+			// print_r($config);
+			// print_r($inputValues);
+			// echo $new_name_db;
+			// //print_r($pdfname);
+			// die;
 		
 				$ipAddress  = $this->mc_constants->remote_ip();
 		 		
@@ -2318,6 +2322,7 @@ public function insert_consult_upload_pdf($inputValues,$config)
                 $consultpdf['user_id']    = $inputValues['user_id'];
                 $consultpdf['pdf_name'] = $config['file_name'];
             	$consultpdf['pdf_path']  	 = base_url().'assets/images/newconsult/pdf/';
+            	$consultpdf['image_name']  	 = $new_name_db;
                 $consultpdf['created_ip']          = $ipAddress;
                 $consultpdf['created_date']        = @date('Y-m-d H:i:s');
             
@@ -2325,7 +2330,7 @@ public function insert_consult_upload_pdf($inputValues,$config)
                         $this->db->trans_begin(); 
                    $this->db->insert($this->mc_consult_pdf, $consultpdf);
                         $this->db->trans_commit();
-                $return = true;				
+                $return = array('path' =>$consultpdf['pdf_path'], 'imagename' => $consultpdf['image_name'], 'pdfname' => $consultpdf['pdf_name'] );				
                 }
                 catch (Exception $e) {
                         $this->db->trans_rollback();

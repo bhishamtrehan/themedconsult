@@ -397,6 +397,7 @@ $lang['title_patientss']     = 'Patient';
 $lang['existing_group']     = 'Add to existing groups';
 $lang['add_to_new']     = 'Create new group';
 $lang['add_group']     = 'Group created successfully';
+$lang['pdf_library_choose']     = 'Choose From Library';
 
 
 

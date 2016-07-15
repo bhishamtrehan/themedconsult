@@ -6,7 +6,7 @@ $(document).ready(function() {
 
   $('.consultationHistory').on('click', function(){
       var patientId = $(this).data('patientid');
-
+      $('body').addClass("show_loader");
       $.ajax({
         type: "POST",
         url: baseUrl+"clinic/groups/patientConsultation",
@@ -15,6 +15,7 @@ $(document).ready(function() {
         success: function(response)
         {
           $(".modal-content").html(response);
+          $('body').removeClass("show_loader");
           $( ".btn-lg" ).trigger( "click" );
         }
       });
@@ -23,7 +24,7 @@ $(document).ready(function() {
 
   $('.billSummary').on('click', function(){
       var patientId = $(this).data('patientid');
-
+      $('body').addClass("show_loader");
       $.ajax({
         type: "POST",
         url: baseUrl+"clinic/groups/patientBilling",
@@ -32,6 +33,7 @@ $(document).ready(function() {
         success: function(response)
         {
           $(".modal-content").html(response);
+          $('body').removeClass("show_loader");
           $( ".btn-lg" ).trigger( "click" );
         }
       });

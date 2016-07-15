@@ -53,6 +53,35 @@
 .block_display{
   display: block !important;
 }
+.pdfupsecpop input[type="file"] {
+    display: block;
+    margin-bottom: 11px;
+    width: 200px;
+}
+.pdfupsecpop {
+    text-align: center;
+    display: table;
+    margin: 0 auto;
+}
+.pdfchoosetitle {
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+    color: #014767;
+}
+.list ul {
+    padding: 10px 20px;
+    margin: 0;
+    list-style: none;
+        text-align: center;
+}
+.list ul li {
+    display: inline-block;
+      margin: 5px 10px;
+}
+.pdf-popdesign .alert.alert-success {
+    text-align: center;
+}
 .custom_title {
 /*  background: #edeeee;*/
   border-bottom: 1px solid #eee;
