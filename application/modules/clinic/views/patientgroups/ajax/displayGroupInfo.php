@@ -34,7 +34,7 @@
                 
                     <div class="row action-btn-sec centeraction">
                         <div class="col-md-6">  <a href="javascript:void(0)" class="consultationHistory" data-patientID="<?php echo $info->patient_id; ?>"><span class="consultation-history-icon"></span><span class="linktext"><?php echo $this->lang->line('consultation_history'); ?></span></a></div>
-                        <div class="col-md-6">  <a href="javascript:void(0)" id="billSummary" data-patientID="<?php echo $info->patient_id; ?>"><span class="billing-summary-icon"></span> <span class="linktext"><?php echo $this->lang->line('bill_sum'); ?></span></a></div>
+                        <div class="col-md-6">  <a href="javascript:void(0)" class="billSummary" data-patientID="<?php echo $info->patient_id; ?>"><span class="billing-summary-icon"></span> <span class="linktext"><?php echo $this->lang->line('bill_sum'); ?></span></a></div>
                    
                     </div>
                     <div class="row action-btn-sec centeraction">
@@ -51,7 +51,16 @@
   </div>
   
   </div>
-
+<div class="popup">
+ <button type="button" style="display:none;" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal"></button>
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+      <!-- Modal content-->
+      <div class="modal-content"></div> 
+    </div>
+  </div>
+</div>
   <script src="<?php echo base_url(); ?>assets/js/mc_js/clinics/patientgroups/singleGroup.js"></script>
   <script src="<?php echo base_url(); ?>assets/js/mc_js/clinics/patientgroups/groupPatientSummary.js"></script>
   <script src="<?php echo base_url();?>assets/js/mc_js/clinics/getPatientInfo.js"></script>

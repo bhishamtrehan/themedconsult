@@ -102,7 +102,6 @@ echo 'New Consultation';
                     </div>
                 </div>
                 <div class="panel-group" id="accordion">
-
                     <div class="panel panel-default">
                         <div  data-toggle="collapse" data-parent="#accordion" href="#collapseOne" class="panel-heading">
                             <h4 class="panel-title">
@@ -693,7 +692,7 @@ echo 'New Consultation';
 
     <script type="text/javascript">
      jQuery(document).ready(function () {
-
+        $('#test').css('display', 'none');
  // $( "#list > span" ).click(function() {
     $( "#list" ).delegate( "span", "click", function() {
            // alert('tesdt');
@@ -754,6 +753,7 @@ $(this).remove();
 
         $(document).ready(function ()
         {
+
             InitThis();
             $("#test").jqScribble();
             $(addImage);
@@ -867,11 +867,13 @@ $(this).remove();
                 }
             });
         }
-        function addImage()
+
+        function addImage(imgvalue)
         {
+            
             //var img = prompt("Enter the URL of the image.");
             var tmpImg = new Image();
-            var img = "<?php echo base_url() ?>/assets/uploads/1458197012-0.jpg";
+            var img = imgvalue;
             tmpImg.src = img;
 
             $(tmpImg).one('load', function () {

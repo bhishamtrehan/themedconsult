@@ -17,7 +17,7 @@ $(document).ready(function() {
                     $( ".btn-lg" ).trigger( "click" );
                 }
             });
-    })    
+    });    
 
 
     $('.patientBilling').click(function(){
@@ -36,7 +36,29 @@ $(document).ready(function() {
                         $( ".btn-lg" ).trigger( "click" );
                     }
                 });
-    })  
+    }); 
+
+
+
+$('.patientCons').click(function(){
+        var pid = $(this).attr('data-pid');
+        $('body').addClass("show_loader");
+                $.ajax({
+                    type: "POST",
+                    url: baseUrl+"clinic/appointment/consultation_historybyId", 
+                    data: "pId="+pid,
+                    dataType: "html",  
+                    cache:false,
+                    success: function (response) {
+                        //alert(response);
+                        $( ".modal-content" ).html(response);
+                        $('body').removeClass("show_loader");
+                        $( ".btn-lg" ).trigger( "click" );
+                    }
+                });
+    });
+
+
 
     $('.removefromgrp').click(function(){
         var pid = $(this).attr('data-pid');

@@ -411,14 +411,16 @@ public function cancel_calendar_appointment() {
 			$data = $this->glbl('clinic_access','clinic_location_access');
 			$inputValues = $this->input->post();
 
+
+
 			$pid = $inputValues['pId'];   
 			if(isset($inputValues)) {
 			
 			$data['billDetails'] = $this->appointments->get_billing_summerybyId($pid);
-			//print_r($data['appntDetails']);
+			// print_r($data['billDetails']);
 			// die();
 
-			$this->load->view('clinic/appointment/ajax/billing_summery', $data);
+			$this->load->view('clinic/appointment/ajax/billing_summery_by_id', $data);
 			}
         
 	}
@@ -443,6 +445,23 @@ public function cancel_calendar_appointment() {
 			}
         
 	}
+
+	public function consultation_historybyId() {
+			$data = $this->glbl('clinic_access','clinic_location_access');
+			$inputValues = $this->input->post();
+			$pid = $inputValues['pId'];   
+			if(isset($inputValues)) {
+			
+			$data['conshistoryDetails'] = $this->appointments->get_consultation_historybyId($pid);
+			// print_r($data['conshistoryDetails']);
+			// die();
+
+			$this->load->view('clinic/appointment/ajax/consultation_historybyID', $data);
+			}
+        
+	}
+
+
 
 
 
@@ -1148,7 +1167,7 @@ public function new_consult(){
 
 	$data = $this->glbl('clinic_access','clinic_location_access');
 		$inputValues = $this->input->post();
-		
+		$data['title'] = "New Consult";
 		$app_id =  $this->uri->segment(4); 
 		if(isset($inputValues)) {
 			$appntID = $this->encryption->decode($app_id); 
@@ -1823,41 +1842,122 @@ public function consult_pdf() {
 		
 
 
-			    $config['upload_path'] =getcwd().'/assets/images/newconsult/pdf/';
-		         $config['file_name'] = $images['name'];
-		         $config['overwrite'] = false;
-		         $config["allowed_types"] = 'jpg|jpeg|png|gif|pdf|bmp|document';
+				$config['upload_path'] =getcwd().'/assets/images/newconsult/pdf/';
+				$config['file_name'] = $images['name'];
+				$config['overwrite'] = false;
+				$config["allowed_types"] = 'jpg|jpeg|png|gif|pdf|bmp|document';
 
-		         //$pdf_url  	 = base_url().'assets/images/newconsult/pdf/'.$images['name'];
-		         //$pdf_url  	 = base_url().'assets/images/newconsult/pdf/'.$images['name'];
-		        // file_get_contents($pdf_url);
-
-				// echo "<pre>";
-				// print_r($config);
-		      // die();
-		      $image_response=  $this->load->library('upload', $config);
-			  
-				$this->upload->do_upload('new_pdf_file');
-			
-		        if(!$this->upload->do_upload()) {
-		 
-		            $this->data['error'] = $this->upload->display_errors();
-					//print_r($data);
-		        } else {
-		            echo "successfull";                                  
-		        } 
+			      $image_response=  $this->load->library('upload', $config);
+				  
+					$this->upload->do_upload('new_pdf_file');
+				
+			        if(!$this->upload->do_upload()) {
+			 
+			            $this->data['error'] = $this->upload->display_errors();
+						//print_r($data);
+			        } else {
+			            echo "successfull";                                  
+			        } 
 
         
-
-            $data['pdf_results']   = $this->appointments->insert_consult_upload_pdf($inputValues,$config);
-          //  print_r($data['pdf_results'] );
-           // $this->load->view('clinic/appointment/ajax/view_pdf', $data);
+			$this->convertTOImage($images['name'], $config, $inputValues);
+            //$data['pdf_results']   = $this->appointments->insert_consult_upload_pdf($inputValues,$config);
+          
         
     
          
-     } 
+     }
 
 
+     public function convertTOImage($Pdfname, $config, $inputValues)
+     {
+     	$pdflocation = realpath(APPPATH . '../assets/images/newconsult/pdf').'/'.$Pdfname;
+
+		$output_dir = realpath(APPPATH . '../assets/images/newconsult/pdf').'/';
+		
+		$RandomNum   = time();
+		
+		$ImageName      = str_replace(' ','-',strtolower($Pdfname));
+		
+		$ImageExt = substr($ImageName, strrpos($ImageName, '.'));
+		
+		$ImageExt       = str_replace('.','',$ImageExt);
+		if($ImageExt != "pdf")
+		{
+		    echo "Invalid file format. Only <b>\"PDF\"</b> allowed.";
+		}
+
+		else
+        {
+
+        	$ImageName      = preg_replace("/\.[^.\s]{3,4}$/", "", $ImageName);
+
+            $NewImageName = $ImageName.'-'.$RandomNum.'.'.$ImageExt;
+
+            $location   = "/usr/bin/convert";
+
+            $name       = $output_dir. $Pdfname;
+            
+            $num = 			$this->count_pages($name);
+            
+            $RandomNum   = time();
+            $nameto     = $output_dir.$RandomNum.".jpg";
+            $resolution = "-density 130";
+            $convert    = $location . " " . $resolution . " " . $name . " ".$nameto;
+
+            exec($convert);
+            if($num == 1)
+            {
+            	$data['image'] = $RandomNum.".jpg";
+            	$new_name = $RandomNum.".jpg";
+            	//$data['output'] = $this->manage_pdf->SavePdfByid($userId, $new_name, $pdfname );
+            	$data['pdf_results']   = $this->appointments->insert_consult_upload_pdf($inputValues,$config,$new_name, $pdfname);
+            	print_r(json_encode($data['pdf_results']));
+            	//print_r($data['pdf_results']);
+    //         	$this->load->view('inc/header' , $data);
+				// $this->load->view('inc/master_menu/master_menu');
+				// $this->load->view('pdf/editor', $data);
+				
+            }
+            else
+            {
+            $images = array();
+            for($i = 0; $i<$num;$i++)
+            {
+            	$images[] = realpath(APPPATH . '../assets/images/newconsult/pdf').'/'.$RandomNum."-".$i.".jpg";
+                //echo "<img src='".base_url('assets/uploads')."/$RandomNum-$i.jpg' title='Page-$i' /><br>"; 
+            }
+            	
+            	$location   = "/usr/bin/convert";
+            	$new_images =  implode(" ", $images);
+            	$new_name = $output_dir.$RandomNum."output.jpg";
+            	$new_name_db = $RandomNum."output.jpg";
+            	$count_img = count($images);
+            	$string = '';
+            	foreach ($images as $img) {
+            		$string .= $img.' ';
+            	}
+            	exec("convert ".$string." -append $new_name");
+            	$data['image'] = $RandomNum."output.jpg";
+            	//$data['output'] = $this->manage_pdf->SavePdfByid($userId, $new_name_db, $pdfname);
+            	$data['pdf_results']   = $this->appointments->insert_consult_upload_pdf($inputValues,$config,$new_name_db, $pdfname);
+            	//print_r($data['pdf_results']);
+    //         	$this->load->view('inc/header' , $data);
+				// $this->load->view('inc/master_menu/master_menu');
+				// $this->load->view('pdf/editor', $data);
+				print_r(json_encode($data['pdf_results']));
+            }
+            
+
+        }
+     }
+
+    public function count_pages($pdfname)
+	{
+      $pdftext = file_get_contents($pdfname);
+      $num = preg_match_all("/\/Page\W/", $pdftext, $dummy);
+      return $num;
+    }
 	
 }
 

@@ -253,12 +253,32 @@ class Groups extends CI_Controller
 
 		$patientID = $this->input->post('patientid');
 
-		$data['consult_Details'] = $this->manage_groups->get_all_consultation_history($patientID);
-		
+		$data['consulthistory'] = $this->manage_groups->get_all_consultation_history_groups($patientID);
 		// echo "<pre>";
-		// print_r($data['history']);
+		// print_r($data['consulthistory']);
 		// die;
+		$this->load->view('clinic/patientgroups/ajax/cosnsultation', $data);
 	}
+
+	public function patientBilling()
+	{
+		$data = $this->glbl_login();
+
+		$patientID = $this->input->post('patientid');
+
+		$data['billinghistory'] = $this->manage_groups->get_all_billing_history_groups($patientID);
+		
+		$this->load->view('clinic/patientgroups/ajax/billingsummary', $data);
+	}
+
+
+
+
+
+
+
+
+
 
 	public function removeFrmGrp(){
 		$data = $this->glbl_login();
